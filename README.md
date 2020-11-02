@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+# Estateside: CS5610-Web-Dev-Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Link to Google Doc description: https://docs.google.com/document/d/1JU1Yq7fm1br5M_xgsy7k-E0RzK2BF8B2g4hmnb7EU2g/edit?usp=sharing  
 
-In the project directory, you can run:
 
-### `npm start`
+# Real Estate Web Application  
+Course: CS5610 Web Development  
+GitHub link: https://github.ccs.neu.edu/japher/CS5610-Web-Dev-Project  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Semester: Fall 2020  
+Instructor: Jose Annunziato  
+Project Group Number: #17  
+Team Members: Prajakta Dharme, Japher Su, Nicholas Galinski, Zoheb Nawaz  
+# About Project  
+This project is made as a part of the course CS5610 Web Development at Northeastern University.   
+The objective of the project is to make a property rental application that would allow users to interactively search properties in the selected area, inspect the different aspects associated with a property like the property type, amenities, parking etc. as well as express their interest in a particular property by contacting the associated property advertiser.  
+# Problem Statement  
+Two user types that would use this would be those who are looking for a rental (user/client) and those who are renting their unit (host/owner). On the user’s end, they would like to be able to search for properties whereas the owners would be notified of potential buyers. We also have a third user type as the Property agent who would work as a collaborator between the owner and the client.  
+# Proposed Solution  
+Our proposed solution offers a realty web platform for users to browse available realty properties for rent and for sale. Users can search targeted properties and look up the details of the properties of interest. Additionally, the platform allows landlords and agents to update realty information (operations include adding new listings, deleting & modifying existing listings).    
+# APIs used  
+We are using Zillow’s public APIs. Zillow has a variety of apartment options to buy, sell and rent. The Web API endpoints return JSON metadata about the apartments located in a particular location based on REST principles. We will use the web API to provide search details based on various filters.  
+# Architecture and Technology Stack  
+Database: MongoDB  
+Back End: Java/NodeJS  
+Front End: HTML, CSS, Bootstrap, Javascript, Angular 9, React  
+Host environment: Heroku  
