@@ -1,30 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Estateside</title>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -39,5 +19,36 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+    <!-- Header -->
+    <header id="header">
+      <h1>Estateside</h1>
+      <p>Find your new home.</p>
+    </header>
+
+    <!-- Signup Form -->
+    <form id="signup-form" method="post" action="#">
+      <input type="email" name="email" id="email" placeholder="Search for Address, City, or Zip" />
+      <input type="submit" value="Search" />
+    </form>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <ul class="icons">
+        <li><a href="#" class="icon solid fa-user-plus"  title="register"><span class="label">Register</span></a></li>
+        <li><a href="#" class="icon solid fa-sign-in-alt" title="log in"><span class="label">Log in</span></a></li>
+        <li><a href="#" class="icon solid fa-users" title="account profile"><span class="label" >Account Profile</span></a></li>
+        <li><a href="#" class="icon solid fa-info-circle" title="privacy policy"><span class="label">Privacy Policy</span></a></li>
+
+      </ul>
+      <ul class="copyright">
+        <li>&copy; Estateside.</li>
+        <li>Credits: <a href="http://html5up.net">HTML5 UP</a></li>
+        <li>Powered by: <a href="https://www.zillow.com">Zillow</a></li>
+      </ul>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
+
