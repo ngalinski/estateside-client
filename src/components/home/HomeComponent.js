@@ -6,6 +6,11 @@ import TopNavigationComponent from "../TopNavigationComponent";
 
 export default class HomeComponent extends React.Component {
 
+    state = {
+        isLoggedIn: false,
+        userProfile: null,
+    };
+
     render() {
         return(
             <div>

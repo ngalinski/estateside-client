@@ -1,11 +1,9 @@
 import React from 'react';
 import './topNavigatation.css'
 import {BrowserRouter, Link, Route} from "react-router-dom";
-import PrivacyPolicyComponent from "./PrivacyPolicyComponent";
 import LoginComponent from "./LoginComponent";
 import RegisterComponent from "./RegisterComponent";
 import ProfileComponent from "./ProfileComponent";
-
 
 export default class topNavigationComponent extends React.Component {
 

@@ -4,12 +4,15 @@ import './home/css/HomeComponent.css'
 export default class PropertySearchComponent extends React.Component {
 
     render() {
-        return(
+        return (
             <div>
-                <form id="signup-form" method="post" action="#">
-                    <input type="email" name="email" id="email" placeholder="Search for Address, City, or Zip" />
-                    <input type="submit" value="Search" />
-                </form>
+                <div id="signup-form">
+                    <input type="text" name="email" id="email"
+                           placeholder="Search for City"/>
+                    <button>
+                        Search
+                    </button>
+                </div>
             </div>
         )
     }

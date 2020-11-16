@@ -5,7 +5,6 @@ const LoginComponent = () =>
         <header id="main-header">
             <h1>Login</h1>
         </header>
-        <form>
             <div className="form-group row">
                 <label htmlFor="username" className="col-sm-3 col-form-label"> Username </label>
                 <div className="col-sm-9">
@@ -40,7 +39,6 @@ const LoginComponent = () =>
                     </div>
                 </div>
             </div>
-        </form>
     </div>;
 
 export default LoginComponent
