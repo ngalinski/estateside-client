@@ -1,41 +1,40 @@
 import React from 'react';
 import './topNavigatation.css'
-import {BrowserRouter, Link, Route} from "react-router-dom";
-import LoginComponent from "./LoginComponent";
-import RegisterComponent from "./RegisterComponent";
-import ProfileComponent from "./ProfileComponent";
+import {Link} from "react-router-dom";
 
-export default class topNavigationComponent extends React.Component {
+const TopNavigationComponent = () => {
 
-    render() {
-        return (
-            <BrowserRouter>
-                <div className="topnav">
-                    <ul className="icons">
-                        <li><a className="active" href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li>
-                            <Link to="/register" className="icon solid fa-user-plus"/>
-                            <Route path="/register" exact component={RegisterComponent}/>
-                        </li>
+    return (
+        <div className="topnav">
+            <ul className="icons">
+                <li><Link className="active" to="/">Home</Link></li>
+                <li><Link to="/">About</Link></li>
+                <li><Link to="/">Contact</Link></li>
+                <li>
+                    <Link to="/register" className="icon solid fa-user-plus"/>
+                </li>
 
-                        <li>
-                            <Link to="/login" className="icon solid fa-sign-in-alt"/>
-                            <Route path="/login" exact component={LoginComponent}/>
-                        </li>
+                <li>
+                    <Link to="/login" className="icon solid fa-sign-in-alt"/>
+                </li>
 
-                        <li>
-                            <Link to="/profile" className="icon solid fas fa-user"/>
-                            <Route path="/profile" exact component={ProfileComponent}/>
-                        </li>
-
-                        <li><a href="privacy-policy/privacy-policy.html" class="icon solid fa-info-circle" title="privacy policy"><span class="label">Privacy Policy</span></a></li>
-                        <li><a href="help/help.html" class="icon solid fa-question"><span class="label">Help</span></a></li>
-                    </ul>
-                </div>
-            </BrowserRouter>
-        )
-    }
+                <li>
+                    <Link to="/profile" className="icon solid fas fa-user"/>
+                </li>
+                <li>
+                    <Link to="privacy-policy/privacy-policy.html"
+                          class="icon solid fa-info-circle" title="privacy policy">
+                        <span className="label">Privacy Policy</span>
+                    </Link>
+                </li>
+                <li>
+                    <Link to="help/help.html" className="icon solid fa-question">
+                        <span className="label">Help</span>
+                    </Link>
+                </li>
+            </ul>
+        </div>
+    )
 }
 
+export default TopNavigationComponent

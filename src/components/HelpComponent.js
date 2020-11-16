@@ -1,14 +1,9 @@
 import React from 'react';
-import './home/css/HomeComponent.css'
+import '../container/css/HomeComponent.css'
 
-export default class HelpComponent extends React.Component {
+const HelpComponent = () =>
+    <div>
+        <p>Help details to be entered</p>
+    </div>
 
-    render() {
-        return(
-            <div>
-               <p>Help details to be entered</p>
-            </div>
-        )
-    }
-
-}
+export default HelpComponent

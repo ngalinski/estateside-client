@@ -1,14 +1,7 @@
 import React from 'react';
-import './home/css/HomeComponent.css'
+import './css/HomeComponent.css'
 
-export default class PrivacyPolicyComponent extends React.Component {
-
-    render() {
-        return(
-            <div>
-               <p>Privacy policy to be entered</p>
-            </div>
-        )
-    }
-
-}
+const PrivacyPolicyComponent = () =>
+    <div>
+        <p>Privacy policy to be entered</p>
+    </div>

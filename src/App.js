@@ -1,13 +1,13 @@
 import './App.css';
-import HomeComponent from "./components/home/HomeComponent";
 import React from "react";
+import AppContainer from "./container/AppContainer";
 
 function App() {
-  return (
-    <div className="App">
-      <HomeComponent/>
-    </div>
-  );
+    return (
+        <div className="App">
+            <AppContainer/>
+        </div>
+    );
 }
 
 export default App;
