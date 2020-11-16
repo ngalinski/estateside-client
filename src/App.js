@@ -1,14 +1,12 @@
 import './App.css';
+import HomeComponent from "./components/home/HomeComponent";
+import React from "react";
 
 function App() {
   return (
-      <div></div>
-    // <div className="App">
-    //   <header className="App-header">
-    //       <h1>Estateside, find your new home!</h1>
-    //   </header>
-    // </div>
-
+    <div className="App">
+      <HomeComponent/>
+    </div>
   );
 }
 
