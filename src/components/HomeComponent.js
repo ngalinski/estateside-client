@@ -9,6 +9,7 @@ export default class HomeComponent extends React.Component {
     state = {
         isLoggedIn: false,
         userProfile: null,
+        searchProperty: "",
     };
 
     render() {
@@ -18,7 +19,7 @@ export default class HomeComponent extends React.Component {
                                         userProfile={this.state.userProfile}/>
                 <h1>Estateside</h1>
                 <p>Find your new home.</p>
-                <PropertySearchComponent/>
+                <PropertySearchComponent searchProperty={this.state.searchProperty}/>
                 <FooterComponent/>
             </div>
         )
