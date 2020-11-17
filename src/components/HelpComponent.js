@@ -1,5 +1,6 @@
 import React from 'react';
 import '../components/css/HomeComponent.css'
+import FooterComponent from "./FooterComponent";
 
 const HelpComponent = () =>
     <div className="wbdv-container">
@@ -155,6 +156,10 @@ const HelpComponent = () =>
                 </div>
             </div>
         </div>
+        <br/>
+        <br/>
+        <br/>
+        <FooterComponent/>
     </div>
 
 export default HelpComponent

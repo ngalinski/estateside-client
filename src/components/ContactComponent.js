@@ -1,5 +1,6 @@
 import React from 'react';
 import './css/HomeComponent.css'
+import FooterComponent from "./FooterComponent";
 
 const ContactComponent = () =>
     <div className="wbdv-container">
@@ -24,7 +25,7 @@ const ContactComponent = () =>
                     <p>
                         Fill out the form below and we will get back to you.
                     </p>
-                    <form role="form" method="post" id="reused_form">
+                    <form method="post" id="reused_form">
 
                         <div className="row">
                             <div className="col-sm-12 form-group">
@@ -60,6 +61,9 @@ const ContactComponent = () =>
                 </div>
             </div>
         </div>
+        <br/>
+        <br/>
+        <FooterComponent/>
     </div>
 
 export default ContactComponent;

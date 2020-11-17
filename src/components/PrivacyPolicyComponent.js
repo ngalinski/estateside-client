@@ -1,5 +1,6 @@
 import React from 'react';
 import './css/HomeComponent.css'
+import FooterComponent from "./FooterComponent";
 
 const PrivacyPolicyComponent = () =>
     <div className="wbdv-container">
@@ -124,6 +125,9 @@ const PrivacyPolicyComponent = () =>
                 and reference Estateside in regards to CS5610 - Fall 2020.
             </p>
         </div>
+        <br/>
+        <br/>
+        <FooterComponent/>
     </div>
 
 export default PrivacyPolicyComponent;

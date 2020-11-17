@@ -1,8 +1,9 @@
 import React from 'react';
 import './css/HomeComponent.css'
+import FooterComponent from "./FooterComponent";
 
 const AboutComponent = () =>
-    <div className="wbdv-container">
+    <div className="container">
         <div className="wbdv-about-us">
             <header id="wbdv-about-heading">
                 <h1>About Estateside</h1>
@@ -27,7 +28,7 @@ const AboutComponent = () =>
                 Built using: React, NodeJS, and the Zillow API.
             </p>
         </div>
-
+        <FooterComponent/>
     </div>
 
 export default AboutComponent;
