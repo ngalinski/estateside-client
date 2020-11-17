@@ -5,35 +5,36 @@ import {Link} from "react-router-dom";
 const TopNavigationComponent = () => {
 
     return (
-        <div className="topnav">
-            <ul className="icons">
-                <li><Link className="active" to="/">Home</Link></li>
-                <li><Link to="/">About</Link></li>
-                <li><Link to="/">Contact</Link></li>
-                <li>
-                    <Link to="/register" className="icon solid fa-user-plus"/>
-                </li>
+            <div className="topnav">
+                <ul className="icons">
+                    <li><Link className="active" to="/">Home</Link></li>
+                    <li><Link to="/" title="about">About</Link></li>
+                    <li><Link to="/" title="contact">Contact</Link></li>
+                    <li>
+                        <Link to="/register" className="icon solid fa-user-plus" title="register">
+                        </Link>
+                    </li>
 
-                <li>
-                    <Link to="/login" className="icon solid fa-sign-in-alt"/>
-                </li>
+                    <li>
+                        <Link to="/login" className="icon solid fa-sign-in-alt" title="login">
+                        </Link>
+                    </li>
 
-                <li>
-                    <Link to="/profile" className="icon solid fas fa-user"/>
-                </li>
-                <li>
-                    <Link to="privacy-policy/privacy-policy.html"
-                          class="icon solid fa-info-circle" title="privacy policy">
-                        <span className="label">Privacy Policy</span>
-                    </Link>
-                </li>
-                <li>
-                    <Link to="help/help.html" className="icon solid fa-question">
-                        <span className="label">Help</span>
-                    </Link>
-                </li>
-            </ul>
-        </div>
+                    <li>
+                        <Link to="/profile" className="icon solid fas fa-user" title="profile">
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/privacy"
+                              class="icon solid fa-info-circle" title="privacy policy">
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/help" className="icon solid fa-question" title="help">
+                        </Link>
+                    </li>
+                </ul>
+            </div>
     )
 }
 
