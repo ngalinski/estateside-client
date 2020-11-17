@@ -8,8 +8,8 @@ const TopNavigationComponent = () => {
             <div className="topnav">
                 <ul className="icons">
                     <li><Link className="active" to="/">Home</Link></li>
-                    <li><Link to="/" title="about">About</Link></li>
-                    <li><Link to="/" title="contact">Contact</Link></li>
+                    <li><Link to="/about" title="about">About</Link></li>
+                    <li><Link to="/contact" title="contact">Contact</Link></li>
                     <li>
                         <Link to="/register" className="icon solid fa-user-plus" title="register">
                         </Link>

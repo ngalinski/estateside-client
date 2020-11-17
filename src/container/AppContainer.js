@@ -7,6 +7,8 @@ import {BrowserRouter, Route} from "react-router-dom";
 import HomeComponent from "../components/HomeComponent";
 import PrivacyPolicyComponent from "../components/PrivacyPolicyComponent";
 import HelpComponent from "../components/HelpComponent";
+import ContactComponent from "../components/ContactComponent";
+import AboutComponent from "../components/AboutComponent";
 
 export default class AppContainer extends React.Component {
 
@@ -25,6 +27,8 @@ export default class AppContainer extends React.Component {
                     <Route path="/profile" exact component={ProfileComponent}/>
                     <Route path="/privacy" exact component={PrivacyPolicyComponent}/>
                     <Route path="/help" exact component={HelpComponent}/>
+                    <Route path="/contact" exact component={ContactComponent}/>
+                    <Route path="/about" exact component={AboutComponent}/>
                 </BrowserRouter>
             </div>
         )
