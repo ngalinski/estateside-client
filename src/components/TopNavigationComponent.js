@@ -45,16 +45,12 @@ const TopNavigationComponent = ({isLoggedIn, userProfile, login, logout}) => {
                 </li>
                 {!isLoggedIn &&
                  <li>
-                     <Tooltip title="Login">
-                         <LoginComponent clientLogin={login}/>
-                     </Tooltip>
+                     <LoginComponent clientLogin={login}/>
                  </li>
                 }
                 {isLoggedIn &&
                  <li>
-                     <Tooltip title="Logout">
-                         <LogoutComponent logout={logout}/>
-                     </Tooltip>
+                     <LogoutComponent logout={logout}/>
                  </li>
                 }
             </ul>

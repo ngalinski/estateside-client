@@ -3,6 +3,7 @@ import GoogleLogin from 'react-google-login';
 
 import {login} from "../services/GoogleOauthService";
 import {Link} from "react-router-dom";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const LoginComponent = ({clientLogin}) => {
     const responseGoogle = async (authResult) => {
@@ -24,8 +25,10 @@ const LoginComponent = ({clientLogin}) => {
             // use your client id here
             clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
             render={renderProps => (
-                <Link to="/" onClick={renderProps.onClick} disabled={renderProps.disabled}
-                      className="icon solid fa-sign-in-alt"/>
+                <Tooltip title="Login">
+                    <Link to="/" onClick={renderProps.onClick} disabled={renderProps.disabled}
+                          className="icon solid fa-sign-in-alt"/>
+                </Tooltip>
             )}
             buttonText="Login"
             responseType="code"
