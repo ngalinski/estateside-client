@@ -3,7 +3,7 @@ import '../components/css/HomeComponent.css'
 import FooterComponent from "./FooterComponent";
 
 const HelpComponent = () =>
-    <div className="wbdv-container">
+    <div className="container">
         <div className="panel-group" id="accordion">
             <h1 className="faqHeader">General Questions</h1>
             <div className="panel panel-default">

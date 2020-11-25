@@ -3,7 +3,7 @@ import './css/HomeComponent.css'
 import FooterComponent from "./FooterComponent";
 
 const ContactComponent = () =>
-    <div className="wbdv-container">
+    <div className="container">
         <div className="wbdv-contact-us">
             <header id="wbdv-contact-heading">
                 <h1>Contact Estateside</h1>
@@ -49,7 +49,7 @@ const ContactComponent = () =>
                                        required></input>
                             </div>
                         </div>
-
+                        <br/>
                         <div className="row">
                             <div className="col-sm-12 form-group">
                                 <button type="submit" className="btn btn-lg btn-default">Send
@@ -61,8 +61,6 @@ const ContactComponent = () =>
                 </div>
             </div>
         </div>
-        <br/>
-        <br/>
         <FooterComponent/>
     </div>
 

@@ -3,7 +3,7 @@ import './css/HomeComponent.css'
 import FooterComponent from "./FooterComponent";
 
 const PrivacyPolicyComponent = () =>
-    <div className="wbdv-container">
+    <div className="container">
         <div className="wbdv-privacy-policy">
             <header id="wbdv-privacy-heading">
                 <h1>Estateside Privacy Policy</h1>
