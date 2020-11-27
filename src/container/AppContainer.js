@@ -9,7 +9,7 @@ import HelpComponent from "../components/HelpComponent";
 import ContactComponent from "../components/ContactComponent";
 import AboutComponent from "../components/AboutComponent";
 import SearchResultComponent from "../components/SearchResultComponent";
-import SimpleMap from "../components/SimpleMap";
+import MapComponent from "../components/MapComponent";
 
 export default class AppContainer extends React.Component {
     render() {

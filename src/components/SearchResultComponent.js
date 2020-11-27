@@ -1,6 +1,6 @@
 import React from 'react';
 import './SearchResult.css'
-import SimpleMap from "./SimpleMap";
+import MapComponent from "./MapComponent";
 
 export default class SearchResultComponent extends React.Component {
 
@@ -55,7 +55,7 @@ export default class SearchResultComponent extends React.Component {
                     </tr>
                     </tbody>
                 </table>
-                <SimpleMap/>
+                <MapComponent/>
             </div>
         )
     }
