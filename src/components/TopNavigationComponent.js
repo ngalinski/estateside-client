@@ -21,7 +21,7 @@ const TopNavigationComponent = ({isLoggedIn, userProfile, login, logout}) => {
                 </Tooltip>
                 <li>
                     <Tooltip title="Register">
-                        <Link to="/register" className="icon solid fa-user-plus"/>
+                        <Link to="/register" className="icon solid fab fa-google"/>
                     </Tooltip>
                 </li>
                 <li>
