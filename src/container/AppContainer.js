@@ -9,6 +9,7 @@ import HelpComponent from "../components/HelpComponent";
 import ContactComponent from "../components/ContactComponent";
 import AboutComponent from "../components/AboutComponent";
 import SearchResultComponent from "../components/SearchResultComponent";
+import PropertyGridComponent from "../components/PropertyGridComponent";
 import MapComponent from "../components/MapComponent";
 
 export default class AppContainer extends React.Component {
@@ -24,6 +25,7 @@ export default class AppContainer extends React.Component {
                     <Route path="/contact" exact component={ContactComponent}/>
                     <Route path="/about" exact component={AboutComponent}/>
                     <Route path="/search" exact component={SearchResultComponent}/>
+                    <Route path="/properties" exact component={PropertyGridComponent}/>
                 </BrowserRouter>
             </div>
         )
