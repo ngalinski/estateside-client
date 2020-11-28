@@ -3,7 +3,7 @@ import MapComponent from "./MapComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 import {Link} from "react-router-dom";
 import Tooltip from "@material-ui/core/Tooltip";
-import {PropertyTopNavigationComponent} from "./PropertyTopNavigation";
+import SearchPropertyNavigationComponent from "./SearchPropertyNavigationComponent";
 
 export default class SearchResultComponent extends React.Component {
 
@@ -11,7 +11,7 @@ export default class SearchResultComponent extends React.Component {
         return (
             <div>
                 <TopNavigationComponent/>
-                <PropertyTopNavigationComponent/>
+                <SearchPropertyNavigationComponent/>
 
                 <br/>
 
