@@ -1,6 +1,7 @@
 import React from "react";
 import PropertyCardComponent from "./PropertyCardComponent";
 import FooterComponent from "./FooterComponent";
+import TopNavigationComponent from "./TopNavigationComponent";
 
 const dummyPropertyData = [
     {
@@ -55,13 +56,14 @@ const dummyPropertyData = [
 
 const PropertyGridComponent = () => {
     return (
-        <div className="container">
+        <div>
+            <TopNavigationComponent/>
             <div className="wbdv-property-list">
                 <header id="wbdv-property-list-heading">
                     <h1>Estateside Property List</h1>
                 </header>
 
-                <div className="form-group row">
+                <div className=" container form-group row">
                     {
                         dummyPropertyData.map(property =>
                                                   <PropertyCardComponent property={property}
