@@ -1,9 +1,11 @@
 import React from 'react';
 import './css/HomeComponent.css'
 import FooterComponent from "./FooterComponent";
+import TopNavigationComponent from "./TopNavigationComponent";
 
 const PrivacyPolicyComponent = () =>
     <div className="container">
+        <TopNavigationComponent/>
         <div className="wbdv-privacy-policy">
             <header id="wbdv-privacy-heading">
                 <h1>Estateside Privacy Policy</h1>

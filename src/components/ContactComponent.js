@@ -1,9 +1,11 @@
 import React from 'react';
 import './css/HomeComponent.css'
 import FooterComponent from "./FooterComponent";
+import TopNavigationComponent from "./TopNavigationComponent";
 
 const ContactComponent = () =>
     <div className="container">
+        <TopNavigationComponent/>
         <div className="wbdv-contact-us">
             <header id="wbdv-contact-heading">
                 <h1>Contact Estateside</h1>

@@ -1,7 +1,9 @@
 import React from "react";
+import TopNavigationComponent from "./TopNavigationComponent";
 
 const ProfileComponent = () =>
     <div>
+        <TopNavigationComponent/>
         <header id="main-header">
             <h1>Profile</h1>
         </header>

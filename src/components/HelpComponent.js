@@ -1,9 +1,11 @@
 import React from 'react';
 import '../components/css/HomeComponent.css'
 import FooterComponent from "./FooterComponent";
+import TopNavigationComponent from "./TopNavigationComponent";
 
 const HelpComponent = () =>
     <div className="container">
+        <TopNavigationComponent/>
         <div className="panel-group" id="accordion">
             <h1 className="faqHeader">General Questions</h1>
             <div className="panel panel-default">

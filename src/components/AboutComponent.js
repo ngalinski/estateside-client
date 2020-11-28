@@ -1,9 +1,11 @@
 import React from 'react';
 import './css/HomeComponent.css'
 import FooterComponent from "./FooterComponent";
+import TopNavigationComponent from "./TopNavigationComponent";
 
 const AboutComponent = () =>
     <div className="container">
+        <TopNavigationComponent/>
         <div className="wbdv-about-us">
             <header id="wbdv-about-heading">
                 <h1>About Estateside</h1>
