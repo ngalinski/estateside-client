@@ -11,6 +11,7 @@ import AboutComponent from "../components/AboutComponent";
 import SearchResultComponent from "../components/SearchResultComponent";
 import PropertyGridComponent from "../components/PropertyGridComponent";
 import MapComponent from "../components/MapComponent";
+// import NewPropertyComponent from "../components/NewPropertyComponent";
 
 export default class AppContainer extends React.Component {
     render() {
