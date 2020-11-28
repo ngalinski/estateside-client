@@ -8,16 +8,16 @@ const PropertySearchComponent = () => {
             <div id="signup-form">
                 <input type="text" name="email" id="email"
                        placeholder="Search for City"/>
-                <button>
                     <Link to="/search">
-                    Search
+                        <button>
+                            Search
+                        </button>
                     </Link>
-                </button>
-                <button id="wbdv-search" type="submit" className="btn btn-lg btn-default">
                     <Link to="/search">
-                        Search→
+                        <button id="wbdv-search" type="submit" className="btn btn-lg btn-default wbdv-search-btn">
+                            Search→
+                        </button>
                     </Link>
-                </button>
             </div>
         </div>
     )

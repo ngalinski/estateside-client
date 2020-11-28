@@ -1,13 +1,13 @@
 import React from "react";
 import {Link} from "react-router-dom";
-
+import "./css/PropertyCardComponent.css"
 // bootstrap import applies to the entire project and messes up the styling of other pages
 import "bootstrap/dist/css/bootstrap.min.css"
 
 const PropertyCardComponent = ({property}) => {
     return (
         // creating a property card
-        <div className="col-sm-6 col-md-3 wbdv-property-card">
+        <div className="col-3 col-sm-6 col-md-3 wbdv-property-card">
             <div className="card h-100">
                 <img className="card-img-top" src={property.imageUrl} />
                 <div className="card-body bg-primary">
