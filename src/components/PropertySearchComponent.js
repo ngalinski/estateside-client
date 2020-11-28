@@ -13,6 +13,11 @@ const PropertySearchComponent = () => {
                     Search
                     </Link>
                 </button>
+                <button id="wbdv-search" type="submit" className="btn btn-lg btn-default">
+                    <Link to="/search">
+                        Search→
+                    </Link>
+                </button>
             </div>
         </div>
     )

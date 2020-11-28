@@ -7,6 +7,7 @@ const HelpComponent = () =>
     <div>
         <TopNavigationComponent/>
         <h1 className="faqHeader">General Questions</h1>
+
         <div className="panel-group" id="accordion">
             <div className="panel panel-default">
                 <div className="panel-heading">
