@@ -4,12 +4,12 @@ import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 
 const PrivacyPolicyComponent = () =>
-    <div className="container">
+    <div>
         <TopNavigationComponent/>
-        <div className="wbdv-privacy-policy">
-            <header id="wbdv-privacy-heading">
-                <h1>Estateside Privacy Policy</h1>
-            </header>
+        <header id="wbdv-privacy-heading">
+            <h1>Estateside Privacy Policy</h1>
+        </header>
+        <div className="wbdv-privacy-policy container">
 
             <h3>General Terms</h3>
             <p>

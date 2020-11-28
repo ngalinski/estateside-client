@@ -4,12 +4,12 @@ import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 
 const ContactComponent = () =>
-    <div className="container">
+    <div>
         <TopNavigationComponent/>
-        <div className="wbdv-contact-us">
-            <header id="wbdv-contact-heading">
-                <h1>Contact Estateside</h1>
-            </header>
+        <header id="wbdv-contact-heading">
+            <h1>Contact Estateside</h1>
+        </header>
+        <div className="wbdv-contact-us container">
 
             <h3>General Contact Information</h3>
             <p>

@@ -4,10 +4,10 @@ import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 
 const HelpComponent = () =>
-    <div className="container">
+    <div>
         <TopNavigationComponent/>
+        <h1 className="faqHeader">General Questions</h1>
         <div className="panel-group" id="accordion">
-            <h1 className="faqHeader">General Questions</h1>
             <div className="panel panel-default">
                 <div className="panel-heading">
                     <h4 className="panel-title">
@@ -22,7 +22,7 @@ const HelpComponent = () =>
                     </div>
                 </div>
             </div>
-            <div className="panel panel-default">
+            <div className="panel panel-default ">
                 <div className="panel-heading">
                     <h4 className="panel-title">
                         <a className="accordion-toggle collapsed" data-toggle="collapse"
