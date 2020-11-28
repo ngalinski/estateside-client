@@ -15,7 +15,7 @@ ReactDOM.render(
         images={['images/bg01.jpg', 'images/bg02.jpg', 'images/bg03.jpg',
                  'images/bg04.jpg', 'images/bg05.jpg', 'images/bg01.jpg']}
         duration={5}
-        transition={3}
+        transition={1}
     />,
     document.getElementById('background-slider')
 );

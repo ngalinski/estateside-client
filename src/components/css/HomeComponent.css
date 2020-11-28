@@ -1078,7 +1078,7 @@ button:disabled,
     bottom: 0px;
     color: rgba(255, 255, 255, 0.5);
     left: 4em;
-    opacity: 0.5;
+    opacity: 1;
     position: fixed;
 }
 
@@ -1199,4 +1199,16 @@ h3 {
 
 #wbdv-search {
     color: black;
+}
+
+ul.icons{
+    color: white;
+}
+
+.wbdv-contact-us{
+    color: white;
+}
+
+.wbdv-about-us{
+    color: white;
 }

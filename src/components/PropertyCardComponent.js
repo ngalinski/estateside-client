@@ -1,8 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import "./css/PropertyCardComponent.css"
-// bootstrap import applies to the entire project and messes up the styling of other pages
-import "bootstrap/dist/css/bootstrap.min.css"
 
 const PropertyCardComponent = ({property}) => {
     return (
