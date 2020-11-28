@@ -127,7 +127,7 @@ body.is-preload *, body.is-preload *:before, body.is-preload *:after {
     transition: none !important;
 }
 
-body > * {
+.home-page-components {
     position: relative;
     z-index: 2;
 }
@@ -1152,6 +1152,7 @@ button:disabled,
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
 .wbdv-privacy-policy {
     margin-left: 20vh;
     margin-right: 20vh;
@@ -1196,7 +1197,7 @@ h3 {
     position: absolute;
 }
 
-#wbdv-search{
+#wbdv-search {
     color: black;
 }
 

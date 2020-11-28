@@ -39,29 +39,9 @@ export default class HomeComponent extends React.Component {
         }
     }
 
-    /*
-
-        componentDidUpdate(prevProps, prevState, snapshot) {
-            let userProfile = localStorage.getItem("userProfile")
-            if (userProfile) {
-                this.setState({
-                                  isLoggedIn: true,
-                                  userProfile: userProfile
-                              })
-            } else {
-                this.setState({
-                                  isLoggedIn: false,
-                                  userProfile: null
-                              })
-
-            }
-        }
-    */
-
     render() {
-
         return (
-            <div>
+            <div className="home-page-components">
                 <TopNavigationComponent isLoggedIn={this.state.isLoggedIn}
                                         userProfile={this.state.userProfile}
                                         login={this.login}

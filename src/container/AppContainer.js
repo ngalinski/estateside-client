@@ -10,7 +10,6 @@ import ContactComponent from "../components/ContactComponent";
 import AboutComponent from "../components/AboutComponent";
 import SearchResultComponent from "../components/SearchResultComponent";
 import PropertyGridComponent from "../components/PropertyGridComponent";
-import MapComponent from "../components/MapComponent";
 
 export default class AppContainer extends React.Component {
     render() {

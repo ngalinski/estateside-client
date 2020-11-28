@@ -1,10 +1,15 @@
 import './App.css';
-import React from "react";
+import React, {Component} from "react";
 import AppContainer from "./container/AppContainer";
 
-const App = () =>
-    <div className="App">
-        <AppContainer/>
-    </div>
+class App extends Component {
+    render() {
+        return (
+            <div className='App'>
+                <AppContainer/>
+            </div>
+        )
+    }
+}
 
 export default App;
