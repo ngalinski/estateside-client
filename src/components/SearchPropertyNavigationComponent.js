@@ -2,20 +2,18 @@ import React from "react";
 import Tooltip from "@material-ui/core/Tooltip";
 import {Link} from "react-router-dom";
 import Modal from 'react-modal'
-import LoginComponent from "./LoginComponent";
 import {NewListingComponent} from "./NewListingComponent";
 
 const customStyles = {
-    content : {
-        top                   : '50%',
-        left                  : '50%',
-        right                 : 'auto',
-        bottom                : 'auto',
-        marginRight           : '-50%',
-        transform             : 'translate(-50%, -50%)'
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)'
     }
 };
-
 
 export default class SearchPropertyNavigationComponent extends React.Component {
 
@@ -26,9 +24,10 @@ export default class SearchPropertyNavigationComponent extends React.Component {
             isActive: false
         }
     }
+
     toggleModal = () => {
         this.setState({
-            isActive: !this.state.isActive
+                          isActive: !this.state.isActive
                       })
     };
 
@@ -37,7 +36,7 @@ export default class SearchPropertyNavigationComponent extends React.Component {
     }
 
     render() {
-        return(
+        return (
             <div className="topnav">
                 <ul className="icons">
                     <li>
