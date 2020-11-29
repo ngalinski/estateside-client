@@ -65,7 +65,7 @@ export default class SearchPropertyNavigationComponent extends React.Component {
                                style={customStyles}>
                             <div className="container">
                                 <NewListingComponent/>
-                                <button onClick={this.toggleModal}>
+                                <button onClick={this.toggleModal} className="btn-primary btn btn-block">
                                     Close modal
                                 </button>
                             </div>

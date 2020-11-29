@@ -9,14 +9,8 @@ const PropertySearchComponent = () => {
                 <input type="text" name="email" id="email"
                        placeholder="Search for City"/>
                 <Link to="/search">
-                    <button>
+                    <button className="btn-primary btn">
                         Search
-                    </button>
-                </Link>
-                <Link to="/search">
-                    <button id="wbdv-search" type="submit"
-                            className="btn btn-lg btn-default wbdv-search-btn">
-                        Search→
                     </button>
                 </Link>
             </div>
