@@ -2,6 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import "./css/PropertyCardComponent.css"
 import Modal from 'react-modal'
+import {BookAppointmentComponent} from "./BookAppointmentComponent";
 
 const customStyles = {
     content: {
@@ -15,6 +16,24 @@ const customStyles = {
 };
 
 export default class PropertyCardComponent extends React.Component{
+    constructor() {
+        super()
+
+        this.state = {
+            isActive: false
+        }
+    }
+
+    toggleModal = () => {
+        this.setState({
+                          isActive: !this.state.isActive
+                      })
+    };
+
+    componentWillMount() {
+        Modal.setAppElement('body');
+    }
+
     render() {
         return (
             // creating a property card
@@ -34,9 +53,18 @@ export default class PropertyCardComponent extends React.Component{
                     </div>
                     <div className="card-footer">
                         <i title="manage appointments"
-                           className="fa fa-address-book wbdv-property-card-icon float-left"></i>
-                        <i title="delete property"
-                           className="fa fa-trash-alt wbdv-property-card-icon float-right"></i>
+                           className="fa fa-address-book wbdv-property-card-icon float-left"
+                           onClick={this.toggleModal}/>
+                        <Modal isOpen={this.state.isActive} onRequestClose={this.toggleModal}
+                               style={customStyles}>
+                            <div className="container">
+                                <BookAppointmentComponent/>
+                                <button onClick={this.toggleModal} className="btn-primary btn btn-block">
+                                    Close modal
+                                </button>
+                            </div>
+                        </Modal>
+                        <i title="delete property" className="fa fa-trash-alt wbdv-property-card-icon float-right"/>
                     </div>
                 </div>
             </div>
