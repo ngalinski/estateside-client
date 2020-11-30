@@ -65,9 +65,7 @@ const ContactComponent = () =>
                 </div>
             </div>
         </div>
-        <div className="contact-footer">
             <FooterComponent/>
-        </div>
     </div>
 
 export default ContactComponent;

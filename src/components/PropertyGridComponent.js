@@ -58,7 +58,9 @@ const dummyPropertyData = [
 const PropertyGridComponent = () => {
     return (
         <div>
+            <div className="contact-top-bar">
             <TopNavigationComponent/>
+            </div>
             <div>
                 <header>
                     <h1>Estateside Property List</h1>

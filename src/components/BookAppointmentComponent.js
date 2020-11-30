@@ -1,4 +1,5 @@
 import React from "react";
+import "./css/PropertyGridComponent.css"
 
 export const BookAppointmentComponent = () => {
     return(
@@ -23,13 +24,13 @@ export const BookAppointmentComponent = () => {
                                     <div className="row">
                                         <div className="col-sm-6">
                                             <div className="form-group">
-                                                <span className="form-label">Date</span>
+                                                <span className="form-label" style={{color : "white"}}>Date</span>
                                                 <input className="form-control" type="date"
                                                        required/>
                                             </div>
                                         </div>
                                         <div className="col-sm-6">
-                                            <span className="form-label">Time</span>
+                                            <span className="form-label" style={{color : "white"}}>Time</span>
                                             <input className="form-control" type="time"
                                                    min="09:00" max="18:00" required/>
                                         </div>

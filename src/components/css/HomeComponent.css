@@ -1229,3 +1229,14 @@ ul.icons {
 .privacy-top-bar {
     padding-top: 150px;
 }
+
+.booking-cta {
+    color: white;
+}
+
+.wbdv-grid-container {
+    margin: 0px;
+    padding: 0px;
+    height: 100vh;
+    overflow: auto;
+}
