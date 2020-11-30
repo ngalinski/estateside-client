@@ -47,7 +47,7 @@ export default class HomeComponent extends React.Component {
                                         login={this.login}
                                         logout={this.logout}/>
                 <h1>Estateside</h1>
-                <p>Find your new home.</p>
+                <p className="find-home-title">Find your new home.</p>
                 <PropertySearchComponent searchProperty={this.state.searchProperty}/>
                 <FooterComponent/>
             </div>

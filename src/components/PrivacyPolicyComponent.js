@@ -5,7 +5,9 @@ import TopNavigationComponent from "./TopNavigationComponent";
 
 const PrivacyPolicyComponent = () =>
     <div>
+        <div className="privacy-top-bar">
         <TopNavigationComponent/>
+        </div>
         <header id="wbdv-privacy-heading">
             <h1>Estateside Privacy Policy</h1>
         </header>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './topNavigatation.css'
+import './css/topNavigatation.css'
 import {Link} from "react-router-dom";
 import LoginComponent from "./LoginComponent";
 import LogoutComponent from "./LogoutComponent";
@@ -19,11 +19,9 @@ const TopNavigationComponent = ({isLoggedIn, userProfile, login, logout}) => {
                 <Tooltip title="Contact">
                     <li><Link to="/contact" className="icon solid fa-envelope"/></li>
                 </Tooltip>
-                <li>
-                    <Tooltip title="Profile">
-                        <Link to="/profile" className="icon solid fas fa-user"/>
-                    </Tooltip>
-                </li>
+                <Tooltip title="Profile">
+                    <li><Link to="/profile" className="icon solid fa-user"/></li>
+                </Tooltip>
                 <li>
                     <Tooltip title="Privacy Policy">
                         <Link to="/privacy"

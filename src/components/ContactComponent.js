@@ -5,7 +5,9 @@ import TopNavigationComponent from "./TopNavigationComponent";
 
 const ContactComponent = () =>
     <div>
-        <TopNavigationComponent/>
+        <div className="contact-top-bar">
+            <TopNavigationComponent/>
+        </div>
         <header id="wbdv-contact-heading">
             <h1>Contact Estateside</h1>
         </header>
@@ -63,7 +65,9 @@ const ContactComponent = () =>
                 </div>
             </div>
         </div>
-        <FooterComponent/>
+        <div className="contact-footer">
+            <FooterComponent/>
+        </div>
     </div>
 
 export default ContactComponent;
