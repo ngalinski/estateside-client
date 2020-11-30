@@ -6,8 +6,6 @@ import './css/Map.css';
 const MapComponent = ({latitude = 42.334129, longitude = -71.097809}) => {
     const [center, setCenter] = useState({lat: latitude, lng: longitude});
     const [zoom, setZoom] = useState(16);
-    console.log(process.env.REACT_APP_GOOGLE_CLIENT_ID);
-    console.log(process.env.REACT_APP_GOOGLE_MAP_API_KEY);
     return (
         <div className="google-map">
             <GoogleMapReact

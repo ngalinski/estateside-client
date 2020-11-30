@@ -13,7 +13,6 @@ export default class HomeComponent extends React.Component {
 
     login = (userData) => {
         localStorage.setItem("userProfile", JSON.stringify(userData.user))
-        console.log(userData.user)
         this.setState({
                           isLoggedIn: true,
                           userProfile: userData.user,
