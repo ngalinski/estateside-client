@@ -13,21 +13,100 @@ import PropertyGridComponent from "../components/PropertyGridComponent";
 import AppointmentListComponent from "../components/AppointmentListComponent";
 
 export default class AppContainer extends React.Component {
+    state = {
+        isLoggedIn: false,
+        userProfile: null,
+        searchProperty: "",
+    };
+
+    login = (userData) => {
+        localStorage.setItem("userProfile", JSON.stringify(userData.user))
+        this.setState({
+                          isLoggedIn: true,
+                          userProfile: userData.user,
+                      });
+    };
+
+    logout = () => {
+        this.setState({
+                          isLoggedIn: false,
+                          userProfile: null,
+                      });
+        localStorage.removeItem("userProfile")
+    };
+
+    componentDidMount() {
+        let userProfile = localStorage.getItem("userProfile")
+        let userData = JSON.parse(localStorage.getItem("userProfile"))
+        if (userProfile) {
+            this.setState({
+                              isLoggedIn: true,
+                              userProfile: userData
+                          })
+        }
+    }
+
     render() {
         return (
             <div>
                 <BrowserRouter>
-                    <Route path={["/", "/login", "/logout"]} exact component={HomeComponent}/>
-                    <Route path="/register" exact component={RegisterComponent}/>
-                    <Route path="/profile" exact component={ProfileComponent}/>
-                    <Route path="/privacy" exact component={PrivacyPolicyComponent}/>
-                    <Route path="/help" exact component={HelpComponent}/>
-                    <Route path="/contact" exact component={ContactComponent}/>
-                    <Route path="/about" exact component={AboutComponent}/>
-                    <Route path="/search" exact component={SearchResultComponent}/>
-                    <Route path="/properties" exact component={PropertyGridComponent}/>
+                    <Route path={["/", "/login", "/logout"]} exact>
+                        <HomeComponent state={this.state}
+                                       login={this.login}
+                                       logout={this.logout}
+                        />
+                    </Route>
+                    {/*<Route path="/register" exact component={RegisterComponent}/>*/}
+                    <Route path="/profile" exact>
+                        <ProfileComponent state={this.state}
+                                          login={this.login}
+                                          logout={this.logout}
+                        />
+                    </Route>
+                    <Route path="/privacy" exact>
+                        <PrivacyPolicyComponent state={this.state}
+                                                login={this.login}
+                                                logout={this.logout}
+                        />
+                    </Route>
+                    <Route path="/help" exact>
+                        <HelpComponent state={this.state}
+                                       login={this.login}
+                                       logout={this.logout}
+                        />
+                    </Route>
+                    <Route path="/contact" exact>
+                        <ContactComponent state={this.state}
+                                          login={this.login}
+                                          logout={this.logout}
+                        />
+                    </Route>
+                    <Route path="/about" exact>
+                        <AboutComponent state={this.state}
+                                        login={this.login}
+                                        logout={this.logout}
+                        />
+                    </Route>
+                    <Route path="/search" exact>
+                        <SearchResultComponent state={this.state}
+                                               login={this.login}
+                                               logout={this.logout}
+                        />
+                    </Route>
+                    <Route path="/properties" exact>
+                        <PropertyGridComponent state={this.state}
+                                               login={this.login}
+                                               logout={this.logout}
+                        />
+                    </Route>
+
                     <Route path={["/properties/:propertyId/appointments",
-                                  "/users/:userId/appointments"]} exact component={AppointmentListComponent}/>
+                                  "/users/:userId/appointments"]} exact>
+                        <AppointmentListComponent state={this.state}
+                                                  login={this.login}
+                                                  logout={this.logout}
+                        />
+                    </Route>
                 </BrowserRouter>
             </div>
         )

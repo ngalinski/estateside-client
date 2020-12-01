@@ -15,9 +15,9 @@ const customStyles = {
     }
 };
 
-export default class PropertyCardComponent extends React.Component{
-    constructor() {
-        super()
+export default class PropertyCardComponent extends React.Component {
+    constructor(props) {
+        super(props)
 
         this.state = {
             isActive: false
@@ -43,7 +43,8 @@ export default class PropertyCardComponent extends React.Component{
                     <div className="card-body bg-primary">
                         <h2>{this.props.property.rent}</h2>
                         <h4 className="card-title">
-                            <Link to={`properties/${this.props.property.address}`} title="view the property"
+                            <Link to={`properties/${this.props.property.address}`}
+                                  title="view the property"
                                   className="wbdv-hyperlink">{this.props.property.address}</Link>
                         </h4>
                         <p className="card-text text-white">
@@ -59,12 +60,14 @@ export default class PropertyCardComponent extends React.Component{
                                style={customStyles}>
                             <div className="container">
                                 <BookAppointmentComponent/>
-                                <button onClick={this.toggleModal} className="btn-primary btn btn-block">
+                                <button onClick={this.toggleModal}
+                                        className="btn-primary btn btn-block">
                                     Close modal
                                 </button>
                             </div>
                         </Modal>
-                        <i title="delete property" className="fa fa-trash-alt wbdv-property-card-icon float-right"/>
+                        <i title="delete property"
+                           className="fa fa-trash-alt wbdv-property-card-icon float-right"/>
                     </div>
                 </div>
             </div>

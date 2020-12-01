@@ -3,9 +3,11 @@ import '../components/css/HomeComponent.css'
 import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 
-const HelpComponent = () =>
+const HelpComponent = ({state, login, logout}) =>
     <div>
-        <TopNavigationComponent/>
+        <TopNavigationComponent state={state}
+                                login={login}
+                                logout={logout}/>
         <h1 className="faqHeader">General Questions</h1>
 
         <div className="panel-group" id="accordion">

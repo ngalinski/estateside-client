@@ -51,11 +51,13 @@ const dummyAppointmentData = [
     }
 ]
 
-const AppointmentListComponent = () => {
+const AppointmentListComponent = ({state, login, logout}) => {
     return (
         <div>
             <div>
-                <TopNavigationComponent/>
+                <TopNavigationComponent state={state}
+                                        login={login}
+                                        logout={logout}/>
             </div>
             <div>
                 <header>
@@ -66,13 +68,16 @@ const AppointmentListComponent = () => {
                 <table className="table">
                     <thead className="text-white">
                         <tr>
-                            <th>Property Address</th>
-                            <th className="d-none d-sm-table-cell wbdv-col-width">
-                                <i className="fa fa-users wbdv-icon"></i>
+                            <th>
+                                <i className="fa fa-map-pin wbdv-table-header-icon"></i>
+                                Property Address
+                            </th>
+                            <th className="d-none d-sm-table-cell">
+                                <i className="fa fa-users wbdv-table-header-icon"></i>
                                 Viewer
                             </th>
-                            <th className="d-none d-md-table-cell wbdv-col-width">
-                                <i className="fa fa-calendar-plus wbdv-icon"></i>
+                            <th>
+                                <i className="fa fa-calendar-plus wbdv-table-header-icon"></i>
                                 Appointment Date
                             </th>
                             <th className="d-none d-md-table-cell wbdv-col-width"></th>

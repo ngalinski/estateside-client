@@ -4,16 +4,20 @@ import TopNavigationComponent from "./TopNavigationComponent";
 import SearchPropertyNavigationComponent from "./SearchPropertyNavigationComponent";
 import FooterComponent from "./FooterComponent";
 
-export default class SearchResultComponent extends React.Component {
-    render() {
-        return (
-            <div>
-                <TopNavigationComponent/>
-                <SearchPropertyNavigationComponent/>
-                <br/>
-                <MapComponent/>
-                <FooterComponent/>
-            </div>
-        )
-    }
+const SearchResultComponent = ({state, login, logout}) => {
+    return (
+        <div>
+            <TopNavigationComponent state={state}
+                                    login={login}
+                                    logout={logout}/>
+            <SearchPropertyNavigationComponent state={state}
+                                               login={login}
+                                               logout={logout}/>
+            <br/>
+            <MapComponent/>
+            <FooterComponent/>
+        </div>
+    )
 }
+
+export default SearchResultComponent

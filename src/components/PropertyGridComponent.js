@@ -3,6 +3,7 @@ import PropertyCardComponent from "./PropertyCardComponent";
 import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 import "./css/PropertyGridComponent.css"
+import SearchResultComponent from "./SearchResultComponent";
 
 const dummyPropertyData = [
     {
@@ -55,11 +56,14 @@ const dummyPropertyData = [
     }
 ]
 
-const PropertyGridComponent = () => {
+const PropertyGridComponent = ({state, login, logout}) => {
     return (
         <div>
             <div className="contact-top-bar">
-                <TopNavigationComponent/>
+                <TopNavigationComponent state={state}
+                                        login={login}
+                                        logout={logout}
+                />
             </div>
             <div>
                 <header>
