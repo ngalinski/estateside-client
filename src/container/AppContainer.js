@@ -9,6 +9,7 @@ import ContactComponent from "../components/ContactComponent";
 import AboutComponent from "../components/AboutComponent";
 import SearchResultComponent from "../components/SearchResultComponent";
 import PropertyGridComponent from "../components/PropertyGridComponent";
+import AppointmentListComponent from "../components/AppointmentListComponent";
 
 export default class AppContainer extends React.Component {
     state = {
@@ -109,6 +110,14 @@ export default class AppContainer extends React.Component {
                                                login={this.login}
                                                logout={this.logout}
                                                updateSelectedNavItem={this.updateSelectedNavItem}
+                        />
+                    </Route>
+
+                    <Route path={["/properties/:propertyId/appointments",
+                                  "/users/:userId/appointments"]} exact>
+                        <AppointmentListComponent state={this.state}
+                                                  login={this.login}
+                                                  logout={this.logout}
                         />
                     </Route>
                 </BrowserRouter>
