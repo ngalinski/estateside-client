@@ -1,15 +1,14 @@
 const propertyUrl = "/api/properties"; // server property endpoint to be finalized
 const userUrl = "/api/users"; // user property endpoint to be finalized
-const skipUrl = "?offset=<no. of properties to skip>";
 
-const getPropertiesForCity = (location) => {
+const findPropertiesForCity = ({location, offset = 0}) => {
     return (
-        fetch(`${propertyUrl}/${location}${skipUrl}`)
+        fetch(`${propertyUrl}?location=${location}&offset=${offset}`)
             .then(response => response.json())
     )
 }
 
-const getPropertyById = (propertyId) => {
+const findPropertyById = (propertyId) => {
     return (
         fetch(`${propertyUrl}/${propertyId}`)
             .then(response => response.json())
