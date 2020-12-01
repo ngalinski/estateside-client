@@ -4,15 +4,19 @@ import TopNavigationComponent from "./TopNavigationComponent";
 import SearchPropertyNavigationComponent from "./SearchPropertyNavigationComponent";
 import FooterComponent from "./FooterComponent";
 
-const SearchResultComponent = ({state, login, logout}) => {
+const SearchResultComponent = ({state, login, logout, updateSelectedNavItem}) => {
     return (
         <div>
             <TopNavigationComponent state={state}
                                     login={login}
-                                    logout={logout}/>
+                                    logout={logout}
+                                    updateSelectedNavItem={updateSelectedNavItem}
+            />
             <SearchPropertyNavigationComponent state={state}
                                                login={login}
-                                               logout={logout}/>
+                                               logout={logout}
+                                               updateSelectedNavItem={updateSelectedNavItem}
+            />
             <br/>
             <MapComponent/>
             <FooterComponent/>

@@ -2,7 +2,7 @@ import React from "react";
 import "./css/PropertyGridComponent.css"
 
 export const BookAppointmentComponent = () => {
-    return(
+    return (
         <div id="booking" className="section">
             <div className="section-center">
                 <div className="container">
@@ -24,13 +24,15 @@ export const BookAppointmentComponent = () => {
                                     <div className="row">
                                         <div className="col-sm-6">
                                             <div className="form-group">
-                                                <span className="form-label" style={{color : "white"}}>Date</span>
+                                                <span className="form-label"
+                                                      style={{color: "white"}}>Date</span>
                                                 <input className="form-control" type="date"
                                                        required/>
                                             </div>
                                         </div>
                                         <div className="col-sm-6">
-                                            <span className="form-label" style={{color : "white"}}>Time</span>
+                                            <span className="form-label"
+                                                  style={{color: "white"}}>Time</span>
                                             <input className="form-control" type="time"
                                                    min="09:00" max="18:00" required/>
                                         </div>
@@ -38,7 +40,8 @@ export const BookAppointmentComponent = () => {
                                     <div className="form-group">
                                         <label htmlFor="message">
                                             Message:</label>
-                                        <textarea className="form-control" type="textarea" id="message"
+                                        <textarea className="form-control" type="textarea"
+                                                  id="message"
                                                   name="message" maxLength="4000" rows="7"/>
                                     </div>
 

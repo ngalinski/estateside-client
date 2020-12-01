@@ -2,11 +2,13 @@ import React from "react";
 import TopNavigationComponent from "./TopNavigationComponent";
 import './css/ProfileComponent.css'
 
-const ProfileComponent = ({state, login, logout}) =>
+const ProfileComponent = ({state, login, logout, updateSelectedNavItem}) =>
     <div>
         <TopNavigationComponent state={state}
                                 login={login}
-                                logout={logout}/>
+                                logout={logout}
+                                updateSelectedNavItem={updateSelectedNavItem}
+        />
         <header id="main-header">
             <h1>Profile</h1>
         </header>

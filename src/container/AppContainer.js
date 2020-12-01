@@ -1,6 +1,5 @@
 import React from 'react';
 import '../components/css/HomeComponent.css'
-import RegisterComponent from "../components/RegisterComponent";
 import ProfileComponent from "../components/ProfileComponent";
 import {BrowserRouter, Route} from "react-router-dom";
 import HomeComponent from "../components/HomeComponent";
@@ -16,7 +15,13 @@ export default class AppContainer extends React.Component {
         isLoggedIn: false,
         userProfile: null,
         searchProperty: "",
+        selectedNavItem: "Home"
     };
+
+    updateSelectedNavItem = (val) =>
+        this.setState(prevState => ({
+            selectedNavItem: val
+        }));
 
     login = (userData) => {
         localStorage.setItem("userProfile", JSON.stringify(userData.user))
@@ -53,6 +58,7 @@ export default class AppContainer extends React.Component {
                         <HomeComponent state={this.state}
                                        login={this.login}
                                        logout={this.logout}
+                                       updateSelectedNavItem={this.updateSelectedNavItem}
                         />
                     </Route>
                     {/*<Route path="/register" exact component={RegisterComponent}/>*/}
@@ -60,42 +66,49 @@ export default class AppContainer extends React.Component {
                         <ProfileComponent state={this.state}
                                           login={this.login}
                                           logout={this.logout}
+                                          updateSelectedNavItem={this.updateSelectedNavItem}
                         />
                     </Route>
                     <Route path="/privacy" exact>
                         <PrivacyPolicyComponent state={this.state}
                                                 login={this.login}
                                                 logout={this.logout}
+                                                updateSelectedNavItem={this.updateSelectedNavItem}
                         />
                     </Route>
                     <Route path="/help" exact>
                         <HelpComponent state={this.state}
                                        login={this.login}
                                        logout={this.logout}
+                                       updateSelectedNavItem={this.updateSelectedNavItem}
                         />
                     </Route>
                     <Route path="/contact" exact>
                         <ContactComponent state={this.state}
                                           login={this.login}
                                           logout={this.logout}
+                                          updateSelectedNavItem={this.updateSelectedNavItem}
                         />
                     </Route>
                     <Route path="/about" exact>
                         <AboutComponent state={this.state}
                                         login={this.login}
                                         logout={this.logout}
+                                        updateSelectedNavItem={this.updateSelectedNavItem}
                         />
                     </Route>
                     <Route path="/search" exact>
                         <SearchResultComponent state={this.state}
                                                login={this.login}
                                                logout={this.logout}
+                                               updateSelectedNavItem={this.updateSelectedNavItem}
                         />
                     </Route>
                     <Route path="/properties" exact>
                         <PropertyGridComponent state={this.state}
                                                login={this.login}
                                                logout={this.logout}
+                                               updateSelectedNavItem={this.updateSelectedNavItem}
                         />
                     </Route>
                 </BrowserRouter>
