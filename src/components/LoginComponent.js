@@ -10,7 +10,6 @@ const LoginComponent = ({clientLogin}) => {
         try {
             if (authResult['code']) {
                 const result = await login(authResult['code']);
-                console.log(authResult);
                 clientLogin(result);
             } else {
                 throw new Error(authResult);
