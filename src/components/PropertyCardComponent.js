@@ -37,7 +37,7 @@ export default class PropertyCardComponent extends React.Component {
     render() {
         return (
             // creating a property card
-            <div className="col-3 col-sm-6 col-md-3 wbdv-property-card">
+            <div className="col-sm-6 col-md-4 col-lg-3 wbdv-property-card">
                 <div className="card h-100">
                     <img className="card-img-top" src={this.props.property.imageUrl}/>
                     <div className="card-body bg-primary">

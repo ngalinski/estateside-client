@@ -54,7 +54,7 @@ const dummyAppointmentData = [
 const AppointmentListComponent = ({state, login, logout}) => {
     return (
         <div>
-            <div>
+            <div className="contact-top-bar">
                 <TopNavigationComponent state={state}
                                         login={login}
                                         logout={logout}/>
