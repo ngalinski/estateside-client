@@ -5,7 +5,7 @@ import LoginComponent from "./LoginComponent";
 import LogoutComponent from "./LogoutComponent";
 import Tooltip from "@material-ui/core/Tooltip";
 
-const TopNavigationComponent = ({isLoggedIn, userProfile, login, logout}) => {
+const TopNavigationComponent = ({state, login, logout}) => {
 
     return (
         <div className="topnav">
@@ -19,9 +19,11 @@ const TopNavigationComponent = ({isLoggedIn, userProfile, login, logout}) => {
                 <Tooltip title="Contact">
                     <li><Link to="/contact" className="icon solid fa-envelope"/></li>
                 </Tooltip>
-                <Tooltip title="Profile">
-                    <li><Link to="/profile" className="icon solid fa-user"/></li>
-                </Tooltip>
+                {state.isLoggedIn &&
+                 <Tooltip title="Profile">
+                     <li><Link to="/profile" className="icon solid fa-user"/></li>
+                 </Tooltip>
+                }
                 <li>
                     <Tooltip title="Privacy Policy">
                         <Link to="/privacy"
@@ -36,17 +38,12 @@ const TopNavigationComponent = ({isLoggedIn, userProfile, login, logout}) => {
                         </Link>
                     </Tooltip>
                 </li>
-                <li>
-                    <Tooltip title="Register">
-                        <Link to="/register">Register</Link>
-                    </Tooltip>
-                </li>
-                {!isLoggedIn &&
+                {!state.isLoggedIn &&
                  <li>
                      <LoginComponent clientLogin={login}/>
                  </li>
                 }
-                {isLoggedIn &&
+                {state.isLoggedIn &&
                  <li>
                      <LogoutComponent logout={logout}/>
                  </li>

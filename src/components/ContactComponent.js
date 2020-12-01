@@ -3,10 +3,12 @@ import './css/HomeComponent.css'
 import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 
-const ContactComponent = () =>
+const ContactComponent = ({state, login, logout}) =>
     <div>
         <div className="contact-top-bar">
-            <TopNavigationComponent/>
+            <TopNavigationComponent state={state}
+                                    login={login}
+                                    logout={logout}/>
         </div>
         <header id="wbdv-contact-heading">
             <h1>Contact Estateside</h1>
@@ -65,7 +67,7 @@ const ContactComponent = () =>
                 </div>
             </div>
         </div>
-            <FooterComponent/>
+        <FooterComponent/>
     </div>
 
 export default ContactComponent;

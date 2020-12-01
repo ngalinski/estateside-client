@@ -2,9 +2,11 @@ import React from "react";
 import TopNavigationComponent from "./TopNavigationComponent";
 import './css/ProfileComponent.css'
 
-const ProfileComponent = () =>
+const ProfileComponent = ({state, login, logout}) =>
     <div>
-        <TopNavigationComponent/>
+        <TopNavigationComponent state={state}
+                                login={login}
+                                logout={logout}/>
         <header id="main-header">
             <h1>Profile</h1>
         </header>

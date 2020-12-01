@@ -2,7 +2,7 @@ import React from 'react';
 import './css/HomeComponent.css'
 import {Link} from "react-router-dom";
 
-const PropertySearchComponent = () => {
+const PropertySearchComponent = ({state, login, logout}) => {
     return (
         <div>
             <div id="signup-form">

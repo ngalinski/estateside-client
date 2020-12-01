@@ -1,9 +1,11 @@
 import React from "react";
 import TopNavigationComponent from "./TopNavigationComponent";
 
-const RegisterComponent = () =>
+const RegisterComponent = ({state, login, logout}) =>
     <div>
-        <TopNavigationComponent/>
+        <TopNavigationComponent state={state}
+                                login={login}
+                                logout={logout}/>
         <div className="container">
             <div className="form-group row">
                 <label htmlFor="username" className="col-sm-3 col-form-label"> Username </label>

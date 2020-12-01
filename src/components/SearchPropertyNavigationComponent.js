@@ -17,9 +17,8 @@ const customStyles = {
 
 export default class SearchPropertyNavigationComponent extends React.Component {
 
-    constructor() {
-        super()
-
+    constructor(props) {
+        super(props)
         this.state = {
             isActive: false
         }
@@ -65,7 +64,8 @@ export default class SearchPropertyNavigationComponent extends React.Component {
                                style={customStyles}>
                             <div className="container">
                                 <NewListingComponent/>
-                                <button onClick={this.toggleModal} className="btn-primary btn btn-block">
+                                <button onClick={this.toggleModal}
+                                        className="btn-primary btn btn-block">
                                     Close modal
                                 </button>
                             </div>
@@ -75,5 +75,4 @@ export default class SearchPropertyNavigationComponent extends React.Component {
             </div>
         )
     }
-
 }
