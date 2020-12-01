@@ -59,7 +59,7 @@ const PropertyGridComponent = () => {
     return (
         <div>
             <div className="contact-top-bar">
-            <TopNavigationComponent/>
+                <TopNavigationComponent/>
             </div>
             <div>
                 <header>
