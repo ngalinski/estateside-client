@@ -5,21 +5,16 @@ import {Link} from "react-router-dom";
 import UserService from "../services/UserService";
 
 const convertToDate = (isoString) => {
-    console.log(isoString)
     const date = new Date(isoString);
-    // console.log(date);
     const year = date.getFullYear();
     let month = date.getMonth() + 1;
     if (month.toString().length === 1) {
         month = `0${month.toString()}`;
-        // console.log(month)
     }
     let day = date.getDate() + 1;
     if (day.toString().length === 1) {
         day = `0${day.toString()}`;
-        // console.log(day)
     }
-    // console.log(year + '-' + month + '-' + day)
     return year + '-' + month + '-' + day;
 }
 
