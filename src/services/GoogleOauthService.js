@@ -1,5 +1,5 @@
-const login = async (code) => {
-    return fetch('/api/auth/google', {
+const login = async (code, role) => {
+    return fetch(`/api/auth/google/${role}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

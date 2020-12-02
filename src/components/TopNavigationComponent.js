@@ -53,7 +53,15 @@ const TopNavigationComponent = ({state, login, logout, updateSelectedNavItem}) =
                 {!state.isLoggedIn &&
                  <li>
                      <LoginComponent clientLogin={login}
-                                     updateSelectedNavItem={updateSelectedNavItem}/>
+                                     role="user"
+                                     buttonText="Login"/>
+                 </li>
+                }
+                {!state.isLoggedIn &&
+                 <li>
+                     <LoginComponent clientLogin={login}
+                                     role="landlord"
+                                     buttonText="Landlord Login"/>
                  </li>
                 }
                 {state.isLoggedIn &&

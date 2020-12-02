@@ -5,11 +5,11 @@ import {login} from "../services/GoogleOauthService";
 import {Link} from "react-router-dom";
 import Tooltip from "@material-ui/core/Tooltip";
 
-const LoginComponent = ({state, clientLogin, logout, updateSelectedNavItem}) => {
+const LoginComponent = ({clientLogin, role, buttonText}) => {
     const responseGoogle = async (authResult) => {
         try {
             if (authResult['code']) {
-                const result = await login(authResult['code']);
+                const result = await login(authResult['code'], role);
                 clientLogin(result);
             } else {
                 throw new Error(authResult);
@@ -26,10 +26,10 @@ const LoginComponent = ({state, clientLogin, logout, updateSelectedNavItem}) => 
             render={renderProps => (
                 <Tooltip title="Login">
                     <Link to="/" onClick={renderProps.onClick}
-                          disabled={renderProps.disabled}>Login </Link>
+                          disabled={renderProps.disabled}>{buttonText} </Link>
                 </Tooltip>
             )}
-            buttonText="Login"
+            buttonText=""
             responseType="code"
             /**
              * To get access_token and refresh_token in server side,
