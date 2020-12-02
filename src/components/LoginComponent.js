@@ -5,7 +5,7 @@ import {login} from "../services/GoogleOauthService";
 import {Link} from "react-router-dom";
 import Tooltip from "@material-ui/core/Tooltip";
 
-const LoginComponent = ({state, clientLogin, logout}) => {
+const LoginComponent = ({state, clientLogin, logout, updateSelectedNavItem}) => {
     const responseGoogle = async (authResult) => {
         try {
             if (authResult['code']) {

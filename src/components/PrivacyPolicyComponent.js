@@ -3,12 +3,14 @@ import './css/HomeComponent.css'
 import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 
-const PrivacyPolicyComponent = ({state, login, logout}) =>
+const PrivacyPolicyComponent = ({state, login, logout, updateSelectedNavItem}) =>
     <div>
         <div className="privacy-top-bar">
             <TopNavigationComponent state={state}
                                     login={login}
-                                    logout={logout}/>
+                                    logout={logout}
+                                    updateSelectedNavItem={updateSelectedNavItem}
+            />
         </div>
         <header id="wbdv-privacy-heading">
             <h1>Estateside Privacy Policy</h1>

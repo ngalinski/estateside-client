@@ -1,11 +1,13 @@
 import React from "react";
 import TopNavigationComponent from "./TopNavigationComponent";
 
-const RegisterComponent = ({state, login, logout}) =>
+const RegisterComponent = ({state, login, logout, updateSelectedNavItem}) =>
     <div>
         <TopNavigationComponent state={state}
                                 login={login}
-                                logout={logout}/>
+                                logout={logout}
+                                updateSelectedNavItem={updateSelectedNavItem}
+        />
         <div className="container">
             <div className="form-group row">
                 <label htmlFor="username" className="col-sm-3 col-form-label"> Username </label>

@@ -7,3 +7,15 @@
     padding: 40px;
     border-radius: 10px;
 }
+
+.profilePicture {
+    display: block;
+    margin-left: 50%;
+    margin-right: 50%;
+    /*width: 50%;*/
+    padding-bottom: 20px;
+}
+
+.hidden {
+    display: none;
+}

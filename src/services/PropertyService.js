@@ -56,7 +56,7 @@ const getFavProperties = (userId) => {
 
 // return hosted properties for a landlord
 const getHostedProperties = (userId) => {
-    return(
+    return (
         fetch(`${userUrl}/${userId}}/properties`)
             .then(response => response.json())
     )

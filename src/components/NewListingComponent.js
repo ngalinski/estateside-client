@@ -45,7 +45,8 @@ export const NewListingComponent = () => {
             </div>
 
             <div className="form-group row">
-                <label htmlFor="vehicle1" className="col-sm-3 col-form-label"> Mark the amenities included</label>
+                <label htmlFor="vehicle1" className="col-sm-3 col-form-label"> Mark the amenities
+                    included</label>
                 <div className="col-sm-9">
                     <input type="checkbox" id="amenity1" name="amenity1" value="ac"/>
                     <label htmlFor="amenity1"> A.C.</label>
@@ -53,7 +54,8 @@ export const NewListingComponent = () => {
                     <label htmlFor="amenity2"> Heater</label>
                     <input type="checkbox" id="amenity3" name="amenity3" value="laundry"/>
                     <label htmlFor="amenity3"> Laundry</label>
-                    <input type="checkbox" id="amenity4" name="amenity4" value="management-services"/>
+                    <input type="checkbox" id="amenity4" name="amenity4"
+                           value="management-services"/>
                     <label htmlFor="amenity4"> Management Services</label>
                 </div>
             </div>
