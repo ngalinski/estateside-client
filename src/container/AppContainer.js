@@ -16,11 +16,27 @@ export default class AppContainer extends React.Component {
         isLoggedIn: false,
         userProfile: null,
         searchProperty: "",
-        selectedNavItem: "Home"
+        selectedNavItem: "Home",
+        profileUpdated: false/*,
+        updatedUserProfile: {phone: "", dob: ""}*/
     };
+
+    toggleProfileUpdated = (bool) => this.setState(prevState => ({
+        profileUpdated: bool
+    }))
+
+    updateUserProfile = (dob, phone) => {
+        this.setState(prevState => (
+            {
+                userProfile: {...prevState.userProfile, phone: phone, dob: dob}
+            }))
+    }
 
     updateSelectedNavItem = (val) =>
         this.setState(prevState => ({
+            isLoggedIn: prevState.isLoggedIn,
+            userProfile: prevState.userProfile,
+            searchProperty: prevState.searchProperty,
             selectedNavItem: val
         }));
 
@@ -49,6 +65,9 @@ export default class AppContainer extends React.Component {
                               userProfile: userData
                           })
         }
+        if (window.location.pathname.includes("/profile")) {
+            this.setState({})
+        }
     }
 
     render() {
@@ -68,6 +87,8 @@ export default class AppContainer extends React.Component {
                                           login={this.login}
                                           logout={this.logout}
                                           updateSelectedNavItem={this.updateSelectedNavItem}
+                                          updateUserProfile={this.updateUserProfile}
+                                          toggleProfileUpdated={this.toggleProfileUpdated}
                         />
                     </Route>
                     <Route path="/privacy" exact>

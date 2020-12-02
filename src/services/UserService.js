@@ -43,6 +43,6 @@ const updateUser = (userId, user) => {
         })
             .then(response => response.json())
     )
-}
+};
 
-
+export default {findAllUsers, findUserById, createUser, deleteUser, updateUser}
