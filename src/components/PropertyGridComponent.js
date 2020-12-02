@@ -55,7 +55,7 @@ const dummyPropertyData = [
     }
 ]
 
-const PropertyGridComponent = ({state, login, logout, updateSelectedNavItem}) => {
+const PropertyGridComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated}) => {
     return (
         <div>
             <div className="contact-top-bar">
@@ -63,6 +63,7 @@ const PropertyGridComponent = ({state, login, logout, updateSelectedNavItem}) =>
                                         login={login}
                                         logout={logout}
                                         updateSelectedNavItem={updateSelectedNavItem}
+                                        toggleProfileUpdated={toggleProfileUpdated}
                 />
             </div>
             <div>

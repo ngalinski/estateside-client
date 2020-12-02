@@ -24,6 +24,7 @@ const ProfileComponent = ({state, login, logout, updateSelectedNavItem, updateUs
                                 login={login}
                                 logout={logout}
                                 updateSelectedNavItem={updateSelectedNavItem}
+                                toggleProfileUpdated={toggleProfileUpdated}
         />
         <header id="main-header">
             <h1>Profile</h1>

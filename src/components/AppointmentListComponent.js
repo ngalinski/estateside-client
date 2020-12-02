@@ -51,13 +51,16 @@ const dummyAppointmentData = [
     }
 ]
 
-const AppointmentListComponent = ({state, login, logout}) => {
+const AppointmentListComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated}) => {
     return (
         <div>
             <div className="contact-top-bar">
                 <TopNavigationComponent state={state}
                                         login={login}
-                                        logout={logout}/>
+                                        logout={logout}
+                                        updateSelectedNavItem={updateSelectedNavItem}
+                                        toggleProfileUpdated={toggleProfileUpdated}
+                />
             </div>
             <div>
                 <header>
@@ -65,8 +68,8 @@ const AppointmentListComponent = ({state, login, logout}) => {
                 </header>
 
                 <div className="container">
-                <table className="table">
-                    <thead className="text-white">
+                    <table className="table">
+                        <thead className="text-white">
                         <tr>
                             <th>
                                 <i className="fa fa-map-pin wbdv-table-header-icon"></i>
@@ -82,15 +85,16 @@ const AppointmentListComponent = ({state, login, logout}) => {
                             </th>
                             <th className="d-none d-md-table-cell wbdv-col-width"></th>
                         </tr>
-                    </thead>
-                    <tbody>
+                        </thead>
+                        <tbody>
                         {
                             dummyAppointmentData.map(appointment =>
-                                                      <AppointmentComponent appointment={appointment}
-                                                      />)
+                                                         <AppointmentComponent
+                                                             appointment={appointment}
+                                                         />)
                         }
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 

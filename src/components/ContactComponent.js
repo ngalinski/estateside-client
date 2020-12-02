@@ -3,13 +3,14 @@ import './css/HomeComponent.css'
 import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 
-const ContactComponent = ({state, login, logout, updateSelectedNavItem}) =>
+const ContactComponent = ({state, login, logout, updateSelectedNavItem,toggleProfileUpdated}) =>
     <div>
         <div className="contact-top-bar">
             <TopNavigationComponent state={state}
                                     login={login}
                                     logout={logout}
                                     updateSelectedNavItem={updateSelectedNavItem}
+                                    toggleProfileUpdated={toggleProfileUpdated}
             />
         </div>
         <header id="wbdv-contact-heading">

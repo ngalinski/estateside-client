@@ -79,6 +79,7 @@ export default class AppContainer extends React.Component {
                                        login={this.login}
                                        logout={this.logout}
                                        updateSelectedNavItem={this.updateSelectedNavItem}
+                                       toggleProfileUpdated={this.toggleProfileUpdated}
                         />
                     </Route>
                     {/*<Route path="/register" exact component={RegisterComponent}/>*/}
@@ -96,6 +97,7 @@ export default class AppContainer extends React.Component {
                                                 login={this.login}
                                                 logout={this.logout}
                                                 updateSelectedNavItem={this.updateSelectedNavItem}
+                                                toggleProfileUpdated={this.toggleProfileUpdated}
                         />
                     </Route>
                     <Route path="/help" exact>
@@ -103,6 +105,7 @@ export default class AppContainer extends React.Component {
                                        login={this.login}
                                        logout={this.logout}
                                        updateSelectedNavItem={this.updateSelectedNavItem}
+                                       toggleProfileUpdated={this.toggleProfileUpdated}
                         />
                     </Route>
                     <Route path="/contact" exact>
@@ -110,6 +113,7 @@ export default class AppContainer extends React.Component {
                                           login={this.login}
                                           logout={this.logout}
                                           updateSelectedNavItem={this.updateSelectedNavItem}
+                                          toggleProfileUpdated={this.toggleProfileUpdated}
                         />
                     </Route>
                     <Route path="/about" exact>
@@ -117,6 +121,7 @@ export default class AppContainer extends React.Component {
                                         login={this.login}
                                         logout={this.logout}
                                         updateSelectedNavItem={this.updateSelectedNavItem}
+                                        toggleProfileUpdated={this.toggleProfileUpdated}
                         />
                     </Route>
                     <Route path="/search" exact>
@@ -124,6 +129,7 @@ export default class AppContainer extends React.Component {
                                                login={this.login}
                                                logout={this.logout}
                                                updateSelectedNavItem={this.updateSelectedNavItem}
+                                               toggleProfileUpdated={this.toggleProfileUpdated}
                         />
                     </Route>
                     <Route path="/properties" exact>
@@ -131,6 +137,7 @@ export default class AppContainer extends React.Component {
                                                login={this.login}
                                                logout={this.logout}
                                                updateSelectedNavItem={this.updateSelectedNavItem}
+                                               toggleProfileUpdated={this.toggleProfileUpdated}
                         />
                     </Route>
 
@@ -139,6 +146,8 @@ export default class AppContainer extends React.Component {
                         <AppointmentListComponent state={this.state}
                                                   login={this.login}
                                                   logout={this.logout}
+                                                  updateSelectedNavItem={this.updateSelectedNavItem}
+                                                  toggleProfileUpdated={this.toggleProfileUpdated}
                         />
                     </Route>
                 </BrowserRouter>
