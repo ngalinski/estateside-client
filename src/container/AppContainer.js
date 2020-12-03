@@ -14,7 +14,7 @@ import AppointmentListComponent from "../components/AppointmentListComponent";
 export default class AppContainer extends React.Component {
     state = {
         isLoggedIn: false,
-        userProfile: null,
+        userProfile: {},
         searchProperty: "",
         selectedNavItem: "Home",
         contact: {message: '', name: '', email: ''},
@@ -71,9 +71,14 @@ export default class AppContainer extends React.Component {
                               userProfile: userData
                           })
         }
-        if (window.location.pathname.includes("/profile")) {
-            this.setState({})
-        }
+    }
+
+    componentWillMount() {
+        onbeforeunload = e => "Don't leave me"
+    }
+
+    componentWillUnmount() {
+        onbeforeunload = null
     }
 
     render() {

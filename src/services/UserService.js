@@ -41,7 +41,10 @@ const updateUser = (userId, user) => {
             body: JSON.stringify(user),
             headers: {"content-type": "application/json"}
         })
-            .then(response => response.json())
+            .then(response => {
+                localStorage.setItem("userProfile", JSON.stringify(user));
+                return response.json();
+            })
     )
 };
 
