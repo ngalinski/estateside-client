@@ -1,10 +1,10 @@
 import React from 'react';
-import './css/HomeComponent.css'
+import './css/PrivacyContact.css'
 import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 
 const PrivacyPolicyComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated, toggleContactRequested}) =>
-    <div>
+    <div className="wbdv-privacy-policy">
         <div className="privacy-top-bar">
             <TopNavigationComponent state={state}
                                     login={login}
@@ -13,11 +13,11 @@ const PrivacyPolicyComponent = ({state, login, logout, updateSelectedNavItem, to
                                     toggleProfileUpdated={toggleProfileUpdated}
                                     toggleContactRequested={toggleContactRequested}
             />
+            <header id="wbdv-privacy-heading">
+                <h1>Estateside Privacy Policy</h1>
+            </header>
         </div>
-        <header id="wbdv-privacy-heading">
-            <h1>Estateside Privacy Policy</h1>
-        </header>
-        <div className="wbdv-privacy-policy container">
+        <div className="privacy-body container">
 
             <h3>General Terms</h3>
             <p>
@@ -135,9 +135,7 @@ const PrivacyPolicyComponent = ({state, login, logout, updateSelectedNavItem, to
                 and reference Estateside in regards to CS5610 - Fall 2020.
             </p>
         </div>
-        <br/>
-        <br/>
-        <FooterComponent/>
+        <footer id= "footer" ><FooterComponent/></footer>
     </div>
 
 export default PrivacyPolicyComponent;

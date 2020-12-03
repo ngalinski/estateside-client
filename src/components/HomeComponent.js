@@ -4,26 +4,26 @@ import PropertySearchComponent from "./PropertySearchComponent";
 import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 
-const HomeComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated, toggleContactRequested}) => {
+const HomeComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated}) => {
     return (
         <div className="home-page-components">
-            <TopNavigationComponent state={state}
-                                    login={login}
-                                    logout={logout}
-                                    updateSelectedNavItem={updateSelectedNavItem}
-                                    toggleProfileUpdated={toggleProfileUpdated}
-                                    toggleContactRequested={toggleContactRequested}
-            />
-            <h1>Estateside</h1>
-            <p className="find-home-title">Find your new home.</p>
+            <div className="home-page-top">
+                <TopNavigationComponent state={state}
+                                        login={login}
+                                        logout={logout}
+                                        updateSelectedNavItem={updateSelectedNavItem}
+                                        toggleProfileUpdated={toggleProfileUpdated}
+                />
+                <header id="home-header"><h1>Estateside</h1></header>
+                <p className="find-home-title">Find your new home.</p>
+            </div>
             <PropertySearchComponent state={state}
                                      login={login}
                                      logout={logout}
                                      updateSelectedNavItem={updateSelectedNavItem}
                                      toggleProfileUpdated={toggleProfileUpdated}
-                                     toggleContactRequested={toggleContactRequested}
             />
-            <FooterComponent/>
+            <footer id="footer"><FooterComponent/></footer>
         </div>
     )
 }

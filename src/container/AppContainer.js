@@ -124,7 +124,6 @@ export default class AppContainer extends React.Component {
                                           logout={this.logout}
                                           updateSelectedNavItem={this.updateSelectedNavItem}
                                           toggleProfileUpdated={this.toggleProfileUpdated}
-                                          updateContact={this.updateContact}
                                           toggleContactRequested={this.toggleContactRequested}
                         />
                     </Route>
@@ -155,6 +154,7 @@ export default class AppContainer extends React.Component {
                                                toggleContactRequested={this.toggleContactRequested}
                         />
                     </Route>
+
                     <Route path={["/properties/:propertyId/appointments",
                                   "/users/:userId/appointments"]} exact>
                         <AppointmentListComponent state={this.state}

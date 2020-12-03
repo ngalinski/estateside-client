@@ -1,21 +1,23 @@
 import React from 'react';
-import './css/HomeComponent.css'
+import './css/ProfileComponent.css'
 import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 
 const AboutComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated, toggleContactRequested}) =>
-    <div>
-        <TopNavigationComponent state={state}
-                                login={login}
-                                logout={logout}
-                                updateSelectedNavItem={updateSelectedNavItem}
-                                toggleProfileUpdated={toggleProfileUpdated}
-                                toggleContactRequested={toggleContactRequested}
-        />
-        <header id="wbdv-about-heading">
-            <h1>About Estateside</h1>
-        </header>
-        <div className="container wbdv-about-us">
+    <div className="wbdv-about-us">
+        <div className="about-top-bar">
+            <TopNavigationComponent state={state}
+                                    login={login}
+                                    logout={logout}
+                                    updateSelectedNavItem={updateSelectedNavItem}
+                                    toggleProfileUpdated={toggleProfileUpdated}
+                                    toggleContactRequested={toggleContactRequested}
+            />
+            <header id="wbdv-about-heading">
+                <h1>About Estateside</h1>
+            </header>
+        </div>
+        <div className="container about-body">
             <h3>General Information</h3>
             <p>
                 This project is made as a part of the course CS5610 Web Development at Northeastern
@@ -35,7 +37,7 @@ const AboutComponent = ({state, login, logout, updateSelectedNavItem, toggleProf
                 Built using: React, NodeJS, and the Zillow API.
             </p>
         </div>
-        <FooterComponent/>
+        <footer id="footer"><FooterComponent/></footer>
     </div>
 
 export default AboutComponent;

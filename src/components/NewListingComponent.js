@@ -3,7 +3,7 @@ import React from "react";
 export const NewListingComponent = () => {
     return (
         <div>
-            <p>Enter details of the property..</p>
+            <p style={{color : "white"}}>Enter details of the property..</p>
             <div className="form-group row">
                 <label htmlFor="street" className="col-sm-3 col-form-label"> Street </label>
                 <div className="col-sm-9">

@@ -1,9 +1,9 @@
-.wbdv-property {
+.wbdv-help {
     height:100%;
     width:100%;
 }
 
-.property-top-bar {
+.help-top-bar {
     position:absolute;
     top:0px;
     left:10px;
@@ -12,11 +12,11 @@
     overflow:hidden;
 }
 
-.wbdv-properties-heading {
+.wbdv-help-heading {
     color: white;
 }
 
-.property-body {
+.help-body {
     position:absolute;
     top:150px;
     bottom:150px;

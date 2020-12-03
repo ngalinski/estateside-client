@@ -1,14 +1,11 @@
 import React from 'react';
-import './css/HomeComponent.css'
+import './css/PrivacyContact.css'
 import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 import ContactService from "../services/ContactService";
 
-const ContactComponent = ({
-                              state, login, logout, updateSelectedNavItem,
-                              toggleProfileUpdated, updateContact, toggleContactRequested
-                          }) =>
-    <div>
+const ContactComponent = ({state, login, logout, updateSelectedNavItem,toggleProfileUpdated, toggleContactRequested}) =>
+    <div className="wbdv-contact-us">
         <div className="contact-top-bar">
             <TopNavigationComponent state={state}
                                     login={login}
@@ -17,11 +14,11 @@ const ContactComponent = ({
                                     toggleProfileUpdated={toggleProfileUpdated}
                                     toggleContactRequested={toggleContactRequested}
             />
+            <header id="wbdv-contact-heading">
+                <h1>Contact Estateside</h1>
+            </header>
         </div>
-        <header id="wbdv-contact-heading">
-            <h1>Contact Estateside</h1>
-        </header>
-        <div className="wbdv-contact-us container">
+        <div className="contact-body container">
 
             <h3>General Contact Information</h3>
             <p>
@@ -90,7 +87,7 @@ const ContactComponent = ({
                 </div>
             </div>
         </div>
-        <FooterComponent/>
+        <footer id="footer"><FooterComponent/></footer>
     </div>
 
 export default ContactComponent;
