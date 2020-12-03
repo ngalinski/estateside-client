@@ -5,7 +5,7 @@ import LoginComponent from "./LoginComponent";
 import LogoutComponent from "./LogoutComponent";
 import Tooltip from "@material-ui/core/Tooltip";
 
-const TopNavigationComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated}) => {
+const TopNavigationComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated, toggleContactRequested}) => {
     return (
         <div className="topnav">
             <ul className="icons">
@@ -15,6 +15,7 @@ const TopNavigationComponent = ({state, login, logout, updateSelectedNavItem, to
                               onClick={() => {
                                   updateSelectedNavItem("Home")
                                   toggleProfileUpdated(false)
+                                  toggleContactRequested(false)
                               }}/></li>
                 </Tooltip>
                 <Tooltip title="About">
@@ -23,6 +24,7 @@ const TopNavigationComponent = ({state, login, logout, updateSelectedNavItem, to
                               onClick={() => {
                                   updateSelectedNavItem("About")
                                   toggleProfileUpdated(false)
+                                  toggleContactRequested(false)
                               }}/></li>
                 </Tooltip>
                 <Tooltip title="Contact">
@@ -32,6 +34,7 @@ const TopNavigationComponent = ({state, login, logout, updateSelectedNavItem, to
                               onClick={() => {
                                   updateSelectedNavItem("Contact")
                                   toggleProfileUpdated(false)
+                                  toggleContactRequested(false)
                               }}/></li>
                 </Tooltip>
                 {state.isLoggedIn &&
@@ -42,6 +45,7 @@ const TopNavigationComponent = ({state, login, logout, updateSelectedNavItem, to
                                onClick={() => {
                                    updateSelectedNavItem("Profile")
                                    toggleProfileUpdated(false)
+                                   toggleContactRequested(false)
                                }}/></li>
                  </Tooltip>
                 }
@@ -50,6 +54,7 @@ const TopNavigationComponent = ({state, login, logout, updateSelectedNavItem, to
                         <Link to="/privacy" onClick={() => {
                             updateSelectedNavItem("Privacy")
                             toggleProfileUpdated(false)
+                            toggleContactRequested(false)
                         }}
                               className={`${state.selectedNavItem === "Privacy" ? "active"
                                                                                 : ""} icon solid fa-info-circle`}>
@@ -63,6 +68,7 @@ const TopNavigationComponent = ({state, login, logout, updateSelectedNavItem, to
                               onClick={() => {
                                   updateSelectedNavItem("Help")
                                   toggleProfileUpdated(false)
+                                  toggleContactRequested(false)
                               }}>
                             <span className="label">Help</span>
                         </Link>
@@ -85,7 +91,9 @@ const TopNavigationComponent = ({state, login, logout, updateSelectedNavItem, to
                 {state.isLoggedIn &&
                  <li>
                      <LogoutComponent logout={logout}
-                                      updateSelectedNavItem={updateSelectedNavItem}/>
+                                      updateSelectedNavItem={updateSelectedNavItem}
+                                      toggleContactRequested={toggleContactRequested}
+                                      toggleProfileUpdated={toggleProfileUpdated}/>
                  </li>
                 }
             </ul>

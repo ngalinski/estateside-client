@@ -51,7 +51,7 @@ const dummyAppointmentData = [
     }
 ]
 
-const AppointmentListComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated}) => {
+const AppointmentListComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated, toggleContactRequested}) => {
     return (
         <div>
             <div className="contact-top-bar">
@@ -60,6 +60,7 @@ const AppointmentListComponent = ({state, login, logout, updateSelectedNavItem, 
                                         logout={logout}
                                         updateSelectedNavItem={updateSelectedNavItem}
                                         toggleProfileUpdated={toggleProfileUpdated}
+                                        toggleContactRequested={toggleContactRequested}
                 />
             </div>
             <div>
@@ -72,18 +73,18 @@ const AppointmentListComponent = ({state, login, logout, updateSelectedNavItem, 
                         <thead className="text-white">
                         <tr>
                             <th>
-                                <i className="fa fa-map-pin wbdv-table-header-icon"></i>
+                                <i className="fa fa-map-pin wbdv-table-header-icon"/>
                                 Property Address
                             </th>
                             <th className="d-none d-sm-table-cell">
-                                <i className="fa fa-users wbdv-table-header-icon"></i>
+                                <i className="fa fa-users wbdv-table-header-icon"/>
                                 Viewer
                             </th>
                             <th>
-                                <i className="fa fa-calendar-plus wbdv-table-header-icon"></i>
+                                <i className="fa fa-calendar-plus wbdv-table-header-icon"/>
                                 Appointment Date
                             </th>
-                            <th className="d-none d-md-table-cell wbdv-col-width"></th>
+                            <th className="d-none d-md-table-cell wbdv-col-width"/>
                         </tr>
                         </thead>
                         <tbody>

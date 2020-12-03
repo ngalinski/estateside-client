@@ -4,7 +4,7 @@ import PropertySearchComponent from "./PropertySearchComponent";
 import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 
-const HomeComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated}) => {
+const HomeComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated, toggleContactRequested}) => {
     return (
         <div className="home-page-components">
             <TopNavigationComponent state={state}
@@ -12,6 +12,7 @@ const HomeComponent = ({state, login, logout, updateSelectedNavItem, toggleProfi
                                     logout={logout}
                                     updateSelectedNavItem={updateSelectedNavItem}
                                     toggleProfileUpdated={toggleProfileUpdated}
+                                    toggleContactRequested={toggleContactRequested}
             />
             <h1>Estateside</h1>
             <p className="find-home-title">Find your new home.</p>
@@ -20,6 +21,7 @@ const HomeComponent = ({state, login, logout, updateSelectedNavItem, toggleProfi
                                      logout={logout}
                                      updateSelectedNavItem={updateSelectedNavItem}
                                      toggleProfileUpdated={toggleProfileUpdated}
+                                     toggleContactRequested={toggleContactRequested}
             />
             <FooterComponent/>
         </div>

@@ -3,13 +3,14 @@ import './css/HomeComponent.css'
 import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 
-const AboutComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated}) =>
+const AboutComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated, toggleContactRequested}) =>
     <div>
         <TopNavigationComponent state={state}
                                 login={login}
                                 logout={logout}
                                 updateSelectedNavItem={updateSelectedNavItem}
                                 toggleProfileUpdated={toggleProfileUpdated}
+                                toggleContactRequested={toggleContactRequested}
         />
         <header id="wbdv-about-heading">
             <h1>About Estateside</h1>

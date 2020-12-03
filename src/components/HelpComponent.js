@@ -3,13 +3,14 @@ import '../components/css/HomeComponent.css'
 import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 
-const HelpComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated}) =>
+const HelpComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated, toggleContactRequested}) =>
     <div>
         <TopNavigationComponent state={state}
                                 login={login}
                                 logout={logout}
                                 updateSelectedNavItem={updateSelectedNavItem}
                                 toggleProfileUpdated={toggleProfileUpdated}
+                                toggleContactRequested={toggleContactRequested}
         />
         <h1 className="faqHeader">General Questions</h1>
 

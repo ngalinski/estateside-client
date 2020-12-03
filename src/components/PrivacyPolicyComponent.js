@@ -3,7 +3,7 @@ import './css/HomeComponent.css'
 import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 
-const PrivacyPolicyComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated}) =>
+const PrivacyPolicyComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated, toggleContactRequested}) =>
     <div>
         <div className="privacy-top-bar">
             <TopNavigationComponent state={state}
@@ -11,6 +11,7 @@ const PrivacyPolicyComponent = ({state, login, logout, updateSelectedNavItem, to
                                     logout={logout}
                                     updateSelectedNavItem={updateSelectedNavItem}
                                     toggleProfileUpdated={toggleProfileUpdated}
+                                    toggleContactRequested={toggleContactRequested}
             />
         </div>
         <header id="wbdv-privacy-heading">

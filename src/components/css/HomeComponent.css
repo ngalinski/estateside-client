@@ -1240,3 +1240,7 @@ ul.icons {
     height: 100vh;
     overflow: auto;
 }
+
+.request-created-msg{
+    padding-left: 10px;
+}

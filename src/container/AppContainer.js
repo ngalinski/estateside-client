@@ -17,13 +17,19 @@ export default class AppContainer extends React.Component {
         userProfile: null,
         searchProperty: "",
         selectedNavItem: "Home",
-        profileUpdated: false/*,
-        updatedUserProfile: {phone: "", dob: ""}*/
+        contact: {message: '', name: '', email: ''},
+        profileUpdated: false,
+        contactRequested: false
     };
+
+    updateContact = (message, name, email) => this.setState(
+        prevState => ({contact: {message: message, name: name, email: email}}))
 
     toggleProfileUpdated = (bool) => this.setState(prevState => ({
         profileUpdated: bool
     }))
+
+    toggleContactRequested = (bool) => this.setState(prevState => ({contactRequested: bool}))
 
     updateUserProfile = (dob, phone) => {
         this.setState(prevState => (
@@ -80,6 +86,7 @@ export default class AppContainer extends React.Component {
                                        logout={this.logout}
                                        updateSelectedNavItem={this.updateSelectedNavItem}
                                        toggleProfileUpdated={this.toggleProfileUpdated}
+                                       toggleContactRequested={this.toggleContactRequested}
                         />
                     </Route>
                     {/*<Route path="/register" exact component={RegisterComponent}/>*/}
@@ -90,6 +97,7 @@ export default class AppContainer extends React.Component {
                                           updateSelectedNavItem={this.updateSelectedNavItem}
                                           updateUserProfile={this.updateUserProfile}
                                           toggleProfileUpdated={this.toggleProfileUpdated}
+                                          toggleContactRequested={this.toggleContactRequested}
                         />
                     </Route>
                     <Route path="/privacy" exact>
@@ -98,6 +106,7 @@ export default class AppContainer extends React.Component {
                                                 logout={this.logout}
                                                 updateSelectedNavItem={this.updateSelectedNavItem}
                                                 toggleProfileUpdated={this.toggleProfileUpdated}
+                                                toggleContactRequested={this.toggleContactRequested}
                         />
                     </Route>
                     <Route path="/help" exact>
@@ -106,6 +115,7 @@ export default class AppContainer extends React.Component {
                                        logout={this.logout}
                                        updateSelectedNavItem={this.updateSelectedNavItem}
                                        toggleProfileUpdated={this.toggleProfileUpdated}
+                                       toggleContactRequested={this.toggleContactRequested}
                         />
                     </Route>
                     <Route path="/contact" exact>
@@ -114,6 +124,8 @@ export default class AppContainer extends React.Component {
                                           logout={this.logout}
                                           updateSelectedNavItem={this.updateSelectedNavItem}
                                           toggleProfileUpdated={this.toggleProfileUpdated}
+                                          updateContact={this.updateContact}
+                                          toggleContactRequested={this.toggleContactRequested}
                         />
                     </Route>
                     <Route path="/about" exact>
@@ -122,6 +134,7 @@ export default class AppContainer extends React.Component {
                                         logout={this.logout}
                                         updateSelectedNavItem={this.updateSelectedNavItem}
                                         toggleProfileUpdated={this.toggleProfileUpdated}
+                                        toggleContactRequested={this.toggleContactRequested}
                         />
                     </Route>
                     <Route path="/search" exact>
@@ -130,6 +143,7 @@ export default class AppContainer extends React.Component {
                                                logout={this.logout}
                                                updateSelectedNavItem={this.updateSelectedNavItem}
                                                toggleProfileUpdated={this.toggleProfileUpdated}
+                                               toggleContactRequested={this.toggleContactRequested}
                         />
                     </Route>
                     <Route path="/properties" exact>
@@ -138,9 +152,9 @@ export default class AppContainer extends React.Component {
                                                logout={this.logout}
                                                updateSelectedNavItem={this.updateSelectedNavItem}
                                                toggleProfileUpdated={this.toggleProfileUpdated}
+                                               toggleContactRequested={this.toggleContactRequested}
                         />
                     </Route>
-
                     <Route path={["/properties/:propertyId/appointments",
                                   "/users/:userId/appointments"]} exact>
                         <AppointmentListComponent state={this.state}
@@ -148,6 +162,7 @@ export default class AppContainer extends React.Component {
                                                   logout={this.logout}
                                                   updateSelectedNavItem={this.updateSelectedNavItem}
                                                   toggleProfileUpdated={this.toggleProfileUpdated}
+                                                  toggleContactRequested={this.toggleContactRequested}
                         />
                     </Route>
                 </BrowserRouter>
