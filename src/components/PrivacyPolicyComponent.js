@@ -16,7 +16,7 @@ const PrivacyPolicyComponent = ({state, login, logout, updateSelectedNavItem, to
                 <h1>Estateside Privacy Policy</h1>
             </header>
         </div>
-        <div className="privacy-body container-fluid">
+        <div className="privacy-body container">
 
             <h3>General Terms</h3>
             <p>
