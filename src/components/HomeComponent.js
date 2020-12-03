@@ -21,7 +21,7 @@ const HomeComponent = ({state, login, logout, updateSelectedNavItem, toggleProfi
                                      updateSelectedNavItem={updateSelectedNavItem}
                                      toggleProfileUpdated={toggleProfileUpdated}
             />
-            <FooterComponent/>
+            <footer id="footer"><FooterComponent/></footer>
         </div>
     )
 }
