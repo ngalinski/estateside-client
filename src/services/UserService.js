@@ -45,4 +45,10 @@ const updateUser = (userId, user) => {
     )
 };
 
-export default {findAllUsers, findUserById, createUser, deleteUser, updateUser}
+export default {
+    findAllUsers,
+    findUserById,
+    createUser,
+    deleteUser,
+    updateUser
+}
