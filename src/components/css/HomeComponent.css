@@ -1194,40 +1194,12 @@ ul.icons {
     color: white;
 }
 
-.wbdv-contact-us {
-    margin: 0px;
-    padding: 0px;
-    height: 100vh;
-    overflow: auto;
-    color: white;
-}
-
 .wbdv-about-us {
     color: white;
 }
 
 .find-home-title {
     color: white;
-}
-
-.contact-top-bar {
-    padding-top: 100px;
-}
-
-.contact-footer {
-    position: fixed;
-    bottom: 0;
-}
-
-.wbdv-privacy-policy {
-    margin: 0px;
-    padding: 0px;
-    height: 100vh;
-    overflow: auto;
-}
-
-.privacy-top-bar {
-    padding-top: 150px;
 }
 
 .booking-cta {
@@ -1239,4 +1211,14 @@ ul.icons {
     padding: 0px;
     height: 100vh;
     overflow: auto;
+}
+
+#footer {
+    position:absolute;
+    bottom:0px;
+    height:100px;
+    left:10px;
+    right:10px;
+    overflow:hidden;
+    color: white;
 }
