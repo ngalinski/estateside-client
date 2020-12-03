@@ -1131,9 +1131,9 @@ ul.icons {
 }
 
 #footer {
-    position:absolute;
+    position: fixed;
     bottom:0px;
-    height:100px;
+    height:0px;
     left:10px;
     right:10px;
     overflow:hidden;

@@ -118,7 +118,7 @@ const HelpComponent = ({state, login, logout, updateSelectedNavItem, toggleProfi
                     <div className="panel-body">
                         From your profile, click the "delete account" button. This will permanently
                         delete your account and none of your saved properties or history will be
-                        recoverable. 
+                        recoverable.
                     </div>
                 </div>
             </div>

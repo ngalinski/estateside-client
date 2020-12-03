@@ -17,13 +17,14 @@ const HomeComponent = ({state, login, logout, updateSelectedNavItem, toggleProfi
                 <header id="home-header"><h1>Estateside</h1></header>
                 <p className="find-home-title">Find your new home.</p>
             </div>
-            <PropertySearchComponent state={state}
-                                     login={login}
-                                     logout={logout}
-                                     updateSelectedNavItem={updateSelectedNavItem}
-                                     toggleProfileUpdated={toggleProfileUpdated}
-            />
-            <footer id="footer"><FooterComponent/></footer>
+            <div className="home-page-search">
+                <PropertySearchComponent state={state}
+                                         login={login}
+                                         logout={logout}
+                                         updateSelectedNavItem={updateSelectedNavItem}
+                                         toggleProfileUpdated={toggleProfileUpdated}
+                />
+            </div>
         </div>
     )
 }
