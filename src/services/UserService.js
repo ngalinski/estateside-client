@@ -1,4 +1,4 @@
-const userUrl = "/api/users"; // user property endpoint to be finalized
+const userUrl = "/api/users";
 
 const findAllUsers = () => {
     return (

@@ -61,3 +61,12 @@ const getHostedProperties = (userId) => {
             .then(response => response.json())
     )
 }
+
+export default {
+    findPropertiesForCity,
+    findPropertyById,
+    createProperty,
+    deleteProperty,
+    updateProperty,
+    getFavProperties,
+    getHostedProperties}
