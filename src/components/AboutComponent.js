@@ -1,20 +1,22 @@
 import React from 'react';
-import './css/HomeComponent.css'
+import './css/ProfileComponent.css'
 import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 
 const AboutComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated}) =>
-    <div>
-        <TopNavigationComponent state={state}
-                                login={login}
-                                logout={logout}
-                                updateSelectedNavItem={updateSelectedNavItem}
-                                toggleProfileUpdated={toggleProfileUpdated}
-        />
-        <header id="wbdv-about-heading">
-            <h1>About Estateside</h1>
-        </header>
-        <div className="container wbdv-about-us">
+    <div className="wbdv-about-us">
+        <div className="about-top-bar">
+            <TopNavigationComponent state={state}
+                                    login={login}
+                                    logout={logout}
+                                    updateSelectedNavItem={updateSelectedNavItem}
+                                    toggleProfileUpdated={toggleProfileUpdated}
+            />
+            <header id="wbdv-about-heading">
+                <h1>About Estateside</h1>
+            </header>
+        </div>
+        <div className="container about-body">
             <h3>General Information</h3>
             <p>
                 This project is made as a part of the course CS5610 Web Development at Northeastern
