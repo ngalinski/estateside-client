@@ -1,8 +1,37 @@
-/*.wbdv-grid-container {*/
-/*    display: grid;*/
-/*    !*grid-column-gap: 50px;*!*/
-/*}*/
+.wbdv-property {
+    height:100%;
+    width:100%;
+}
 
+.property-top-bar {
+    position:absolute;
+    top:0px;
+    left:10px;
+    height:150px;
+    right:10px;
+    overflow:hidden;
+}
 
+.wbdv-properties-heading {
+    color: white;
+}
 
+.property-body {
+    position:absolute;
+    top:150px;
+    bottom:150px;
+    left:0px;
+    right:0px;
+    overflow:auto;
+    color: white;
+}
 
+#footer {
+    position:absolute;
+    bottom:0px;
+    height:100px;
+    left:10px;
+    right:10px;
+    overflow:hidden;
+    color: white;
+}

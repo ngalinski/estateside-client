@@ -57,21 +57,20 @@ const dummyPropertyData = [
 
 const PropertyGridComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated}) => {
     return (
-        <div>
-            <div className="contact-top-bar">
+        <div className="wbdv-property">
+            <div className="property-top-bar">
                 <TopNavigationComponent state={state}
                                         login={login}
                                         logout={logout}
                                         updateSelectedNavItem={updateSelectedNavItem}
                                         toggleProfileUpdated={toggleProfileUpdated}
                 />
-            </div>
-            <div>
-                <header>
+                <header id="wbdv-properties-header">
                     <h1>Estateside Property List</h1>
                 </header>
-
-                <div className="container form-group row wbdv-grid-container">
+            </div>
+            <div>
+                <div className="container form-group row property-body">
                     {
                         dummyPropertyData.map(property =>
                                                   <PropertyCardComponent property={property}
@@ -79,7 +78,7 @@ const PropertyGridComponent = ({state, login, logout, updateSelectedNavItem, tog
                     }
                 </div>
             </div>
-            <FooterComponent/>
+            <footer id="footer"><FooterComponent/></footer>
         </div>
 
     )
