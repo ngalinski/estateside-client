@@ -55,7 +55,10 @@ const dummyPropertyData = [
     }
 ]
 
-const PropertyGridComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated, toggleContactRequested}) => {
+const PropertyGridComponent = ({
+                                   state, login, logout, updateSelectedNavItem, toggleProfileUpdated,
+                                   toggleContactRequested, updateContact
+                               }) => {
     return (
         <div className="wbdv-property">
             <div className="property-top-bar">
@@ -65,6 +68,7 @@ const PropertyGridComponent = ({state, login, logout, updateSelectedNavItem, tog
                                         updateSelectedNavItem={updateSelectedNavItem}
                                         toggleProfileUpdated={toggleProfileUpdated}
                                         toggleContactRequested={toggleContactRequested}
+                                        updateContact={updateContact}
                 />
                 <header id="wbdv-properties-header">
                     <h1>Estateside Property List</h1>

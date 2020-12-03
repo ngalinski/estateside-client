@@ -51,7 +51,10 @@ const dummyAppointmentData = [
     }
 ]
 
-const AppointmentListComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated, toggleContactRequested}) => {
+const AppointmentListComponent = ({
+                                      state, login, logout, updateSelectedNavItem,
+                                      toggleProfileUpdated, toggleContactRequested, updateContact
+                                  }) => {
     return (
         <div>
             <div className="contact-top-bar">
@@ -61,6 +64,7 @@ const AppointmentListComponent = ({state, login, logout, updateSelectedNavItem, 
                                         updateSelectedNavItem={updateSelectedNavItem}
                                         toggleProfileUpdated={toggleProfileUpdated}
                                         toggleContactRequested={toggleContactRequested}
+                                        updateContact={updateContact}
                 />
             </div>
             <div>

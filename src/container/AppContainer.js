@@ -92,6 +92,7 @@ export default class AppContainer extends React.Component {
                                        updateSelectedNavItem={this.updateSelectedNavItem}
                                        toggleProfileUpdated={this.toggleProfileUpdated}
                                        toggleContactRequested={this.toggleContactRequested}
+                                       updateContact={this.updateContact}
                         />
                     </Route>
                     {/*<Route path="/register" exact component={RegisterComponent}/>*/}
@@ -103,6 +104,7 @@ export default class AppContainer extends React.Component {
                                           updateUserProfile={this.updateUserProfile}
                                           toggleProfileUpdated={this.toggleProfileUpdated}
                                           toggleContactRequested={this.toggleContactRequested}
+                                          updateContact={this.updateContact}
                         />
                     </Route>
                     <Route path="/privacy" exact>
@@ -112,6 +114,7 @@ export default class AppContainer extends React.Component {
                                                 updateSelectedNavItem={this.updateSelectedNavItem}
                                                 toggleProfileUpdated={this.toggleProfileUpdated}
                                                 toggleContactRequested={this.toggleContactRequested}
+                                                updateContact={this.updateContact}
                         />
                     </Route>
                     <Route path="/help" exact>
@@ -121,6 +124,7 @@ export default class AppContainer extends React.Component {
                                        updateSelectedNavItem={this.updateSelectedNavItem}
                                        toggleProfileUpdated={this.toggleProfileUpdated}
                                        toggleContactRequested={this.toggleContactRequested}
+                                       updateContact={this.updateContact}
                         />
                     </Route>
                     <Route path="/contact" exact>
@@ -130,6 +134,7 @@ export default class AppContainer extends React.Component {
                                           updateSelectedNavItem={this.updateSelectedNavItem}
                                           toggleProfileUpdated={this.toggleProfileUpdated}
                                           toggleContactRequested={this.toggleContactRequested}
+                                          updateContact={this.updateContact}
                         />
                     </Route>
                     <Route path="/about" exact>
@@ -139,6 +144,7 @@ export default class AppContainer extends React.Component {
                                         updateSelectedNavItem={this.updateSelectedNavItem}
                                         toggleProfileUpdated={this.toggleProfileUpdated}
                                         toggleContactRequested={this.toggleContactRequested}
+                                        updateContact={this.updateContact}
                         />
                     </Route>
                     <Route path="/search" exact>
@@ -148,6 +154,7 @@ export default class AppContainer extends React.Component {
                                                updateSelectedNavItem={this.updateSelectedNavItem}
                                                toggleProfileUpdated={this.toggleProfileUpdated}
                                                toggleContactRequested={this.toggleContactRequested}
+                                               updateContact={this.updateContact}
                         />
                     </Route>
                     <Route path="/properties" exact>
@@ -157,6 +164,7 @@ export default class AppContainer extends React.Component {
                                                updateSelectedNavItem={this.updateSelectedNavItem}
                                                toggleProfileUpdated={this.toggleProfileUpdated}
                                                toggleContactRequested={this.toggleContactRequested}
+                                               updateContact={this.updateContact}
                         />
                     </Route>
 
@@ -168,6 +176,7 @@ export default class AppContainer extends React.Component {
                                                   updateSelectedNavItem={this.updateSelectedNavItem}
                                                   toggleProfileUpdated={this.toggleProfileUpdated}
                                                   toggleContactRequested={this.toggleContactRequested}
+                                                  updateContact={this.updateContact}
                         />
                     </Route>
                 </BrowserRouter>
