@@ -1,16 +1,22 @@
 import React from 'react';
-import '../components/css/HomeComponent.css'
+import '../components/css/Help.css'
 import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 
 const HelpComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated}) =>
-    <div>
+    <div className="wbdv-help">
+        <div className="help-top-bar">
         <TopNavigationComponent state={state}
                                 login={login}
                                 logout={logout}
                                 updateSelectedNavItem={updateSelectedNavItem}
                                 toggleProfileUpdated={toggleProfileUpdated}
         />
+            <header id="wbdv-help-heading">
+                <h1>FAQs</h1>
+            </header>
+        </div>
+        <div className="help-body container">
         <h1 className="faqHeader">General Questions</h1>
 
         <div className="panel-group" id="accordion">
@@ -164,10 +170,8 @@ const HelpComponent = ({state, login, logout, updateSelectedNavItem, toggleProfi
                 </div>
             </div>
         </div>
-        <br/>
-        <br/>
-        <br/>
-        <FooterComponent/>
+        </div>
+        <footer id="footer"><FooterComponent/></footer>
     </div>
 
 export default HelpComponent
