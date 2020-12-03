@@ -4,7 +4,7 @@ import TopNavigationComponent from "./TopNavigationComponent";
 import SearchPropertyNavigationComponent from "./SearchPropertyNavigationComponent";
 import FooterComponent from "./FooterComponent";
 
-const SearchResultComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated}) => {
+const SearchResultComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated, toggleContactRequested}) => {
     return (
         <div>
             <TopNavigationComponent state={state}
@@ -12,11 +12,14 @@ const SearchResultComponent = ({state, login, logout, updateSelectedNavItem, tog
                                     logout={logout}
                                     updateSelectedNavItem={updateSelectedNavItem}
                                     toggleProfileUpdated={toggleProfileUpdated}
+                                    toggleContactRequested={toggleContactRequested}
             />
             <SearchPropertyNavigationComponent state={state}
                                                login={login}
                                                logout={logout}
                                                updateSelectedNavItem={updateSelectedNavItem}
+                                               toggleProfileUpdated={toggleProfileUpdated}
+                                               toggleContactRequested={toggleContactRequested}
             />
             <br/>
             <MapComponent/>

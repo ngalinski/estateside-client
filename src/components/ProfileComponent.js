@@ -18,13 +18,14 @@ const convertToDate = (isoString) => {
     return year + '-' + month + '-' + day;
 }
 
-const ProfileComponent = ({state, login, logout, updateSelectedNavItem, updateUserProfile, toggleProfileUpdated}) =>
+const ProfileComponent = ({state, login, logout, updateSelectedNavItem, updateUserProfile, toggleProfileUpdated, toggleContactRequested}) =>
     <div>
         <TopNavigationComponent state={state}
                                 login={login}
                                 logout={logout}
                                 updateSelectedNavItem={updateSelectedNavItem}
                                 toggleProfileUpdated={toggleProfileUpdated}
+                                toggleContactRequested={toggleContactRequested}
         />
         <header id="main-header">
             <h1>Profile</h1>

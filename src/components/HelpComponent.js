@@ -3,7 +3,7 @@ import '../components/css/Help.css'
 import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 
-const HelpComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated}) =>
+const HelpComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated, toggleContactRequested}) =>
     <div className="wbdv-help">
         <div className="help-top-bar">
         <TopNavigationComponent state={state}
@@ -11,6 +11,7 @@ const HelpComponent = ({state, login, logout, updateSelectedNavItem, toggleProfi
                                 logout={logout}
                                 updateSelectedNavItem={updateSelectedNavItem}
                                 toggleProfileUpdated={toggleProfileUpdated}
+                                toggleContactRequested={toggleContactRequested}
         />
             <header id="wbdv-help-heading">
                 <h1>FAQs</h1>

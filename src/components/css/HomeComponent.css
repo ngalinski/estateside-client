@@ -1139,3 +1139,7 @@ ul.icons {
     overflow:hidden;
     color: white;
 }
+
+.request-created-msg{
+    padding-left: 10px;
+}

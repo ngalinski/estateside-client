@@ -3,7 +3,7 @@ import './css/PrivacyContact.css'
 import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 
-const PrivacyPolicyComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated}) =>
+const PrivacyPolicyComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated, toggleContactRequested}) =>
     <div className="wbdv-privacy-policy">
         <div className="privacy-top-bar">
             <TopNavigationComponent state={state}
@@ -11,6 +11,7 @@ const PrivacyPolicyComponent = ({state, login, logout, updateSelectedNavItem, to
                                     logout={logout}
                                     updateSelectedNavItem={updateSelectedNavItem}
                                     toggleProfileUpdated={toggleProfileUpdated}
+                                    toggleContactRequested={toggleContactRequested}
             />
             <header id="wbdv-privacy-heading">
                 <h1>Estateside Privacy Policy</h1>

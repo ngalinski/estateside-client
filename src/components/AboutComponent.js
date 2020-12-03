@@ -3,7 +3,7 @@ import './css/ProfileComponent.css'
 import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 
-const AboutComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated}) =>
+const AboutComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated, toggleContactRequested}) =>
     <div className="wbdv-about-us">
         <div className="about-top-bar">
             <TopNavigationComponent state={state}
@@ -11,6 +11,7 @@ const AboutComponent = ({state, login, logout, updateSelectedNavItem, toggleProf
                                     logout={logout}
                                     updateSelectedNavItem={updateSelectedNavItem}
                                     toggleProfileUpdated={toggleProfileUpdated}
+                                    toggleContactRequested={toggleContactRequested}
             />
             <header id="wbdv-about-heading">
                 <h1>About Estateside</h1>

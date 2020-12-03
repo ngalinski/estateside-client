@@ -2,8 +2,9 @@ import React from 'react';
 import './css/PrivacyContact.css'
 import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
+import ContactService from "../services/ContactService";
 
-const ContactComponent = ({state, login, logout, updateSelectedNavItem,toggleProfileUpdated}) =>
+const ContactComponent = ({state, login, logout, updateSelectedNavItem,toggleProfileUpdated, toggleContactRequested}) =>
     <div className="wbdv-contact-us">
         <div className="contact-top-bar">
             <TopNavigationComponent state={state}
@@ -11,6 +12,7 @@ const ContactComponent = ({state, login, logout, updateSelectedNavItem,togglePro
                                     logout={logout}
                                     updateSelectedNavItem={updateSelectedNavItem}
                                     toggleProfileUpdated={toggleProfileUpdated}
+                                    toggleContactRequested={toggleContactRequested}
             />
             <header id="wbdv-contact-heading">
                 <h1>Contact Estateside</h1>
@@ -34,39 +36,54 @@ const ContactComponent = ({state, login, logout, updateSelectedNavItem,togglePro
                     <p>
                         Fill out the form below and we will get back to you.
                     </p>
-                    <form method="post" id="reused_form">
-
-                        <div className="row">
-                            <div className="col-sm-12 form-group">
-                                <label htmlFor="message">
-                                    Message:</label>
-                                <textarea className="form-control" type="textarea" id="message"
-                                          name="message" maxLength="4000" rows="7"></textarea>
-                            </div>
+                    <div className="row">
+                        <div className="col-sm-12 form-group">
+                            <label htmlFor="message">
+                                Message:</label>
+                            <textarea className="form-control" id="message"
+                                      name="message" placeholder="Type your message here"
+                                      maxLength="4000" rows="7" value={state.contact.message}
+                                      onChange={(event) => {
+                                          updateContact(event.target.value, state.contact.name,
+                                                        state.contact.email)
+                                      }}/>
                         </div>
-                        <div className="row">
-                            <div className="col-sm-6 form-group">
-                                <label htmlFor="name">
-                                    Your Name:</label>
-                                <input type="text" className="form-control" id="name" name="name"
-                                       required></input>
-                            </div>
-                            <div className="col-sm-6 form-group">
-                                <label htmlFor="email">
-                                    Email:</label>
-                                <input type="email" className="form-control" id="email" name="email"
-                                       required></input>
-                            </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-sm-6 form-group">
+                            <label htmlFor="name">
+                                Your Name:</label>
+                            <input type="text" className="form-control" id="name" name="name"
+                                   required value={state.contact.name} onChange={(event) => {
+                                updateContact(state.contact.message, event.target.value,
+                                              state.contact.email)
+                            }}/>
                         </div>
-                        <br/>
-                        <div className="row">
-                            <div className="col-sm-12 form-group">
-                                <button type="submit" className="btn btn-lg btn-default">Send
-                                    →
-                                </button>
-                            </div>
+                        <div className="col-sm-6 form-group">
+                            <label htmlFor="email">
+                                Email:</label>
+                            <input type="email" className="form-control" id="email" name="email"
+                                   required value={state.contact.email} onChange={(event) => {
+                                updateContact(state.contact.message, state.contact.name,
+                                              event.target.value)
+                            }}/>
                         </div>
-                    </form>
+                    </div>
+                    <br/>
+                    <div className="row">
+                        <div className="col-sm-12 form-group">
+                            <button type="submit" className="btn btn-lg btn-default"
+                                    onClick={() => {
+                                        ContactService.addContactRequest(state.contact);
+                                        updateContact('', '', '');
+                                        toggleContactRequested(true);
+                                    }}>Send
+                                →
+                            </button>
+                            <span className={`${!state.contactRequested ? "hidden"
+                                                                        : ""} request-created-msg`}>Request Created!</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
