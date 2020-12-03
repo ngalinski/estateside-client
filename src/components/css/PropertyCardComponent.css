@@ -8,9 +8,21 @@
 }
 
 .wbdv-property-card-icon {
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 20px;
     color: dodgerblue;
 }
 
+.wbdv-fav-property-icon-active {
+    margin-left: 20px;
+    color: orange;
+    position: relative;
+    top: -4px;
+}
 
+
+.wbdv-fav-property-icon-inactive {
+    margin-left: 20px;
+    color: grey;
+    position: relative;
+    top: -4px;
+}

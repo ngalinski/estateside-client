@@ -53,8 +53,10 @@ export default class PropertyCardComponent extends React.Component {
                         </p>
                     </div>
                     <div className="card-footer">
+                        <i title="delete property"
+                           className="fa fa-trash-alt wbdv-property-card-icon float-right"/>
                         <i title="manage appointments"
-                           className="fa fa-address-book wbdv-property-card-icon float-left"
+                           className="fa fa-address-book wbdv-property-card-icon float-right"
                            onClick={this.toggleModal}/>
                         <Modal isOpen={this.state.isActive} onRequestClose={this.toggleModal}
                                style={customStyles}>
@@ -66,8 +68,11 @@ export default class PropertyCardComponent extends React.Component {
                                 </button>
                             </div>
                         </Modal>
-                        <i title="delete property"
-                           className="fa fa-trash-alt wbdv-property-card-icon float-right"/>
+                        <span className="float-right">
+                            {/*show/hide one of the heart icons below depending on the data of the property (fav vs not fav)*/}
+                            <i className="fa fa-heart wbdv-fav-property-icon-active"></i>
+                            {/*<i className="fa fa-heart wbdv-fav-property-icon-inactive"></i>*/}
+                        </span>
                     </div>
                 </div>
             </div>
