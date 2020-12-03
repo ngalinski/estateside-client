@@ -4,7 +4,8 @@ import FooterComponent from "./FooterComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 import ContactService from "../services/ContactService";
 
-const ContactComponent = ({state, login, logout, updateSelectedNavItem,toggleProfileUpdated, toggleContactRequested}) =>
+const ContactComponent = ({state, login, logout, updateSelectedNavItem,
+                              toggleProfileUpdated, updateContact, toggleContactRequested}) =>
     <div className="wbdv-contact-us">
         <div className="contact-top-bar">
             <TopNavigationComponent state={state}
