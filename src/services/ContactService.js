@@ -1,4 +1,5 @@
-const contactApiUrl = '/api/contacts'
+const contactApiUrl = `${process.env.REACT_APP_PROXY_URL}/api/contacts`;
+
 const addContactRequest = (contactRequest) => {
     return (
         fetch(`${contactApiUrl}`, {

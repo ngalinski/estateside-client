@@ -1,5 +1,5 @@
-const propertyUrl = "/api/properties"; // server property endpoint to be finalized
-const userUrl = "/api/users"; // user property endpoint to be finalized
+const propertyUrl = `${process.env.REACT_APP_PROXY_URL}/api/properties`; // server property endpoint to be finalized
+const userUrl = `${process.env.REACT_APP_PROXY_URL}/api/users`; // user property endpoint to be finalized
 
 const findPropertiesForCity = ({location, offset = 0}) => {
     return (

@@ -1,4 +1,4 @@
-const userUrl = "/api/users";
+const userUrl = `${process.env.REACT_APP_PROXY_URL}/api/users`;
 
 const findAllUsers = () => {
     return (

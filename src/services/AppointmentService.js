@@ -1,5 +1,5 @@
-const userUrl = "/api/users";
-const propertyUrl = "/api/properties" ;
+const userUrl = `${process.env.REACT_APP_PROXY_URL}/api/users`;
+const propertyUrl = `${process.env.REACT_APP_PROXY_URL}/api/properties`;
 
 const findAppointmentsForProperty = (propertyId) => {
     return (
@@ -38,12 +38,12 @@ const createAppointmentForUser = (userId, appointment) => {
 }
 
 const deleteAppointmentForProperty = (propertyId, appointmentId) => {
- return (
-     fetch(`${propertyUrl}/${propertyId}/appointments/${appointmentId}`, {
-         method: "DELETE"
-     })
-         .then(response => response.json())
- )
+    return (
+        fetch(`${propertyUrl}/${propertyId}/appointments/${appointmentId}`, {
+            method: "DELETE"
+        })
+            .then(response => response.json())
+    )
 }
 
 const deleteAppointmentForUser = (userId, appointmentId) => {
