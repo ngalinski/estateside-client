@@ -76,7 +76,7 @@ const ContactComponent = ({
                     <br/>
                     <div className="row">
                         <div className="col-sm-12 form-group">
-                            <button type="submit" className="btn btn-lg btn-default"
+                            <button type="submit" className="btn btn-lg btn-primary"
                                     onClick={() => {
                                         ContactService.addContactRequest(state.contact);
                                         updateContact('', '', '');
