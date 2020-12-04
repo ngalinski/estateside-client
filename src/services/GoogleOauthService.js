@@ -1,4 +1,5 @@
 const login = async (code, role) => {
+    console.log(code)
     return fetch(`/api/auth/google/${role}`, {
         method: 'POST',
         headers: {
