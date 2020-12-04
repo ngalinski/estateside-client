@@ -65,6 +65,20 @@ export default class AppContainer extends React.Component {
     componentDidMount() {
         let userProfile = localStorage.getItem("userProfile")
         let userData = JSON.parse(localStorage.getItem("userProfile"))
+        let path = window.location.pathname;
+        if (path.includes("home")) {
+            this.setState({selectedNavItem: "Home"})
+        } else if (path.includes("about")) {
+            this.setState({selectedNavItem: "About"})
+        } else if (path.includes("contact")) {
+            this.setState({selectedNavItem: "Contact"})
+        } else if (path.includes("profile")) {
+            this.setState({selectedNavItem: "Profile"})
+        } else if (path.includes("privacy")) {
+            this.setState({selectedNavItem: "Privacy"})
+        } else if (path.includes("help")) {
+            this.setState({selectedNavItem: "Help"})
+        }
         if (userProfile) {
             this.setState({
                               isLoggedIn: true,
