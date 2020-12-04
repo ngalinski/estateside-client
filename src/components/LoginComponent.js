@@ -25,7 +25,7 @@ const LoginComponent = ({clientLogin, role, buttonText}) => {
             clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
             render={renderProps => (
                 <Tooltip title="Login">
-                    <Link to="/" onClick={renderProps.onClick}
+                    <Link to="/api/login" onClick={renderProps.onClick}
                           disabled={renderProps.disabled}>{buttonText} </Link>
                 </Tooltip>
             )}
