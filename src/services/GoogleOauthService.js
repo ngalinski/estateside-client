@@ -6,6 +6,7 @@ const login = async (code, role) => {
         },
         body: JSON.stringify({code}),
     }).then((res) => {
+        console.log(res);
         if (res.ok) {
             return res.json();
         } else {
