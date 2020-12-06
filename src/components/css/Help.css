@@ -22,6 +22,7 @@
     bottom:150px;
     left:0px;
     right:0px;
+    font-size: 13px;
     overflow:auto;
     color: white;
 }
@@ -34,4 +35,51 @@
     right:10px;
     overflow:hidden;
     color: white;
+}
+
+div.panel-heading {
+    background-color: #777;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    margin-bottom:10px;
+}
+
+/* background when hover over question */
+.accordion-heading.active, .accordion-heading:hover {
+    background-color: #ddd;
+}
+
+/* plus sign */
+.accordion-toggle:after {
+    content: '\2795';
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+
+/* minus sign */
+.accordion-toggle.active:after {
+    content: "\2796";
+}
+
+div.panel-body {
+    padding: 0 18px;
+    background-color: #777;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.4s ease-in-out;
+    opacity: 0;
+    margin-bottom:10px;
+}
+
+div.panel-body.show {
+    opacity: 1;
+    max-height: 500px;
 }
