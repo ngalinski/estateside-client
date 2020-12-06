@@ -32,10 +32,17 @@ const AboutComponent = ({state, login, logout, updateSelectedNavItem, toggleProf
                 by contacting the associated property advertiser.
             </p>
             <p>
-                Built by: Prajakta Dharme, Japher Su, Nicholas Galinski, Zoheb Nawaz
+                We are using Zillow’s public APIs. Zillow has a variety of apartment options to buy, sell and rent. The
+                Web API endpoints return JSON metadata about the apartments located in a particular location based on
+                REST principles. We will use the web API to provide search details based on various filters.
             </p>
+            <h3>Built using: </h3>
+            <p> Database: MongoDB </p>
+            <p> Back End: Java/NodeJS </p>
+            <p> Front End: HTML, CSS, Bootstrap, Javascript, Angular 9, React </p>
+            <p> Host environment: Heroku</p>
             <p>
-                Built using: React, NodeJS, and the Zillow API.
+                Built by Prajakta Dharme, Japher Su, Nicholas Galinski, Zoheb Nawaz
             </p>
         </div>
         <footer id="footer"><FooterComponent/></footer>

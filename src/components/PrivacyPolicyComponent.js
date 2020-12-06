@@ -129,7 +129,11 @@ const PrivacyPolicyComponent = ({state, login, logout, updateSelectedNavItem, to
                 agree to this privacy policy.
             </p>
 
-            <h3 id="contact">Contact us</h3>
+            <h3 id="contact">
+                <a href="/contact">
+                Contact us
+                </a>
+            </h3>
 
             <p>
                 To contact us or request a copy of this policy, reach out to Northeastern University

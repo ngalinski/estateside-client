@@ -24,7 +24,7 @@ const ContactComponent = ({
         </div>
         <div className="contact-body container">
 
-            <h3>General Contact Information</h3>
+            <h2>General Contact Information</h2>
             <p>
                 To reach the creators of Estateside, please reach fill out the contact form below.
                 Alternatively, you can reach out to Northeastern University and reference CS5610 -
