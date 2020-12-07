@@ -8,7 +8,6 @@ import HelpComponent from "../components/HelpComponent";
 import ContactComponent from "../components/ContactComponent";
 import AboutComponent from "../components/AboutComponent";
 import SearchResultComponent from "../components/SearchResultComponent";
-import PropertyGridComponent from "../components/PropertyGridComponent";
 import AppointmentListComponent from "../components/AppointmentListComponent";
 
 export default class AppContainer extends React.Component {
@@ -19,8 +18,13 @@ export default class AppContainer extends React.Component {
         selectedNavItem: "Home",
         contact: {message: '', name: '', email: ''},
         profileUpdated: false,
-        contactRequested: false
+        contactRequested: false,
+        searchLocation: ""
     };
+
+    updateSearchLocation = (location) => {
+        this.setState({searchLocation: location})
+    }
 
     updateContact = (message, name, email) => this.setState(
         prevState => ({contact: {message: message, name: name, email: email}}))
@@ -86,6 +90,7 @@ export default class AppContainer extends React.Component {
                           })
         }
     }
+/*
 
     componentWillMount() {
         onbeforeunload = e => "Don't leave me"
@@ -94,6 +99,7 @@ export default class AppContainer extends React.Component {
     componentWillUnmount() {
         onbeforeunload = null
     }
+*/
 
     render() {
         return (
@@ -107,6 +113,7 @@ export default class AppContainer extends React.Component {
                                        toggleProfileUpdated={this.toggleProfileUpdated}
                                        toggleContactRequested={this.toggleContactRequested}
                                        updateContact={this.updateContact}
+                                       updateSearchLocation={this.updateSearchLocation}
                         />
                     </Route>
                     {/*<Route path="/register" exact component={RegisterComponent}/>*/}
@@ -161,7 +168,7 @@ export default class AppContainer extends React.Component {
                                         updateContact={this.updateContact}
                         />
                     </Route>
-                    <Route path="/search" exact>
+                    <Route path="/search/:location" exact>
                         <SearchResultComponent state={this.state}
                                                login={this.login}
                                                logout={this.logout}
@@ -169,19 +176,9 @@ export default class AppContainer extends React.Component {
                                                toggleProfileUpdated={this.toggleProfileUpdated}
                                                toggleContactRequested={this.toggleContactRequested}
                                                updateContact={this.updateContact}
+                                               updateSearchLocation={this.updateSearchLocation}
                         />
                     </Route>
-                    <Route path="/properties" exact>
-                        <PropertyGridComponent state={this.state}
-                                               login={this.login}
-                                               logout={this.logout}
-                                               updateSelectedNavItem={this.updateSelectedNavItem}
-                                               toggleProfileUpdated={this.toggleProfileUpdated}
-                                               toggleContactRequested={this.toggleContactRequested}
-                                               updateContact={this.updateContact}
-                        />
-                    </Route>
-
                     <Route path={["/properties/:propertyId/appointments",
                                   "/users/:userId/appointments"]} exact>
                         <AppointmentListComponent state={this.state}

@@ -2,8 +2,13 @@ import React from 'react';
 import './css/HomeComponent.css'
 import PropertySearchComponent from "./PropertySearchComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
+import FooterComponent from "./FooterComponent";
 
-const HomeComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated, toggleContactRequested, updateContact}) => {
+const HomeComponent = ({
+                           state, login, logout, updateSelectedNavItem,
+                           toggleProfileUpdated, toggleContactRequested, updateContact,
+                           updateSearchLocation
+                       }) => {
     return (
         <div className="home-page-components">
             <div className="home-page-top">
@@ -26,8 +31,10 @@ const HomeComponent = ({state, login, logout, updateSelectedNavItem, toggleProfi
                                          toggleProfileUpdated={toggleProfileUpdated}
                                          toggleContactRequested={toggleContactRequested}
                                          updateContact={updateContact}
+                                         updateSearchLocation={updateSearchLocation}
                 />
             </div>
+            <FooterComponent/>
         </div>
     )
 }

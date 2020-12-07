@@ -9,7 +9,7 @@ const ContactComponent = ({
                               toggleProfileUpdated, updateContact, toggleContactRequested
                           }) =>
     <div className="wbdv-contact-us">
-        <div className="contact-top-bar">
+        <div className="home-page-top">
             <TopNavigationComponent state={state}
                                     login={login}
                                     logout={logout}

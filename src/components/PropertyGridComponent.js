@@ -61,19 +61,6 @@ const PropertyGridComponent = ({
                                }) => {
     return (
         <div className="wbdv-property">
-            <div className="property-top-bar">
-                <TopNavigationComponent state={state}
-                                        login={login}
-                                        logout={logout}
-                                        updateSelectedNavItem={updateSelectedNavItem}
-                                        toggleProfileUpdated={toggleProfileUpdated}
-                                        toggleContactRequested={toggleContactRequested}
-                                        updateContact={updateContact}
-                />
-                <header id="wbdv-properties-header">
-                    <h1>Estateside Property List</h1>
-                </header>
-            </div>
             <div>
                 <div className="container form-group row property-body">
                     {
@@ -83,7 +70,7 @@ const PropertyGridComponent = ({
                     }
                 </div>
             </div>
-            <footer id="footer"><FooterComponent/></footer>
+            <FooterComponent/>
         </div>
 
     )

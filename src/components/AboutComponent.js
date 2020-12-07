@@ -5,7 +5,7 @@ import TopNavigationComponent from "./TopNavigationComponent";
 
 const AboutComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated, toggleContactRequested, updateContact}) =>
     <div className="wbdv-about-us">
-        <div className="about-top-bar">
+        <div className="home-page-top">
             <TopNavigationComponent state={state}
                                     login={login}
                                     logout={logout}

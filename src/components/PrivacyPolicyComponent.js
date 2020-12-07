@@ -5,7 +5,7 @@ import TopNavigationComponent from "./TopNavigationComponent";
 
 const PrivacyPolicyComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated, toggleContactRequested, updateContact}) =>
     <div className="wbdv-privacy-policy">
-        <div className="privacy-top-bar">
+        <div className="home-page-top">
             <TopNavigationComponent state={state}
                                     login={login}
                                     logout={logout}

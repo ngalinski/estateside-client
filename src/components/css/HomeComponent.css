@@ -99,6 +99,8 @@ html, body {
     }
 }
 
+/*
+
 body {
     display: -moz-flex;
     display: -webkit-flex;
@@ -115,6 +117,7 @@ body {
     background-color: #000;
     padding: 6em 4em 4em 4em;
 }
+*/
 
 body.is-preload *, body.is-preload *:before, body.is-preload *:after {
     -moz-animation: none !important;
@@ -1131,19 +1134,22 @@ ul.icons {
 }
 
 #footer {
-    position: fixed;
-    bottom:0px;
-    height:0px;
-    left:10px;
-    right:10px;
-    overflow:hidden;
+    bottom: 0px;
+    height: 0px;
+    left: 10px;
+    right: 10px;
+    overflow: hidden;
     color: white;
 }
 
-.request-created-msg{
+.request-created-msg {
     padding-left: 10px;
 }
 
-.request-created-msg{
+.request-created-msg {
     padding-left: 10px;
+}
+
+.home-page-search {
+    margin-top: 30px;
 }

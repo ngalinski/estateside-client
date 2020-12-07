@@ -5,7 +5,7 @@ import TopNavigationComponent from "./TopNavigationComponent";
 
 const HelpComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated, toggleContactRequested, updateContact}) =>
     <div className="wbdv-help">
-        <div className="help-top-bar">
+        <div className="home-page-top">
             <TopNavigationComponent state={state}
                                     login={login}
                                     logout={logout}
