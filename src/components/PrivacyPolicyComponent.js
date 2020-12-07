@@ -136,7 +136,7 @@ const PrivacyPolicyComponent = ({state, login, logout, updateSelectedNavItem, to
                 and reference Estateside in regards to CS5610 - Fall 2020.
             </p>
         </div>
-        <footer id="footer"><FooterComponent/></footer>
+        <FooterComponent/>
     </div>
 
 export default PrivacyPolicyComponent;

@@ -249,7 +249,7 @@ const HelpComponent = ({state, login, logout, updateSelectedNavItem, toggleProfi
                 </div>
             </div>
         </div>
-        <footer id="footer"><FooterComponent/></footer>
+        <FooterComponent/>
     </div>
 
 export default HelpComponent

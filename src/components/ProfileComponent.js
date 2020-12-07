@@ -3,6 +3,7 @@ import TopNavigationComponent from "./TopNavigationComponent";
 import './css/ProfileComponent.css'
 import {Link} from "react-router-dom";
 import UserService from "../services/UserService";
+import FooterComponent from "./FooterComponent";
 
 const convertToDate = (isoString) => {
     const date = new Date(isoString);
@@ -49,7 +50,7 @@ const ProfileComponent = ({
             <div className="form-group row">
                 <label htmlFor="email" className="col-sm-3 col-form-label"> Email </label>
                 <div className="col-sm-9">
-                    <input className="form-control wbdv-field wbdv-email"
+                    <input className="textfield wbdv-field wbdv-email"
                            id="email" type="email" name="email" placeholder="xyz@northeastern.edu"
                            value={state && state.userProfile ? state.userProfile.email : ''}
                            readOnly/>
@@ -58,7 +59,7 @@ const ProfileComponent = ({
             <div className="form-group row">
                 <label htmlFor="phone" className="col-sm-3 col-form-label"> Phone </label>
                 <div className="col-sm-9">
-                    <input className="form-control wbdv-field wbdv-phone"
+                    <input className="textfield wbdv-field wbdv-phone"
                            value={state.userProfile.phone}
                            id="phone" type="text" name="phone" placeholder="(617)-123-1234"
                            onChange={(event) => {
@@ -104,6 +105,7 @@ const ProfileComponent = ({
                 </div>
             </div>
         </div>
+        <FooterComponent/>
     </div>;
 
 export default ProfileComponent

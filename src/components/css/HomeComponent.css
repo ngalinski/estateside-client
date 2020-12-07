@@ -733,6 +733,13 @@ label {
     }
 }
 
+.textfield {
+    color: white;
+}
+.textfield:focus {
+    color: whitesmoke;
+}
+
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -754,7 +761,6 @@ textarea {
     border-radius: 6px;
     border: none;
     border: solid 2px rgba(255, 255, 255, 0.35);
-    color: inherit;
     display: block;
     outline: 0;
     padding: 0 1em;
@@ -1152,4 +1158,8 @@ ul.icons {
 
 .home-page-search {
     margin-top: 30px;
+}
+
+.textfield::placeholder { /* Chrome/Opera/Safari */
+    color: black;
 }

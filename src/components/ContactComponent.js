@@ -57,7 +57,7 @@ const ContactComponent = ({
                         <div className="col-sm-6 form-group">
                             <label htmlFor="name">
                                 Your Name:</label>
-                            <input type="text" className="form-control" id="name" name="name"
+                            <input type="text" className="textfield" id="name" name="name"
                                    required value={state.contact.name} onChange={(event) => {
                                 updateContact(state.contact.message, event.target.value,
                                               state.contact.email)
@@ -66,7 +66,7 @@ const ContactComponent = ({
                         <div className="col-sm-6 form-group">
                             <label htmlFor="email">
                                 Email:</label>
-                            <input type="email" className="form-control" id="email" name="email"
+                            <input type="email" className="textfield" id="email" name="email"
                                    required value={state.contact.email} onChange={(event) => {
                                 updateContact(state.contact.message, state.contact.name,
                                               event.target.value)
@@ -91,7 +91,7 @@ const ContactComponent = ({
                 </div>
             </div>
         </div>
-        <footer id="footer"><FooterComponent/></footer>
+        <FooterComponent/>
     </div>
 
 export default ContactComponent;

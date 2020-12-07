@@ -1,5 +1,6 @@
 #dob {
-    color: black;
+    color: white;
+    background-color: #7b7b7b;
 }
 
 .container {
@@ -12,7 +13,6 @@
     display: block;
     margin-left: 50%;
     margin-right: 50%;
-    /*width: 50%;*/
     padding-bottom: 20px;
 }
 

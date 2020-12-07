@@ -38,7 +38,7 @@ const AboutComponent = ({state, login, logout, updateSelectedNavItem, toggleProf
                 Built using: React, NodeJS, and the Zillow API.
             </p>
         </div>
-        <footer id="footer"><FooterComponent/></footer>
+        <FooterComponent/>
     </div>
 
 export default AboutComponent;
