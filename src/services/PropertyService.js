@@ -1,7 +1,10 @@
-const propertyUrl = `${process.env.REACT_APP_PROXY_URL}/api/properties`; // server property endpoint to be finalized
-const userUrl = `${process.env.REACT_APP_PROXY_URL}/api/users`; // user property endpoint to be finalized
+const propertyUrl = `${process.env.REACT_APP_PROXY_URL}/api/properties`; // server property
+                                                                         // endpoint to be
+                                                                         // finalized
+const userUrl = `${process.env.REACT_APP_PROXY_URL}/api/users`; // user property endpoint to be
+                                                                // finalized
 
-const findPropertiesForCity = ({location, offset = 0}) => {
+const findPropertiesForCity = (location, offset = 0) => {
     return (
         fetch(`${propertyUrl}?location=${location}&offset=${offset}`)
             .then(response => response.json())
@@ -45,7 +48,6 @@ const updateProperty = (propertyId, property) => {
             .then(response => response.json())
     )
 }
-
 
 // return hosted properties for a landlord
 const findHostedProperties = (userId) => {

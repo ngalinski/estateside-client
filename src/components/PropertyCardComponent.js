@@ -35,21 +35,21 @@ export default class PropertyCardComponent extends React.Component {
     }
 
     render() {
+        const imageUrl = "https://picsum.photos/300/200";
         return (
             // creating a property card
             <div className="col-sm-6 col-md-4 col-lg-3 wbdv-property-card">
                 <div className="card h-100">
-                    <img className="card-img-top" src={this.props.property.imageUrl}/>
+                    <img className="card-img-top" src={imageUrl}/>
                     <div className="card-body bg-primary">
-                        <h2>{this.props.property.rent}</h2>
+                        <h2>{this.props.property.zestimate}</h2>
                         <h4 className="card-title">
                             <Link to={`properties/${this.props.property.address}`}
                                   title="view the property"
                                   className="wbdv-hyperlink">{this.props.property.address}</Link>
                         </h4>
                         <p className="card-text text-white">
-                            Available: {this.props.property.available} <br/>
-                            Contact: {this.props.property.contactInfo}
+                            Available: {this.props.property.date} <br/>
                         </p>
                     </div>
                     <div className="card-footer">

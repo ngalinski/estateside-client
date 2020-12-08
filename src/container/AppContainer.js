@@ -9,7 +9,6 @@ import ContactComponent from "../components/ContactComponent";
 import AboutComponent from "../components/AboutComponent";
 import SearchResultComponent from "../components/SearchResultComponent";
 import AppointmentListComponent from "../components/AppointmentListComponent";
-import {useHistory} from 'react-router-dom';
 
 export default class AppContainer extends React.Component {
     state = {
@@ -20,7 +19,10 @@ export default class AppContainer extends React.Component {
         contact: {message: '', name: '', email: ''},
         profileUpdated: false,
         contactRequested: false,
-        searchLocation: ""
+        searchLocation: "",
+        propertySearchPage: 0,
+        location: '',
+        properties: []
     };
 
     updateSearchLocation = (location) => {
@@ -94,6 +96,7 @@ export default class AppContainer extends React.Component {
     }
 
     componentDidMount() {
+        console.log(this.props);
         let userProfile = localStorage.getItem("userProfile")
         let userData = JSON.parse(localStorage.getItem("userProfile"))
         this.navHelper();
@@ -131,7 +134,6 @@ export default class AppContainer extends React.Component {
                                        updateSearchLocation={this.updateSearchLocation}
                         />
                     </Route>
-                    {/*<Route path="/register" exact component={RegisterComponent}/>*/}
                     <Route path="/profile" exact>
                         <ProfileComponent state={this.state}
                                           login={this.login}
@@ -192,6 +194,7 @@ export default class AppContainer extends React.Component {
                                                toggleContactRequested={this.toggleContactRequested}
                                                updateContact={this.updateContact}
                                                updateSearchLocation={this.updateSearchLocation}
+                                               {...this.props}
                         />
                     </Route>
                     <Route path={["/properties/:propertyId/appointments",
