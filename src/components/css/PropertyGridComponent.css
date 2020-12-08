@@ -1,15 +1,15 @@
 .wbdv-property {
-    height:100%;
-    width:100%;
+    height: 100%;
+    width: 100%;
 }
 
 .property-top-bar {
-    position:absolute;
-    top:0px;
-    left:10px;
-    height:150px;
-    right:10px;
-    overflow:hidden;
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    height: 150px;
+    right: 10px;
+    overflow: hidden;
 }
 
 .wbdv-properties-heading {
@@ -17,11 +17,14 @@
 }
 
 .property-body {
-    top:150px;
-    bottom:150px;
-    left:0px;
-    right:0px;
-    overflow:auto;
+    top: 150px;
+    bottom: 150px;
+    left: 0px;
+    right: 0px;
+    overflow: auto;
     color: white;
 }
 
+.paginated-btn-set {
+    margin-left: 35%;
+}

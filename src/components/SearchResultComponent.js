@@ -6,7 +6,8 @@ import PropertyService from "../services/PropertyService";
 export default class SearchResultComponent extends React.Component {
     state = {
         location: '',
-        properties: []
+        properties: [],
+        hits: 0
     }
 
     componentDidMount() {
@@ -14,11 +15,12 @@ export default class SearchResultComponent extends React.Component {
         this.setState({location: location})
         if (location) {
             PropertyService.findPropertiesForCity(location,
-                                                  this.props.state.propertySearchPage
+                                                  (this.props.state.propertySearchPage - 1)
                                                   * 10)
                 .then(response => {
                     this.setState({
-                                      properties: response.bundle
+                                      properties: response.bundle,
+                                      hits: response.total
                                   })
                 });
         }
@@ -44,7 +46,8 @@ export default class SearchResultComponent extends React.Component {
                                        toggleProfileUpdated={this.props.toggleProfileUpdated}
                                        toggleContactRequested={this.props.toggleContactRequested}
                                        updateContact={this.props.updateContact}
-                                       properties={this.state.properties}/>
+                                       properties={this.state.properties}
+                                       hits={this.state.hits}/>
                 <br/>
             </div>
         )

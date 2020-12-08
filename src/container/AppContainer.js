@@ -9,7 +9,7 @@ import ContactComponent from "../components/ContactComponent";
 import AboutComponent from "../components/AboutComponent";
 import SearchResultComponent from "../components/SearchResultComponent";
 import AppointmentListComponent from "../components/AppointmentListComponent";
-import DateUtil from "../util/DateUtil";
+
 export default class AppContainer extends React.Component {
     state = {
         isLoggedIn: false,
@@ -20,7 +20,7 @@ export default class AppContainer extends React.Component {
         profileUpdated: false,
         contactRequested: false,
         searchLocation: "",
-        propertySearchPage: 0,
+        propertySearchPage: 1,
         location: '',
         properties: []
     };

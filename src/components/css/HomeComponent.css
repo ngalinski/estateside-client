@@ -736,6 +736,7 @@ label {
 .textfield {
     color: white;
 }
+
 .textfield:focus {
     color: whitesmoke;
 }
@@ -1162,4 +1163,8 @@ ul.icons {
 
 .textfield::placeholder { /* Chrome/Opera/Safari */
     color: black;
+}
+
+.btn-primary {
+    margin: 10px;
 }
