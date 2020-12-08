@@ -4,13 +4,20 @@ import GoogleLogin from 'react-google-login';
 import {login} from "../services/GoogleOauthService";
 import {Link} from "react-router-dom";
 import Tooltip from "@material-ui/core/Tooltip";
+import {useHistory} from "react-router";
 
-const LoginComponent = ({clientLogin, role, buttonText}) => {
+const LoginComponent = ({clientLogin, role, buttonText, updateSelectedNavItem}) => {
+    const history = useHistory();
+
     const responseGoogle = async (authResult) => {
         try {
             if (authResult['code']) {
                 const result = await login(authResult['code'], role);
                 clientLogin(result);
+                if (role === 'landlord') {
+                    updateSelectedNavItem('profile');
+                    history.push('/profile');
+                }
             } else {
                 throw new Error(authResult);
             }

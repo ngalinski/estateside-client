@@ -9,6 +9,7 @@ import ContactComponent from "../components/ContactComponent";
 import AboutComponent from "../components/AboutComponent";
 import SearchResultComponent from "../components/SearchResultComponent";
 import AppointmentListComponent from "../components/AppointmentListComponent";
+import {useHistory} from 'react-router-dom';
 
 export default class AppContainer extends React.Component {
     state = {
@@ -35,10 +36,19 @@ export default class AppContainer extends React.Component {
 
     toggleContactRequested = (bool) => this.setState(prevState => ({contactRequested: bool}))
 
-    updateUserProfile = (dob, phone) => {
+    updateUserProfile = (dob, phone, addrLine1, addrLine2, city, state, zipcode) => {
         this.setState(prevState => (
             {
-                userProfile: {...prevState.userProfile, phone: phone, dob: dob}
+                userProfile: {
+                    ...prevState.userProfile,
+                    phone: phone,
+                    dob: dob,
+                    addrLine1: addrLine1,
+                    addrLine2: addrLine2,
+                    city: city,
+                    state: state,
+                    zipcode: zipcode
+                }
             }))
     }
 
@@ -66,9 +76,7 @@ export default class AppContainer extends React.Component {
         localStorage.removeItem("userProfile")
     };
 
-    componentDidMount() {
-        let userProfile = localStorage.getItem("userProfile")
-        let userData = JSON.parse(localStorage.getItem("userProfile"))
+    navHelper() {
         let path = window.location.pathname;
         if (path.includes("home")) {
             this.setState({selectedNavItem: "Home"})
@@ -83,6 +91,12 @@ export default class AppContainer extends React.Component {
         } else if (path.includes("help")) {
             this.setState({selectedNavItem: "Help"})
         }
+    }
+
+    componentDidMount() {
+        let userProfile = localStorage.getItem("userProfile")
+        let userData = JSON.parse(localStorage.getItem("userProfile"))
+        this.navHelper();
         if (userProfile) {
             this.setState({
                               isLoggedIn: true,
@@ -90,16 +104,17 @@ export default class AppContainer extends React.Component {
                           })
         }
     }
-/*
 
-    componentWillMount() {
-        onbeforeunload = e => "Don't leave me"
-    }
+    /*
 
-    componentWillUnmount() {
-        onbeforeunload = null
-    }
-*/
+        componentWillMount() {
+            onbeforeunload = e => "Don't leave me"
+        }
+
+        componentWillUnmount() {
+            onbeforeunload = null
+        }
+    */
 
     render() {
         return (

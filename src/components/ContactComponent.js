@@ -44,7 +44,7 @@ const ContactComponent = ({
                         <div className="col-sm-12 form-group">
                             <label htmlFor="message">
                                 Message:</label>
-                            <textarea className="form-control" id="message"
+                            <textarea className="textfield" id="message"
                                       name="message" placeholder="Type your message here"
                                       maxLength="4000" rows="7" value={state.contact.message}
                                       onChange={(event) => {

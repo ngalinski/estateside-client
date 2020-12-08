@@ -19,6 +19,13 @@ const convertToDate = (isoString) => {
     return year + '-' + month + '-' + day;
 }
 
+const states = ['', 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA',
+                'GU',
+                'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN',
+                'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK',
+                'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA',
+                'WV', 'WI', 'WY'];
+
 const ProfileComponent = ({
                               state, login, logout, updateSelectedNavItem, updateUserProfile,
                               toggleProfileUpdated, toggleContactRequested, updateContact
@@ -63,7 +70,12 @@ const ProfileComponent = ({
                            value={state.userProfile.phone}
                            id="phone" type="text" name="phone" placeholder="(617)-123-1234"
                            onChange={(event) => {
-                               updateUserProfile(state.userProfile.dob, event.target.value);
+                               updateUserProfile(state.userProfile.dob, event.target.value,
+                                                 state.userProfile.addrLine1,
+                                                 state.userProfile.addrLine2,
+                                                 state.userProfile.city,
+                                                 state.userProfile.state,
+                                                 state.userProfile.zipcode);
                            }}/>
                 </div>
             </div>
@@ -80,6 +92,105 @@ const ProfileComponent = ({
                            }}/>
                 </div>
             </div>
+
+
+            <div className="form-group row">
+                <label htmlFor="addr-line-1" className="col-sm-3 col-form-label"> Address Line
+                    1 </label>
+                <div className="col-sm-9">
+                    <input className="textfield wbdv-field wbdv-addr-line-1"
+                           id="addr-line-1" type="text" name="addr-line-1"
+                           placeholder="Address line 1"
+                           value={state && state.userProfile ? state.userProfile.addrLine1 : ''}
+                           onChange={(event) => {
+                               updateUserProfile(state.userProfile.dob, state.userProfile.phone,
+                                                 event.target.value,
+                                                 state.userProfile.addrLine2,
+                                                 state.userProfile.city,
+                                                 state.userProfile.state,
+                                                 state.userProfile.zipcode)
+                           }}/>
+                </div>
+            </div>
+
+            <div className="form-group row">
+                <label htmlFor="addr-line-2" className="col-sm-3 col-form-label"> Address Line
+                    2 </label>
+                <div className="col-sm-9">
+                    <input className="textfield wbdv-field wbdv-addr-line-2"
+                           id="addr-line-2" type="text" name="addr-line-2"
+                           placeholder="Address line 2"
+                           value={state && state.userProfile ? state.userProfile.addrLine2 : ''}
+                           onChange={(event) => {
+                               updateUserProfile(state.userProfile.dob, state.userProfile.phone,
+                                                 state.userProfile.addrLine1,
+                                                 event.target.value,
+                                                 state.userProfile.city,
+                                                 state.userProfile.state,
+                                                 state.userProfile.zipcode)
+                           }}/>
+                </div>
+            </div>
+
+            <div className="form-group row">
+                <label htmlFor="city" className="col-sm-3 col-form-label"> City </label>
+                <div className="col-sm-9">
+                    <input className="textfield wbdv-field wbdv-city"
+                           id="city" type="text" name="city"
+                           placeholder="City"
+                           value={state && state.userProfile ? state.userProfile.city : ''}
+                           onChange={(event) => {
+                               updateUserProfile(state.userProfile.dob, state.userProfile.phone,
+                                                 state.userProfile.addrLine1,
+                                                 state.userProfile.addrLine2,
+                                                 event.target.value,
+                                                 state.userProfile.state,
+                                                 state.userProfile.zipcode)
+                           }}/>
+                </div>
+            </div>
+
+            <div className="form-group row">
+                <label htmlFor="state" className="col-sm-3 col-form-label"> State </label>
+                <div className="col-sm-9">
+                    <select className="textfield wbdv-field wbdv-state"
+                            id="state" name="state"
+                            placeholder="State"
+                            value={state && state.userProfile ? state.userProfile.state : ''}
+                            onChange={(event) => {
+                                updateUserProfile(state.userProfile.dob, state.userProfile.phone,
+                                                  state.userProfile.addrLine1,
+                                                  state.userProfile.addrLine2,
+                                                  state.userProfile.city,
+                                                  event.target.value,
+                                                  state.userProfile.zipcode
+                                )
+                            }}>
+                        {states.map(x => {
+                            return <option key={x} value={x}>{x}</option>
+                        })}
+                    </select>
+                </div>
+            </div>
+
+            <div className="form-group row">
+                <label htmlFor="zip" className="col-sm-3 col-form-label"> Zipcode </label>
+                <div className="col-sm-9">
+                    <input className="textfield wbdv-field wbdv-zip"
+                           id="zip" type="text" name="zip"
+                           placeholder="Zipcode"
+                           value={state && state.userProfile ? state.userProfile.zipcode : ''}
+                           onChange={(event) => {
+                               updateUserProfile(state.userProfile.dob, state.userProfile.phone,
+                                                 state.userProfile.addrLine1,
+                                                 state.userProfile.addrLine2,
+                                                 state.userProfile.city,
+                                                 state.userProfile.state,
+                                                 event.target.value)
+                           }}/>
+                </div>
+            </div>
+
 
             <div className="form-group row update-row">
                 <div className="col-sm-3"/>
