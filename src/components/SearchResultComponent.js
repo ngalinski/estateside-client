@@ -10,21 +10,21 @@ export default class SearchResultComponent extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props);
-        const location = this.props.location;
-        let properties = [];
+        const location = this.props.match.params.location;
+        this.setState({location: location})
         if (location) {
-            properties =
-                PropertyService.findPropertiesForCity(location, this.state.propertySearchPage * 10);
+            PropertyService.findPropertiesForCity(location,
+                                                  this.props.state.propertySearchPage
+                                                  * 10)
+                .then(response => {
+                    this.setState({
+                                      properties: response.bundle
+                                  })
+                });
         }
-        this.setState({
-                          location: location,
-                          properties: properties
-                      })
     }
 
     render() {
-
         return (
             <div>
                 <div className="home-page-top">
@@ -43,7 +43,8 @@ export default class SearchResultComponent extends React.Component {
                                        updateSelectedNavItem={this.props.updateSelectedNavItem}
                                        toggleProfileUpdated={this.props.toggleProfileUpdated}
                                        toggleContactRequested={this.props.toggleContactRequested}
-                                       updateContact={this.props.updateContact}/>
+                                       updateContact={this.props.updateContact}
+                                       properties={this.state.properties}/>
                 <br/>
             </div>
         )

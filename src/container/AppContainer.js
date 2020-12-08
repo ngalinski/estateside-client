@@ -9,7 +9,7 @@ import ContactComponent from "../components/ContactComponent";
 import AboutComponent from "../components/AboutComponent";
 import SearchResultComponent from "../components/SearchResultComponent";
 import AppointmentListComponent from "../components/AppointmentListComponent";
-
+import DateUtil from "../util/DateUtil";
 export default class AppContainer extends React.Component {
     state = {
         isLoggedIn: false,
@@ -96,7 +96,6 @@ export default class AppContainer extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props);
         let userProfile = localStorage.getItem("userProfile")
         let userData = JSON.parse(localStorage.getItem("userProfile"))
         this.navHelper();
@@ -185,7 +184,7 @@ export default class AppContainer extends React.Component {
                                         updateContact={this.updateContact}
                         />
                     </Route>
-                    <Route path="/search/:location" exact>
+                    <Route path="/search/:location" exact render={(props) => (
                         <SearchResultComponent state={this.state}
                                                login={this.login}
                                                logout={this.logout}
@@ -194,8 +193,9 @@ export default class AppContainer extends React.Component {
                                                toggleContactRequested={this.toggleContactRequested}
                                                updateContact={this.updateContact}
                                                updateSearchLocation={this.updateSearchLocation}
-                                               {...this.props}
+                                               {...props}
                         />
+                    )}>
                     </Route>
                     <Route path={["/properties/:propertyId/appointments",
                                   "/users/:userId/appointments"]} exact>

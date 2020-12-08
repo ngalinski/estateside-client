@@ -4,20 +4,7 @@ import './css/ProfileComponent.css'
 import {Link} from "react-router-dom";
 import UserService from "../services/UserService";
 import FooterComponent from "./FooterComponent";
-
-const convertToDate = (isoString) => {
-    const date = new Date(isoString);
-    const year = date.getFullYear();
-    let month = date.getMonth() + 1;
-    if (month.toString().length === 1) {
-        month = `0${month.toString()}`;
-    }
-    let day = date.getDate() + 1;
-    if (day.toString().length === 1) {
-        day = `0${day.toString()}`;
-    }
-    return year + '-' + month + '-' + day;
-}
+import DateUtil from "../util/DateUtil";
 
 const states = ['', 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA',
                 'GU',
@@ -86,7 +73,7 @@ const ProfileComponent = ({
                 <div className="col-sm-9">
                     <input className="form-control"
                            id="dob" type="date" name="dateOfBirth"
-                           value={convertToDate(state.userProfile.dob)}
+                           value={DateUtil.convertToDate(state.userProfile.dob)}
                            onChange={(event) => {
                                updateUserProfile(event.target.value, state.userProfile.phone)
                            }}/>

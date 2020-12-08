@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import "./css/PropertyCardComponent.css"
 import Modal from 'react-modal'
 import {BookAppointmentComponent} from "./BookAppointmentComponent";
+import DateUtil from "../util/DateUtil";
 
 const customStyles = {
     content: {
@@ -35,6 +36,7 @@ export default class PropertyCardComponent extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         const imageUrl = "https://picsum.photos/300/200";
         return (
             // creating a property card
@@ -42,15 +44,20 @@ export default class PropertyCardComponent extends React.Component {
                 <div className="card h-100">
                     <img className="card-img-top" src={imageUrl}/>
                     <div className="card-body bg-primary">
-                        <h2>{this.props.property.zestimate}</h2>
+                        {(this.props.zestimate || (this.props.rental
+                                                   && this.props.rental.zestimate)) &&
+                         <h2>${this.props.rental.zestimate || this.props.zestimate}</h2>
+                        }
                         <h4 className="card-title">
-                            <Link to={`properties/${this.props.property.address}`}
+                            <Link to={`properties/${this.props.zpid}`}
                                   title="view the property"
-                                  className="wbdv-hyperlink">{this.props.property.address}</Link>
+                                  className="wbdv-hyperlink">{this.props.address}</Link>
                         </h4>
-                        <p className="card-text text-white">
-                            Available: {this.props.property.date} <br/>
-                        </p>
+                        {this.props.date &&
+                         <p className="card-text text-white">
+                             Available: {DateUtil.convertToDate(this.props.date)} <br/>
+                         </p>
+                        }
                     </div>
                     <div className="card-footer">
                         <i title="delete property"
@@ -70,7 +77,7 @@ export default class PropertyCardComponent extends React.Component {
                         </Modal>
                         <span className="float-right">
                             {/*show/hide one of the heart icons below depending on the data of the property (fav vs not fav)*/}
-                            <i className="fa fa-heart wbdv-fav-property-icon-active"></i>
+                            <i className="fa fa-heart wbdv-fav-property-icon-active"/>
                             {/*<i className="fa fa-heart wbdv-fav-property-icon-inactive"></i>*/}
                         </span>
                     </div>

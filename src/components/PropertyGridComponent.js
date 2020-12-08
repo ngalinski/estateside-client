@@ -5,22 +5,21 @@ import "./css/PropertyGridComponent.css"
 
 const PropertyGridComponent = ({
                                    state, login, logout, updateSelectedNavItem, toggleProfileUpdated,
-                                   toggleContactRequested, updateContact
+                                   toggleContactRequested, updateContact, properties
                                }) => {
     return (
         <div className="wbdv-property">
             <div>
                 <div className="container form-group row property-body">
                     {
-                        state.properties.map(property =>
-                                                 <PropertyCardComponent property={property}
-                                                 />)
+                        properties.map(property =>
+                                           <PropertyCardComponent {...property}
+                                           />)
                     }
                 </div>
             </div>
             <FooterComponent/>
         </div>
-
     )
 }
 
