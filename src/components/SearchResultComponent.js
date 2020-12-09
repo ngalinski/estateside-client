@@ -45,9 +45,7 @@ export default class SearchResultComponent extends React.Component {
         if (this.props.match.params.page) {
             page = parseInt(this.props.match.params.page)
         }
-        console.log(page);
         this.setState({propertySearchPage: parseInt(this.props.match.params.page)}, () => {
-            console.log(this.state.propertySearchPage);
             PropertyService.findPropertiesForCity(location,
                                                   (this.state.propertySearchPage - 1)
                                                   * 12)
