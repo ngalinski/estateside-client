@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import "./css/PropertyCardComponent.css"
 import Modal from 'react-modal'
-import BookAppointmentComponent from "./BookAppointmentComponent";
+import {BookAppointmentComponent} from "./BookAppointmentComponent";
 import DateUtil from "../util/DateUtil";
 import IndividualPropertyDetailComponent from "./IndividualPropertyDetailComponent";
 
@@ -51,62 +51,77 @@ export default class PropertyCardComponent extends React.Component {
                 <div className="card h-100">
                     <img className="card-img-top" src={imageUrl}/>
                     <div className="card-body bg-primary">
-                        {(this.props.zestimate || (this.props.rental
-                                                   && this.props.rental.zestimate)) &&
-                         <h2>${this.props.rental.zestimate || this.props.zestimate}</h2>
+                        {(this.props.property.zestimate || (this.props.property.rental
+                                                            && this.props.property.rental.zestimate))
+                         &&
+                         <h2>${this.props.property.rental.zestimate
+                               || this.props.property.zestimate}</h2>
                         }
                         <h4 className="card-title">
                             <Link
-                                  onClick={this.togglePropertyDetailModal}
-                                  title="view the property"
-                                  className="wbdv-hyperlink">{this.props.address}
-                                  </Link>
+                                onClick={this.togglePropertyDetailModal}
+                                title="view the property"
+                                className="wbdv-hyperlink">{this.props.property.address}
+                            </Link>
                         </h4>
                         <Modal isOpen={this.state.propertyDetailIsActive}
                                onRequestClose={this.togglePropertyDetailModal}
                                style={customStyles}>
                             <div className="container">
                                 <IndividualPropertyDetailComponent
-                                    propertyZpid = {this.props.zpid}
-                                    propertyTitle = {this.props.address}/>
+                                    propertyZpid={this.props.property.zpid}
+                                    propertyTitle={this.props.property.address}/>
                                 <button onClick={this.togglePropertyDetailModal}
                                         className="btn-primary btn btn-block">
                                     Back
                                 </button>
                             </div>
                         </Modal>
-                        {this.props.date &&
+                        {this.props.property.date &&
                          <p className="card-text text-white">
-                             Available: {DateUtil.convertToDate(this.props.date)} <br/>
+                             Available: {DateUtil.convertToDate(this.props.property.date)} <br/>
                          </p>
                         }
                     </div>
                     <div className="card-footer">
-                        <i title="delete property"
-                           className="fa fa-trash-alt wbdv-property-card-icon float-right"/>
-                        <i title="manage appointments"
-                           className="fa fa-address-book wbdv-property-card-icon float-right"
-                           onClick={this.toggleModal}/>
-                        <Modal isOpen={this.state.isActive} onRequestClose={this.toggleModal}
-                               style={customStyles}>
-                            <div className="container">
-                                <BookAppointmentComponent propertyTitle = {this.props.address}
-                                owner = {this.props.ownerName}/>
-                                <button onClick={this.toggleModal}
-                                        className="btn-primary btn btn-block">
-                                    Cancel
-                                </button>
-                            </div>
-                        </Modal>
-                        <span className="float-right">
+                        {this.props.parentState.isLoggedIn
+                         && this.props.parentState.userProfile.role === 'landlord' &&
+                         <i title="delete property"
+                            className="fa fa-trash-alt wbdv-property-card-icon float-right"/>
+                        }
+                        {
+                            this.props.parentState.isLoggedIn &&
+                            <i title="manage appointments"
+                               className="fa fa-address-book wbdv-property-card-icon float-right"
+                               onClick={this.toggleModal}>
+                                <Modal isOpen={this.state.isActive}
+                                       onRequestClose={this.toggleModal}
+                                       style={customStyles}>
+                                    <div className="container">
+                                        <BookAppointmentComponent
+                                            property={this.props.property}
+                                            submitAppointment={this.props.submitAppointment}
+                                            updateAppointmentDate={this.props.updateAppointmentDate}
+                                            updateAppointmentMessage={this.props.updateAppointmentMessage}
+                                        />
+                                        <button onClick={this.toggleModal}
+                                                className="btn-primary btn btn-block">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </Modal>
+                            </i>
+                        }
+                        {this.props.parentState.isLoggedIn &&
+                         <span className="float-right">
                             {/*show/hide one of the heart icons below depending on the data of the property (fav vs not fav)*/}
-                            <i className="fa fa-heart wbdv-fav-property-icon-active"/>
-                            {/*<i className="fa fa-heart wbdv-fav-property-icon-inactive"></i>*/}
-                        </span>
+                             <i className="fa fa-heart wbdv-fav-property-icon-active"/>
+                             {/*<i className="fa fa-heart wbdv-fav-property-icon-inactive"></i>*/}
+                        </span>}
+
                     </div>
                 </div>
             </div>
         )
     }
-
 }
