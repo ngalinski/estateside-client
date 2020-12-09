@@ -2,6 +2,7 @@ import React from 'react';
 import PropertyGridComponent from "./PropertyGridComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 import PropertyService from "../services/PropertyService";
+import AppointmentService from "../services/AppointmentService";
 
 export default class SearchResultComponent extends React.Component {
     state = {
@@ -9,6 +10,32 @@ export default class SearchResultComponent extends React.Component {
         properties: [],
         hits: 0,
         propertySearchPage: 1,
+        appointmentDate: new Date(),
+        appointmentMessage: ''
+    };
+
+    updateAppointmentDate = (date) => {
+        this.setState(prevState => ({
+            appointmentDate: new Date(date)
+        }))
+    };
+
+    updateAppointmentMessage = (message) => {
+        this.setState(prevState => ({
+            appointmentMessage: message
+        }))
+    };
+
+    submitAppointment = (propertyId) => {
+        AppointmentService.createAppointmentForProperty(propertyId, {
+            userId: this.props.state.userProfile._id,
+            propertyId: propertyId,
+            appointmentDate: this.state.appointmentDate,
+            message: this.state.appointmentMessage
+        }).then(response => {
+            window.alert('Appointment created!');
+            console.log(response.json());
+        })
     };
 
     handleNextClick = () => {
@@ -62,7 +89,7 @@ export default class SearchResultComponent extends React.Component {
         return (
             <div>
                 <div className="home-page-top">
-                    <TopNavigationComponent state={this.state}
+                    <TopNavigationComponent state={this.props.state}
                                             login={this.props.login}
                                             logout={this.props.logout}
                                             updateSelectedNavItem={this.props.updateSelectedNavItem}
@@ -71,7 +98,8 @@ export default class SearchResultComponent extends React.Component {
                                             updateContact={this.props.updateContact}
                     />
                 </div>
-                <PropertyGridComponent state={this.state}
+                <PropertyGridComponent parentState={this.props.state}
+                                       state={this.state}
                                        login={this.props.login}
                                        logout={this.props.logout}
                                        updateSelectedNavItem={this.props.updateSelectedNavItem}
@@ -81,7 +109,10 @@ export default class SearchResultComponent extends React.Component {
                                        properties={this.state.properties}
                                        hits={this.state.hits}
                                        handleNextClick={this.handleNextClick}
-                                       handlePrevClick={this.handlePrevClick}/>
+                                       handlePrevClick={this.handlePrevClick}
+                                       submitAppointment={this.submitAppointment}
+                                       updateAppointmentDate={this.updateAppointmentDate}
+                                       updateAppointmentMessage={this.updateAppointmentMessage}/>
                 <br/>
             </div>
         )

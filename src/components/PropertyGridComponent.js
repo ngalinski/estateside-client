@@ -5,9 +5,10 @@ import "./css/PropertyGridComponent.css"
 import PaginationComponent from "./PaginationComponent";
 
 const PropertyGridComponent = ({
-                                   state, login, logout, updateSelectedNavItem, toggleProfileUpdated,
+                                   parentState, state, login, logout, updateSelectedNavItem, toggleProfileUpdated,
                                    toggleContactRequested, updateContact, properties, hits,
-                                   handleNextClick, handlePrevClick
+                                   handleNextClick, handlePrevClick, submitAppointment,
+                                   updateAppointmentDate, updateAppointmentMessage
                                }) => {
     return (
         <div className="wbdv-property">
@@ -18,7 +19,12 @@ const PropertyGridComponent = ({
                 <div className="form-group row property-body">
                     {
                         properties.map(property =>
-                                           <PropertyCardComponent {...property}
+                                           <PropertyCardComponent property={property}
+                                                                  state={state}
+                                                                  submitAppointment={submitAppointment}
+                                                                  updateAppointmentDate={updateAppointmentDate}
+                                                                  updateAppointmentMessage={updateAppointmentMessage}
+                                                                  parentState={parentState}
                                            />)
                     }
                 </div>
