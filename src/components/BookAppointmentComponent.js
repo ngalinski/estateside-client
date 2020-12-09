@@ -10,11 +10,10 @@ export const BookAppointmentComponent = () => {
                         <div className="col-md-7 col-md-push-5">
                             <div className="booking-cta">
                                 <h1>Book your appointment</h1>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-                                    facere, soluta magnam consectetur molestias itaque
-                                    ad sint fugit architecto incidunt iste culpa perspiciatis
-                                    possimus voluptates aliquid consequuntur cumque quasi.
-                                    Perspiciatis.
+                                <p>Our property appointments can be booked here. Once you make an
+                                    appointment, a showing agent will contact you to confirm
+                                    the site visit. Feel free to ask us any questions about the
+                                    Property during the visit appointment.
                                 </p>
                             </div>
                         </div>
@@ -46,7 +45,7 @@ export const BookAppointmentComponent = () => {
                                     </div>
 
                                     <div className="form-btn">
-                                        <button className="submit-btn">Check availability</button>
+                                        <button className="submit-btn">Book appointment</button>
                                     </div>
                                 </form>
                             </div>
