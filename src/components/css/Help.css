@@ -1,6 +1,7 @@
 .wbdv-help {
     height:100%;
     width:100%;
+    display: block;
 }
 
 .help-top-bar {
@@ -35,3 +36,19 @@
     color: white;
     padding-top: 50px;
 }
+
+#q1,#q2,#q3,#q4,#q5,#q6,#q7,#q8,#q9,#q10,#q11,#q12,#q13,#q14,#content{display:none;}
+#q1:checked~#content{display:block;}
+#q2:checked~#content{display:block;}
+#q3:checked~#content{display:block;}
+#q4:checked~#content{display:block;}
+#q5:checked~#content{display:block;}
+#q6:checked~#content{display:block;}
+#q7:checked~#content{display:block;}
+#q8:checked~#content{display:block;}
+#q9:checked~#content{display:block;}
+#q10:checked~#content{display:block;}
+#q11:checked~#content{display:block;}
+#q12:checked~#content{display:block;}
+#q13:checked~#content{display:block;}
+#q14:checked~#content{display:block;}
