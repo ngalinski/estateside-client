@@ -2,9 +2,9 @@ import React from "react";
 import {Link} from "react-router-dom";
 import "./css/PropertyCardComponent.css"
 import Modal from 'react-modal'
-import {BookAppointmentComponent} from "./BookAppointmentComponent";
+import BookAppointmentComponent from "./BookAppointmentComponent";
 import DateUtil from "../util/DateUtil";
-import {IndividualPropertyDetailComponent} from "./IndividualPropertyDetailComponent";
+import IndividualPropertyDetailComponent from "./IndividualPropertyDetailComponent";
 
 const customStyles = {
     content: {
@@ -25,10 +25,6 @@ export default class PropertyCardComponent extends React.Component {
             isActive: false,
             propertyDetailIsActive: false
         }
-
-        // this.propertyDetailState = {
-        //     isActive: false
-        // }
     }
 
     toggleModal = () => {
@@ -42,12 +38,6 @@ export default class PropertyCardComponent extends React.Component {
                           propertyDetailIsActive: !this.state.propertyDetailIsActive
                       })
     };
-
-    //
-    // togglePropertyDetailModal = () => {
-    //     this.propertyDetailState =
-    //         {isActive: !this.propertyDetailState.isActive}
-    // };
 
     componentWillMount() {
         Modal.setAppElement('body');
@@ -77,7 +67,8 @@ export default class PropertyCardComponent extends React.Component {
                                style={customStyles}>
                             <div className="container">
                                 <IndividualPropertyDetailComponent
-                                    propertyTitle={this.props.address}/>
+                                    propertyZpid = {this.props.zpid}
+                                    propertyTitle = {this.props.address}/>
                                 <button onClick={this.togglePropertyDetailModal}
                                         className="btn-primary btn btn-block">
                                     Back
@@ -99,7 +90,8 @@ export default class PropertyCardComponent extends React.Component {
                         <Modal isOpen={this.state.isActive} onRequestClose={this.toggleModal}
                                style={customStyles}>
                             <div className="container">
-                                <BookAppointmentComponent/>
+                                <BookAppointmentComponent propertyTitle = {this.props.address}
+                                owner = {this.props.ownerName}/>
                                 <button onClick={this.toggleModal}
                                         className="btn-primary btn btn-block">
                                     Cancel
