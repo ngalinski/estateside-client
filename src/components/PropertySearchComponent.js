@@ -10,7 +10,8 @@ const PropertySearchComponent = ({state, login, logout, updateSelectedNavItem, u
                        onChange={(event) => updateSearchLocation(event.target.value)}
                        placeholder="Search for City" value={state.searchLocation}/>
                 <Link
-                    to={`/search/${state.searchLocation === '' ? 'Boston' : state.searchLocation}`}>
+                    to={`/search/${state.searchLocation === '' ? 'Boston'
+                                                               : state.searchLocation}/page/1`}>
                     <button className="btn-primary btn">
                         Search
                     </button>

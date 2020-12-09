@@ -36,7 +36,6 @@ export default class PropertyCardComponent extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         const imageUrl = "https://picsum.photos/300/200";
         return (
             // creating a property card

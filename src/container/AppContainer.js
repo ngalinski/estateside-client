@@ -182,18 +182,19 @@ export default class AppContainer extends React.Component {
                                         updateContact={this.updateContact}
                         />
                     </Route>
-                    <Route path="/search/:location" exact render={(props) => (
-                        <SearchResultComponent state={this.state}
-                                               login={this.login}
-                                               logout={this.logout}
-                                               updateSelectedNavItem={this.updateSelectedNavItem}
-                                               toggleProfileUpdated={this.toggleProfileUpdated}
-                                               toggleContactRequested={this.toggleContactRequested}
-                                               updateContact={this.updateContact}
-                                               updateSearchLocation={this.updateSearchLocation}
-                                               {...props}
-                        />
-                    )}>
+                    <Route path={["/search/:location/page/:page"]} exact
+                           render={(props) => (
+                               <SearchResultComponent state={this.state}
+                                                      login={this.login}
+                                                      logout={this.logout}
+                                                      updateSelectedNavItem={this.updateSelectedNavItem}
+                                                      toggleProfileUpdated={this.toggleProfileUpdated}
+                                                      toggleContactRequested={this.toggleContactRequested}
+                                                      updateContact={this.updateContact}
+                                                      updateSearchLocation={this.updateSearchLocation}
+                                                      {...props}
+                               />
+                           )}>
                     </Route>
                     <Route path={["/properties/:propertyId/appointments",
                                   "/users/:userId/appointments"]} exact>

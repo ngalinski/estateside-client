@@ -11,11 +11,11 @@ const PropertyGridComponent = ({
                                }) => {
     return (
         <div className="wbdv-property">
-            <PaginationComponent handlePrevClick={handlePrevClick}
-                                 handleNextClick={handleNextClick} state={state}
-                                 hits={hits}/>
-            <div>
-                <div className="container form-group row property-body">
+            <div className="container">
+                <PaginationComponent handlePrevClick={handlePrevClick}
+                                     handleNextClick={handleNextClick} state={state}
+                                     hits={hits}/>
+                <div className="form-group row property-body">
                     {
                         properties.map(property =>
                                            <PropertyCardComponent {...property}

@@ -19,7 +19,8 @@ export default class SearchResultComponent extends React.Component {
                 this.setState({
                                   properties: response.bundle,
                                   propertySearchPage: this.state.propertySearchPage + 1
-                              })
+                              });
+                window.scrollTo(0, 0);
             });
     };
 
@@ -31,14 +32,22 @@ export default class SearchResultComponent extends React.Component {
                 this.setState({
                                   properties: response.bundle,
                                   propertySearchPage: this.state.propertySearchPage - 1
-                              })
+                              });
+                window.scrollTo(0, 0);
             });
     };
 
     componentDidMount() {
-        const location = this.props.match.params.location;
+        const location = this.props.match.params.location ? this.props.match.params.location
+                                                          : "Boston";
         this.setState({location: location});
-        if (location) {
+        let page = null
+        if (this.props.match.params.page) {
+            page = parseInt(this.props.match.params.page)
+        }
+        console.log(page);
+        this.setState({propertySearchPage: parseInt(this.props.match.params.page)}, () => {
+            console.log(this.state.propertySearchPage);
             PropertyService.findPropertiesForCity(location,
                                                   (this.state.propertySearchPage - 1)
                                                   * 12)
@@ -48,7 +57,7 @@ export default class SearchResultComponent extends React.Component {
                                       hits: response.total
                                   })
                 });
-        }
+        })
     }
 
     render() {
