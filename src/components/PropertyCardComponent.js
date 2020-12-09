@@ -4,6 +4,7 @@ import "./css/PropertyCardComponent.css"
 import Modal from 'react-modal'
 import {BookAppointmentComponent} from "./BookAppointmentComponent";
 import DateUtil from "../util/DateUtil";
+import {IndividualPropertyDetailComponent} from "./IndividualPropertyDetailComponent";
 
 const customStyles = {
     content: {
@@ -21,8 +22,13 @@ export default class PropertyCardComponent extends React.Component {
         super(props)
 
         this.state = {
-            isActive: false
+            isActive: false,
+            propertyDetailIsActive: false
         }
+
+        // this.propertyDetailState = {
+        //     isActive: false
+        // }
     }
 
     toggleModal = () => {
@@ -30,6 +36,18 @@ export default class PropertyCardComponent extends React.Component {
                           isActive: !this.state.isActive
                       })
     };
+
+    togglePropertyDetailModal = () => {
+        this.setState({
+                          propertyDetailIsActive: !this.state.propertyDetailIsActive
+                      })
+    };
+
+    //
+    // togglePropertyDetailModal = () => {
+    //     this.propertyDetailState =
+    //         {isActive: !this.propertyDetailState.isActive}
+    // };
 
     componentWillMount() {
         Modal.setAppElement('body');
@@ -48,10 +66,24 @@ export default class PropertyCardComponent extends React.Component {
                          <h2>${this.props.rental.zestimate || this.props.zestimate}</h2>
                         }
                         <h4 className="card-title">
-                            <Link to={`properties/${this.props.zpid}`}
+                            <Link
+                                  onClick={this.togglePropertyDetailModal}
                                   title="view the property"
-                                  className="wbdv-hyperlink">{this.props.address}</Link>
+                                  className="wbdv-hyperlink">{this.props.address}
+                                  </Link>
                         </h4>
+                        <Modal isOpen={this.state.propertyDetailIsActive}
+                               onRequestClose={this.togglePropertyDetailModal}
+                               style={customStyles}>
+                            <div className="container">
+                                <IndividualPropertyDetailComponent
+                                    propertyTitle={this.props.address}/>
+                                <button onClick={this.togglePropertyDetailModal}
+                                        className="btn-primary btn btn-block">
+                                    Back
+                                </button>
+                            </div>
+                        </Modal>
                         {this.props.date &&
                          <p className="card-text text-white">
                              Available: {DateUtil.convertToDate(this.props.date)} <br/>
@@ -70,7 +102,7 @@ export default class PropertyCardComponent extends React.Component {
                                 <BookAppointmentComponent/>
                                 <button onClick={this.toggleModal}
                                         className="btn-primary btn btn-block">
-                                    Close modal
+                                    Cancel
                                 </button>
                             </div>
                         </Modal>
