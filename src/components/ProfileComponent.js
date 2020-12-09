@@ -75,7 +75,7 @@ const ProfileComponent = ({
                            value={DateUtil.convertToDate(state.userProfile.dob)}
                            onChange={(event) => {
                                updateUserProfile(event.target.value, state.userProfile.phone)
-                           }}/>
+                           }} readOnly/>
                 </div>
             </div>
 

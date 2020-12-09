@@ -9,6 +9,7 @@ import ContactComponent from "../components/ContactComponent";
 import AboutComponent from "../components/AboutComponent";
 import SearchResultComponent from "../components/SearchResultComponent";
 import AppointmentListComponent from "../components/AppointmentListComponent";
+import RegisterComponent from "../components/RegisterComponent";
 
 export default class AppContainer extends React.Component {
     state = {
@@ -205,6 +206,16 @@ export default class AppContainer extends React.Component {
                                                   toggleProfileUpdated={this.toggleProfileUpdated}
                                                   toggleContactRequested={this.toggleContactRequested}
                                                   updateContact={this.updateContact}
+                        />
+                    </Route>
+                    <Route path="/register" exact>
+                        <RegisterComponent state={this.state}
+                                          login={this.login}
+                                          logout={this.logout}
+                                          updateSelectedNavItem={this.updateSelectedNavItem}
+                                          toggleProfileUpdated={this.toggleProfileUpdated}
+                                          toggleContactRequested={this.toggleContactRequested}
+                                          updateContact={this.updateContact}
                         />
                     </Route>
                 </BrowserRouter>
