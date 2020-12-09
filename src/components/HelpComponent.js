@@ -142,8 +142,8 @@ const HelpComponent = ({state, login, logout, updateSelectedNavItem, toggleProfi
                 </div>
 
             </div>
-            <FooterComponent/>
         </div>
+        <FooterComponent/>
     </div>
 
 export default HelpComponent
