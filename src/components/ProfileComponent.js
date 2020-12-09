@@ -105,7 +105,7 @@ const ProfileComponent = ({
                 <div className="col-sm-9">
                     <input className="textfield wbdv-field wbdv-addr-line-2"
                            id="addr-line-2" type="text" name="addr-line-2"
-                           placeholder="Address line 2"
+                           placeholder="Apt, Unit, Number, Etc."
                            value={state && state.userProfile ? state.userProfile.addrLine2 : ''}
                            onChange={(event) => {
                                updateUserProfile(state.userProfile.dob, state.userProfile.phone,

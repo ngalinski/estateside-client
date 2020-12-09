@@ -24,9 +24,9 @@ const ContactComponent = ({
         </div>
         <div className="contact-body container">
 
-            <h3>General Contact Information</h3>
+            <h2>General Contact Information</h2>
             <p>
-                To reach the creators of Estateside, please reach fill out the contact form below.
+                To reach the creators of Estateside, please fill out the contact form below.
                 Alternatively, you can reach out to Northeastern University and reference CS5610 -
                 Fall 2020 and then mention Estateside.
             </p>
@@ -45,7 +45,7 @@ const ContactComponent = ({
                             <label htmlFor="message">
                                 Message:</label>
                             <textarea className="textfield" id="message"
-                                      name="message" placeholder="Type your message here"
+                                      name="message" placeholder="Type your message here..."
                                       maxLength="4000" rows="7" value={state.contact.message}
                                       onChange={(event) => {
                                           updateContact(event.target.value, state.contact.name,
@@ -56,8 +56,8 @@ const ContactComponent = ({
                     <div className="row">
                         <div className="col-sm-6 form-group">
                             <label htmlFor="name">
-                                Your Name:</label>
-                            <input type="text" className="textfield" id="name" name="name"
+                                Name:</label>
+                            <input type="text" className="textfield" id="name" name="name" placeholder="Your name"
                                    required value={state.contact.name} onChange={(event) => {
                                 updateContact(state.contact.message, event.target.value,
                                               state.contact.email)
@@ -66,7 +66,7 @@ const ContactComponent = ({
                         <div className="col-sm-6 form-group">
                             <label htmlFor="email">
                                 Email:</label>
-                            <input type="email" className="textfield" id="email" name="email"
+                            <input type="email" className="textfield" id="email" name="email" placeholder="Your email"
                                    required value={state.contact.email} onChange={(event) => {
                                 updateContact(state.contact.message, state.contact.name,
                                               event.target.value)
