@@ -2,13 +2,18 @@ import React from "react";
 import PropertyCardComponent from "./PropertyCardComponent";
 import FooterComponent from "./FooterComponent";
 import "./css/PropertyGridComponent.css"
+import PaginationComponent from "./PaginationComponent";
 
 const PropertyGridComponent = ({
                                    state, login, logout, updateSelectedNavItem, toggleProfileUpdated,
-                                   toggleContactRequested, updateContact, properties, hits, handleClick
+                                   toggleContactRequested, updateContact, properties, hits,
+                                   handleNextClick, handlePrevClick
                                }) => {
     return (
         <div className="wbdv-property">
+            <PaginationComponent handlePrevClick={handlePrevClick}
+                                 handleNextClick={handleNextClick} state={state}
+                                 hits={hits}/>
             <div>
                 <div className="container form-group row property-body">
                     {
@@ -17,14 +22,9 @@ const PropertyGridComponent = ({
                                            />)
                     }
                 </div>
-                <div className="paginated-btn-set">
-                    <button className="btn-primary" disabled={state.propertySearchPage === 1}>Prev
-                    </button>
-                    <span> Page {state.propertySearchPage} of {Math.ceil(hits / 12)}</span>
-                    <button className="btn-primary"
-                            disabled={state.propertySearchPage === Math.ceil(hits / 12)}>Next
-                    </button>
-                </div>
+                <PaginationComponent handlePrevClick={handlePrevClick}
+                                     handleNextClick={handleNextClick} state={state}
+                                     hits={hits}/>
             </div>
             <FooterComponent/>
         </div>

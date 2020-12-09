@@ -7,16 +7,41 @@ export default class SearchResultComponent extends React.Component {
     state = {
         location: '',
         properties: [],
-        hits: 0
-    }
+        hits: 0,
+        propertySearchPage: 1,
+    };
+
+    handleNextClick = () => {
+        PropertyService.findPropertiesForCity(this.state.location,
+                                              (this.state.propertySearchPage)
+                                              * 12)
+            .then(response => {
+                this.setState({
+                                  properties: response.bundle,
+                                  propertySearchPage: this.state.propertySearchPage + 1
+                              })
+            });
+    };
+
+    handlePrevClick = () => {
+        PropertyService.findPropertiesForCity(this.state.location,
+                                              (this.state.propertySearchPage - 2)
+                                              * 12)
+            .then(response => {
+                this.setState({
+                                  properties: response.bundle,
+                                  propertySearchPage: this.state.propertySearchPage - 1
+                              })
+            });
+    };
 
     componentDidMount() {
         const location = this.props.match.params.location;
-        this.setState({location: location})
+        this.setState({location: location});
         if (location) {
             PropertyService.findPropertiesForCity(location,
-                                                  (this.props.state.propertySearchPage - 1)
-                                                  * 10)
+                                                  (this.state.propertySearchPage - 1)
+                                                  * 12)
                 .then(response => {
                     this.setState({
                                       properties: response.bundle,
@@ -30,7 +55,7 @@ export default class SearchResultComponent extends React.Component {
         return (
             <div>
                 <div className="home-page-top">
-                    <TopNavigationComponent state={this.props.state}
+                    <TopNavigationComponent state={this.state}
                                             login={this.props.login}
                                             logout={this.props.logout}
                                             updateSelectedNavItem={this.props.updateSelectedNavItem}
@@ -39,7 +64,7 @@ export default class SearchResultComponent extends React.Component {
                                             updateContact={this.props.updateContact}
                     />
                 </div>
-                <PropertyGridComponent state={this.props.state}
+                <PropertyGridComponent state={this.state}
                                        login={this.props.login}
                                        logout={this.props.logout}
                                        updateSelectedNavItem={this.props.updateSelectedNavItem}
@@ -47,7 +72,9 @@ export default class SearchResultComponent extends React.Component {
                                        toggleContactRequested={this.props.toggleContactRequested}
                                        updateContact={this.props.updateContact}
                                        properties={this.state.properties}
-                                       hits={this.state.hits}/>
+                                       hits={this.state.hits}
+                                       handleNextClick={this.handleNextClick}
+                                       handlePrevClick={this.handlePrevClick}/>
                 <br/>
             </div>
         )

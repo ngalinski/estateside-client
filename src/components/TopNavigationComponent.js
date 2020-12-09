@@ -7,7 +7,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 
 const TopNavigationComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated, toggleContactRequested}) => {
     return (
-        <div className="topnav">
+        <div className="topnav" id="topnav">
             <ul className="icons">
                 <Tooltip title="Home">
                     <li><Link to="/" className={`${state.selectedNavItem === "Home" ? "active"

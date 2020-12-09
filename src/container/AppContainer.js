@@ -20,8 +20,6 @@ export default class AppContainer extends React.Component {
         profileUpdated: false,
         contactRequested: false,
         searchLocation: "",
-        propertySearchPage: 1,
-        location: '',
         properties: []
     };
 
