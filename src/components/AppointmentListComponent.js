@@ -57,7 +57,7 @@ const AppointmentListComponent = ({
                                   }) => {
     return (
         <div>
-            <div className="contact-top-bar">
+            <div className="home-page-top">
                 <TopNavigationComponent state={state}
                                         login={login}
                                         logout={logout}
@@ -66,12 +66,12 @@ const AppointmentListComponent = ({
                                         toggleContactRequested={toggleContactRequested}
                                         updateContact={updateContact}
                 />
+
             </div>
             <div>
                 <header>
                     <h1>Appointment List</h1>
                 </header>
-
                 <div className="container">
                     <table className="table">
                         <thead className="text-white">
@@ -80,7 +80,7 @@ const AppointmentListComponent = ({
                                 <i className="fa fa-map-pin wbdv-table-header-icon"/>
                                 Property Address
                             </th>
-                            <th className="d-none d-sm-table-cell">
+                            <th>
                                 <i className="fa fa-users wbdv-table-header-icon"/>
                                 Viewer
                             </th>
