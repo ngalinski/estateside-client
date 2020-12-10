@@ -1,5 +1,4 @@
 import React from "react";
-import {Link} from "react-router-dom";
 import "./css/PropertyCardComponent.css"
 import Modal from 'react-modal'
 import {BookAppointmentComponent} from "./BookAppointmentComponent";
@@ -19,8 +18,7 @@ const customStyles = {
 
 export default class PropertyCardComponent extends React.Component {
     constructor(props) {
-        super(props)
-
+        super(props);
         this.state = {
             isActive: false,
             propertyDetailIsActive: false
@@ -91,9 +89,10 @@ export default class PropertyCardComponent extends React.Component {
                          }
                          {
                              this.props.parentState.isLoggedIn &&
-                             <i title="manage appointments"
-                                className="fa fa-address-book wbdv-property-card-icon float-right"
-                                onClick={this.toggleModal}>
+                             <div>
+                                 <i title="manage appointments"
+                                    className="fa fa-address-book wbdv-property-card-icon float-right"
+                                    onClick={this.toggleModal}/>
                                  <Modal isOpen={this.state.isActive}
                                         onRequestClose={this.toggleModal}
                                         style={customStyles}>
@@ -110,7 +109,7 @@ export default class PropertyCardComponent extends React.Component {
                                          </button>
                                      </div>
                                  </Modal>
-                             </i>
+                             </div>
                          }
                          {this.props.parentState.isLoggedIn &&
                           <span className="float-right">

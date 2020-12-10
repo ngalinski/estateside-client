@@ -15,6 +15,7 @@ export default class SearchResultComponent extends React.Component {
     };
 
     updateAppointmentDate = (date) => {
+        console.log(date);
         this.setState(prevState => ({
             appointmentDate: new Date(date)
         }))
