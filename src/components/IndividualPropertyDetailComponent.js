@@ -34,9 +34,9 @@ class IndividualPropertyDetailComponent extends React.Component {
                                     <h4> Address: {this.state.property.address}</h4>
 
                                     <h6> Latitude: {this.state.property.coordinates &&
-                                                    this.state.property.coordinates[0]}</h6>
+                                                    this.state.property.coordinates[1]}</h6>
                                     <h6> Longitude: {this.state.property.coordinates &&
-                                                     this.state.property.coordinates[1]}</h6>
+                                                     this.state.property.coordinates[0]}</h6>
                                     <h6>Owner name: {this.state.property.ownerName}</h6>
                                     <h6>ZPID: {this.state.property.zpid}</h6>
                                     <p>Our property appointments can be booked here. Once you make
@@ -51,8 +51,8 @@ class IndividualPropertyDetailComponent extends React.Component {
                                 <div className="booking-form">
                                     {
                                         this.state.property.coordinates &&
-                                        <MapComponent latitude={parseFloat(this.state.property.coordinates[0])}
-                                                      longitude={parseFloat(this.state.property.coordinates[1])
+                                        <MapComponent latitude={parseFloat(this.state.property.coordinates[1])}
+                                                      longitude={parseFloat(this.state.property.coordinates[0])
                                         }/>
                                     }
                                     {/*<MapComponent latitude={this.state.property.coordinates &&*/}

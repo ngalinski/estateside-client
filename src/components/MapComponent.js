@@ -4,10 +4,11 @@ import Marker from "./Marker";
 import './css/Map.css';
 
 // {latitude = 40.711453, longitude = -74.006415}
-const MapComponent = ({latitude = 40.711453, longitude = -74.006415}) => {
+const MapComponent = ({latitude, longitude}) => {
     const [center, setCenter] = useState({lat: latitude, lng: longitude});
     const [zoom, setZoom] = useState(16);
-    console.log(typeof (latitude))
+    console.log(typeof(latitude))
+    console.log(latitude)
     console.log(longitude)
     return (
         <div className="google-map">
