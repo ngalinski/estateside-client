@@ -34,7 +34,6 @@ export default class SearchResultComponent extends React.Component {
             message: this.state.appointmentMessage
         }).then(response => {
             window.alert('Appointment created!');
-            console.log(response.json());
         })
     };
 
