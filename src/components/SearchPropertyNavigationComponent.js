@@ -46,17 +46,20 @@ export default class SearchPropertyNavigationComponent extends React.Component {
                     </li>
                     <li>
                         <Tooltip title="Add a new listing">
-                            <a onClick={this.toggleModal}>
+                            <Link onClick={this.toggleModal}>
                                 Add new listing
-                            </a>
+                            </Link>
                         </Tooltip>
 
                         <Modal isOpen={this.state.isActive} onRequestClose={this.toggleModal}
                                style={customStyles}>
                             <div className="container">
-                                <NewListingComponent/>
+                                <NewListingComponent createListing={this.props.createListing}
+                                                     updateNewProperty={this.props.updateNewProperty}
+                                                     state={this.props.state}
+                                toggleModal={this.toggleModal}/>
                                 <button onClick={this.toggleModal}
-                                        className="btn-primary btn btn-block">
+                                        className="btn-danger btn btn-block">
                                     Cancel
                                 </button>
                             </div>
