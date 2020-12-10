@@ -8,7 +8,7 @@ const PropertyGridComponent = ({
                                    parentState, state, login, logout, updateSelectedNavItem, toggleProfileUpdated,
                                    toggleContactRequested, updateContact, properties, hits,
                                    handleNextClick, handlePrevClick, submitAppointment,
-                                   updateAppointmentDate, updateAppointmentMessage
+                                   updateAppointmentDate, updateAppointmentMessage, showOptions
                                }) => {
     return (
         <div className="wbdv-property">
@@ -25,6 +25,7 @@ const PropertyGridComponent = ({
                                                                   updateAppointmentDate={updateAppointmentDate}
                                                                   updateAppointmentMessage={updateAppointmentMessage}
                                                                   parentState={parentState}
+                                                                  showOptions={showOptions}
                                            />)
                     }
                 </div>

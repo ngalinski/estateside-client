@@ -10,6 +10,7 @@ import AboutComponent from "../components/AboutComponent";
 import SearchResultComponent from "../components/SearchResultComponent";
 import AppointmentListComponent from "../components/AppointmentListComponent";
 import RegisterComponent from "../components/RegisterComponent";
+import LandlordPortal from "../components/LandlordPortal";
 
 export default class AppContainer extends React.Component {
     state = {
@@ -91,6 +92,8 @@ export default class AppContainer extends React.Component {
             this.setState({selectedNavItem: "Privacy"})
         } else if (path.includes("help")) {
             this.setState({selectedNavItem: "Help"})
+        } else if (path.includes("portal")) {
+            this.setState({selectedNavItem: "Portal"})
         }
     }
 
@@ -121,17 +124,20 @@ export default class AppContainer extends React.Component {
         return (
             <div>
                 <BrowserRouter>
-                    <Route path={["/", "/login", "/logout"]} exact>
-                        <HomeComponent state={this.state}
-                                       login={this.login}
-                                       logout={this.logout}
-                                       updateSelectedNavItem={this.updateSelectedNavItem}
-                                       toggleProfileUpdated={this.toggleProfileUpdated}
-                                       toggleContactRequested={this.toggleContactRequested}
-                                       updateContact={this.updateContact}
-                                       updateSearchLocation={this.updateSearchLocation}
-                        />
-                    </Route>
+                    <Route path={["/", "/login", "/logout"]} exact
+                           render={(props) =>
+                               <HomeComponent state={this.state}
+                                              login={this.login}
+                                              logout={this.logout}
+                                              updateSelectedNavItem={this.updateSelectedNavItem}
+                                              toggleProfileUpdated={this.toggleProfileUpdated}
+                                              toggleContactRequested={this.toggleContactRequested}
+                                              updateContact={this.updateContact}
+                                              updateSearchLocation={this.updateSearchLocation}
+                                              {...props}
+                               />
+                           }
+                    />
                     <Route path="/profile" exact>
                         <ProfileComponent state={this.state}
                                           login={this.login}
@@ -210,13 +216,27 @@ export default class AppContainer extends React.Component {
                     </Route>
                     <Route path="/register" exact>
                         <RegisterComponent state={this.state}
-                                          login={this.login}
-                                          logout={this.logout}
-                                          updateSelectedNavItem={this.updateSelectedNavItem}
-                                          toggleProfileUpdated={this.toggleProfileUpdated}
-                                          toggleContactRequested={this.toggleContactRequested}
-                                          updateContact={this.updateContact}
+                                           login={this.login}
+                                           logout={this.logout}
+                                           updateSelectedNavItem={this.updateSelectedNavItem}
+                                           toggleProfileUpdated={this.toggleProfileUpdated}
+                                           toggleContactRequested={this.toggleContactRequested}
+                                           updateContact={this.updateContact}
                         />
+                    </Route>
+                    <Route path={["/landlord/portal", "/landlord/portal/:landlordId/properties"]}
+                           exact render={(props) =>
+                        <LandlordPortal state={this.state}
+                                        login={this.login}
+                                        logout={this.logout}
+                                        updateSelectedNavItem={this.updateSelectedNavItem}
+                                        toggleProfileUpdated={this.toggleProfileUpdated}
+                                        toggleContactRequested={this.toggleContactRequested}
+                                        updateContact={this.updateContact}
+                                        updateSearchLocation={this.updateSearchLocation}
+                                        {...props}
+                        />
+                    }>
                     </Route>
                 </BrowserRouter>
             </div>

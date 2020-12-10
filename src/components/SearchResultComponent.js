@@ -98,21 +98,25 @@ export default class SearchResultComponent extends React.Component {
                                             updateContact={this.props.updateContact}
                     />
                 </div>
-                <PropertyGridComponent parentState={this.props.state}
-                                       state={this.state}
-                                       login={this.props.login}
-                                       logout={this.props.logout}
-                                       updateSelectedNavItem={this.props.updateSelectedNavItem}
-                                       toggleProfileUpdated={this.props.toggleProfileUpdated}
-                                       toggleContactRequested={this.props.toggleContactRequested}
-                                       updateContact={this.props.updateContact}
-                                       properties={this.state.properties}
-                                       hits={this.state.hits}
-                                       handleNextClick={this.handleNextClick}
-                                       handlePrevClick={this.handlePrevClick}
-                                       submitAppointment={this.submitAppointment}
-                                       updateAppointmentDate={this.updateAppointmentDate}
-                                       updateAppointmentMessage={this.updateAppointmentMessage}/>
+                {this.state.properties.length > 0 &&
+                 <PropertyGridComponent parentState={this.props.state}
+                                        state={this.state}
+                                        login={this.props.login}
+                                        logout={this.props.logout}
+                                        updateSelectedNavItem={this.props.updateSelectedNavItem}
+                                        toggleProfileUpdated={this.props.toggleProfileUpdated}
+                                        toggleContactRequested={this.props.toggleContactRequested}
+                                        updateContact={this.props.updateContact}
+                                        properties={this.state.properties}
+                                        hits={this.state.hits}
+                                        handleNextClick={this.handleNextClick}
+                                        handlePrevClick={this.handlePrevClick}
+                                        submitAppointment={this.submitAppointment}
+                                        updateAppointmentDate={this.updateAppointmentDate}
+                                        updateAppointmentMessage={this.updateAppointmentMessage}
+                                        showOptions={true}/>
+                }
+
                 <br/>
             </div>
         )

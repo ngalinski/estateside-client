@@ -18,7 +18,7 @@ const customStyles = {
 export default class SearchPropertyNavigationComponent extends React.Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             isActive: false
         }
@@ -39,25 +39,16 @@ export default class SearchPropertyNavigationComponent extends React.Component {
             <div className="topnav">
                 <ul className="icons">
                     <li>
-                        <Tooltip title="See all properties">
-                            <Link to="/properties">All Properties</Link>
+                        <Tooltip title="Your hosted properties">
+                            <Link to={`/landlord/portal/${this.props.landlordId}/properties`}>
+                                Listed Properties</Link>
                         </Tooltip>
                     </li>
                     <li>
-                        <Tooltip title="Renter: Your favourite properties">
-                            <Link to="/properties">Renter: Your favourite Properties</Link>
-                        </Tooltip>
-                    </li>
-                    <li>
-                        <Tooltip title="Landlord: Your hosted properties">
-                            <Link to="/properties">Landlord: Your hosted Properties</Link>
-                        </Tooltip>
-                    </li>
-                    <li>
-                        <Tooltip title="Enter details for creation of new property listing">
-                            <Link onClick={this.toggleModal}>
-                                Landlord: Create new property listing
-                            </Link>
+                        <Tooltip title="Add a new listing">
+                            <a onClick={this.toggleModal}>
+                                Add new listing
+                            </a>
                         </Tooltip>
 
                         <Modal isOpen={this.state.isActive} onRequestClose={this.toggleModal}
@@ -66,7 +57,7 @@ export default class SearchPropertyNavigationComponent extends React.Component {
                                 <NewListingComponent/>
                                 <button onClick={this.toggleModal}
                                         className="btn-primary btn btn-block">
-                                    Close modal
+                                    Cancel
                                 </button>
                             </div>
                         </Modal>

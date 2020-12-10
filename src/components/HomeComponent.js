@@ -7,7 +7,7 @@ import FooterComponent from "./FooterComponent";
 const HomeComponent = ({
                            state, login, logout, updateSelectedNavItem,
                            toggleProfileUpdated, toggleContactRequested, updateContact,
-                           updateSearchLocation
+                           updateSearchLocation, props
                        }) => {
     return (
         <div className="home-page-components">
@@ -19,6 +19,7 @@ const HomeComponent = ({
                                         toggleProfileUpdated={toggleProfileUpdated}
                                         toggleContactRequested={toggleContactRequested}
                                         updateContact={updateContact}
+                                        {...props}
                 />
                 <header id="home-header"><h1>Estateside</h1></header>
                 <p className="find-home-title">Find your new home.</p>

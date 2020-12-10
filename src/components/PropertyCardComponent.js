@@ -58,11 +58,11 @@ export default class PropertyCardComponent extends React.Component {
                                || this.props.property.zestimate}</h2>
                         }
                         <h4 className="card-title">
-                            <Link
+                            <a
                                 onClick={this.togglePropertyDetailModal}
                                 title="view the property"
                                 className="wbdv-hyperlink">{this.props.property.address}
-                            </Link>
+                            </a>
                         </h4>
                         <Modal isOpen={this.state.propertyDetailIsActive}
                                onRequestClose={this.togglePropertyDetailModal}
@@ -83,43 +83,45 @@ export default class PropertyCardComponent extends React.Component {
                          </p>
                         }
                     </div>
-                    <div className="card-footer">
-                        {this.props.parentState.isLoggedIn
-                         && this.props.parentState.userProfile.role === 'landlord' &&
-                         <i title="delete property"
-                            className="fa fa-trash-alt wbdv-property-card-icon float-right"/>
-                        }
-                        {
-                            this.props.parentState.isLoggedIn &&
-                            <i title="manage appointments"
-                               className="fa fa-address-book wbdv-property-card-icon float-right"
-                               onClick={this.toggleModal}>
-                                <Modal isOpen={this.state.isActive}
-                                       onRequestClose={this.toggleModal}
-                                       style={customStyles}>
-                                    <div className="container">
-                                        <BookAppointmentComponent
-                                            property={this.props.property}
-                                            submitAppointment={this.props.submitAppointment}
-                                            updateAppointmentDate={this.props.updateAppointmentDate}
-                                            updateAppointmentMessage={this.props.updateAppointmentMessage}
-                                        />
-                                        <button onClick={this.toggleModal}
-                                                className="btn-primary btn btn-block">
-                                            Cancel
-                                        </button>
-                                    </div>
-                                </Modal>
-                            </i>
-                        }
-                        {this.props.parentState.isLoggedIn &&
-                         <span className="float-right">
+                    {this.props.showOptions &&
+                     <div className="card-footer">
+                         {this.props.parentState.isLoggedIn
+                          && this.props.parentState.userProfile.role === 'landlord' &&
+                          <i title="delete property"
+                             className="fa fa-trash-alt wbdv-property-card-icon float-right"/>
+                         }
+                         {
+                             this.props.parentState.isLoggedIn &&
+                             <i title="manage appointments"
+                                className="fa fa-address-book wbdv-property-card-icon float-right"
+                                onClick={this.toggleModal}>
+                                 <Modal isOpen={this.state.isActive}
+                                        onRequestClose={this.toggleModal}
+                                        style={customStyles}>
+                                     <div className="container">
+                                         <BookAppointmentComponent
+                                             property={this.props.property}
+                                             submitAppointment={this.props.submitAppointment}
+                                             updateAppointmentDate={this.props.updateAppointmentDate}
+                                             updateAppointmentMessage={this.props.updateAppointmentMessage}
+                                         />
+                                         <button onClick={this.toggleModal}
+                                                 className="btn-primary btn btn-block">
+                                             Cancel
+                                         </button>
+                                     </div>
+                                 </Modal>
+                             </i>
+                         }
+                         {this.props.parentState.isLoggedIn &&
+                          <span className="float-right">
                             {/*show/hide one of the heart icons below depending on the data of the property (fav vs not fav)*/}
-                             <i className="fa fa-heart wbdv-fav-property-icon-active"/>
-                             {/*<i className="fa fa-heart wbdv-fav-property-icon-inactive"></i>*/}
+                              <i className="fa fa-heart wbdv-fav-property-icon-active"/>
+                              {/*<i className="fa fa-heart wbdv-fav-property-icon-inactive"></i>*/}
                         </span>}
 
-                    </div>
+                     </div>}
+
                 </div>
             </div>
         )
