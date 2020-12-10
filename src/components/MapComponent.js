@@ -3,9 +3,12 @@ import GoogleMapReact from 'google-map-react';
 import Marker from "./Marker";
 import './css/Map.css';
 
-const MapComponent = ({latitude = 42.334129, longitude = -71.097809}) => {
+// {latitude = 40.711453, longitude = -74.006415}
+const MapComponent = ({latitude = 40.711453, longitude = -74.006415}) => {
     const [center, setCenter] = useState({lat: latitude, lng: longitude});
     const [zoom, setZoom] = useState(16);
+    console.log(typeof (latitude))
+    console.log(longitude)
     return (
         <div className="google-map">
             <GoogleMapReact
