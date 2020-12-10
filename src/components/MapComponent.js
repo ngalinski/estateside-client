@@ -10,7 +10,7 @@ const MapComponent = ({latitude, longitude}) => {
     console.log(latitude)
     console.log(longitude)
     return (
-        <div className="google-map">
+        <div className="google-map" >
             <GoogleMapReact
                 bootstrapURLKeys={{key: process.env.REACT_APP_GOOGLE_MAP_API_KEY}}
                 defaultCenter={center}

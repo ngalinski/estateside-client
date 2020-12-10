@@ -91,11 +91,7 @@ class IndividualPropertyDetailComponent extends React.Component {
                                                   longitude={parseFloat(this.state.property.coordinates[0])
                                                   }/>
                                 }
-                                {/*<MapComponent latitude={this.state.property.coordinates &&*/}
-                                {/*                            parseFloat(this.state.property.coordinates[0])}*/}
-                                {/*                  longitude={this.state.property.coordinates &&*/}
-                                {/*                             parseFloat(this.state.property.coordinates[1])}/>*/}
-                            </div>
+                                </div>
                         </div>
                     </div>
                 </div>
