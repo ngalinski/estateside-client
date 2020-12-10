@@ -8,7 +8,7 @@ const PropertySearchComponent = ({state, login, logout, updateSelectedNavItem, u
             <div id="signup-form">
                 <input className="textfield" type="text" name="search" id="search"
                        onChange={(event) => updateSearchLocation(event.target.value)}
-                       placeholder="Search for City" value={state.searchLocation}/>
+                       placeholder="Search for City"/>
                 <Link
                     to={`/search/${state.searchLocation === '' ? 'Boston'
                                                                : state.searchLocation}/page/1`}>
