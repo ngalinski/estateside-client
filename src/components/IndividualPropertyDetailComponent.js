@@ -2,6 +2,7 @@ import React from "react";
 import "./css/PropertyGridComponent.css"
 import {connect} from "react-redux";
 import PropertyService from "../services/PropertyService";
+import MapComponent from "./MapComponent";
 
 class IndividualPropertyDetailComponent extends React.Component {
     state = {
@@ -16,7 +17,7 @@ class IndividualPropertyDetailComponent extends React.Component {
                 .then(response => {
                     console.log(response)
                     this.setState({
-                                      property: response.bundle,
+                                      property: response,
                                   })
                 });
         })
@@ -28,11 +29,23 @@ class IndividualPropertyDetailComponent extends React.Component {
                 <div className="section-center">
                     <div className="container">
                         <div className="row">
+                            <div className="col-md-4 col-md-pull-7">
+                                <div className="property-detail">
+                                    <h1>Details</h1>
+                                    <h4> Address: {this.state.property.address}</h4>
+                                    <h6> Coordinates: {this.state.property.coordinates}</h6>
+                                    <h6>Owner name: {this.state.property.ownerName}</h6>
+                                    <h6>ZPID: {this.state.property.zpid}</h6>
+                                    <p>Our property appointments can be booked here. Once you make an
+                                        appointment, a showing agent will contact you to confirm
+                                        the site visit. Feel free to ask us any questions about the
+                                        Property during the visit appointment.
+                                    </p>
+                                </div>
+                            </div>
                             <div className="col-md-7 col-md-push-5">
-                                <div className="booking-cta">
-                                    <h1>Details about property</h1>
-                                    <h3>Location: {this.props.property.address}</h3>
-                                    <h4>ZPID: {this.props.property.zpid}</h4>
+                                <div className="booking-form">
+                                    <MapComponent/>
                                 </div>
                             </div>
                         </div>

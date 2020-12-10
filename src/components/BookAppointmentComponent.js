@@ -13,8 +13,8 @@ export const BookAppointmentComponent = ({
                         <div className="col-md-7 col-md-push-5">
                             <div className="booking-cta">
                                 <h1>Book your appointment</h1>
-                                <h4>{property.propertyTitle}</h4>
-                                <h6>{property.owner}</h6>
+                                <h4>{property.address}</h4>
+                                <h6>{property.ownerName}</h6>
                                 <p>Our property appointments can be booked here. Once you make an
                                     appointment, a showing agent will contact you to confirm
                                     the site visit. Feel free to ask us any questions about the

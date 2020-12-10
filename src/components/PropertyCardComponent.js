@@ -69,8 +69,7 @@ export default class PropertyCardComponent extends React.Component {
                                style={customStyles}>
                             <div className="container">
                                 <IndividualPropertyDetailComponent
-                                    propertyZpid={this.props.property.zpid}
-                                    propertyTitle={this.props.property.address}/>
+                                    property={this.props.property}/>
                                 <button onClick={this.togglePropertyDetailModal}
                                         className="btn-primary btn btn-block">
                                     Back
