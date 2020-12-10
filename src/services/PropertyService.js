@@ -52,7 +52,7 @@ const updateProperty = (propertyId, property) => {
 // return hosted properties for a landlord
 const findHostedProperties = (userId) => {
     return (
-        fetch(`${userUrl}/${userId}}/properties`)
+        fetch(`${userUrl}/${userId}/properties`)
             .then(response => response.json())
     )
 }

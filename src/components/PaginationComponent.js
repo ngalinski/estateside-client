@@ -12,13 +12,14 @@ const PaginationComponent = ({handlePrevClick, handleNextClick, state, hits}) =>
                     <i className="fa fa-arrow-left" aria-hidden="true"/>
                 </button>
             </NavLink>
-            <span className="page-info"> Page {state.propertySearchPage} of {Math.floor((hits - 1) / 12)}</span>
+            <span className="page-info"> Page {state.propertySearchPage} of {Math.max(
+                Math.floor((hits - 1) / 12), 1)}</span>
             <NavLink activeClassName={'root'}
                      to={state.propertySearchPage < Math.floor((hits - 1) / 12)
                          ? `/search/${state.location}/page/${parseInt(
                              state.propertySearchPage) + 1}` : '#'}>
                 <button className="btn-primary" onClick={handleNextClick}
-                        disabled={state.propertySearchPage === Math.floor((hits - 1) / 12)}>
+                        disabled={state.propertySearchPage >= Math.floor((hits - 1) / 12)}>
                     <i className="fa fa-arrow-right" aria-hidden="true"/>
                 </button>
             </NavLink>

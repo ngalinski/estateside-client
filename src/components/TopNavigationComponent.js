@@ -5,7 +5,11 @@ import LoginComponent from "./LoginComponent";
 import LogoutComponent from "./LogoutComponent";
 import Tooltip from "@material-ui/core/Tooltip";
 
-const TopNavigationComponent = ({state, login, logout, updateSelectedNavItem, toggleProfileUpdated, toggleContactRequested}) => {
+const TopNavigationComponent = ({
+                                    state, login, logout, updateSelectedNavItem,
+                                    toggleProfileUpdated, toggleContactRequested, props,
+                                    updateContact, updateSearchLocation
+                                }) => {
     return (
         <div className="topnav" id="topnav">
             <ul className="icons">
@@ -90,6 +94,22 @@ const TopNavigationComponent = ({state, login, logout, updateSelectedNavItem, to
                          buttonText="Landlord Login"
                          updateSelectedNavItem={updateSelectedNavItem}/>
                  </li>
+                }
+
+                {state.isLoggedIn && state.userProfile.role === 'landlord' &&
+                 <Tooltip title="Portal">
+                     <li><Link to="/landlord/portal"
+                               className={`${state.selectedNavItem === "Portal" ? "active"
+                                                                                : ""}`}
+                               onClick={() => {
+                                   updateSelectedNavItem("Portal")
+                                   toggleProfileUpdated(false)
+                                   toggleContactRequested(false)
+                               }}>
+                         Portal
+                     </Link>
+                     </li>
+                 </Tooltip>
                 }
                 {state.isLoggedIn &&
                  <li>
