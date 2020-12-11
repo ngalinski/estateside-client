@@ -111,6 +111,19 @@ const TopNavigationComponent = ({
                      </li>
                  </Tooltip>
                 }
+                {state.isLoggedIn && state.userProfile.role === 'user' &&
+                 <Tooltip title="Favourites">
+                     <li><Link to="/user/favourites"
+                               className={`${state.selectedNavItem === "Favourites" ? "active"
+                                                                                    : ""}`}
+                               onClick={() => {
+                                   updateSelectedNavItem("Favourites")
+                               }}>
+                         Favourite properties
+                     </Link>
+                     </li>
+                 </Tooltip>
+                }
                 {state.isLoggedIn &&
                  <li>
                      <LogoutComponent logout={logout}
