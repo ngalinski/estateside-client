@@ -58,17 +58,20 @@ const findHostedProperties = (userId) => {
 }
 
 // return favourite properties for a specific user (customer)
-const findFavProperties = (userId) => {
+const findFavouriteProperties = (userId) => {
     return (
-        fetch(`${userUrl}/${userId}}/favorites`)
-            .then(response => response.json())
+        fetch(`${userUrl}/${userId}/favourites`)
+            .then(response => {
+                console.log(response)
+                return response.json()
+            })
     )
 }
 
 // mark a property as favourite for a user
 const createFavProperty = (userId, property) => {
     return (
-        fetch(`${userUrl}/${userId}/favorites`, {
+        fetch(`${userUrl}/${userId}/favourites`, {
             method: "POST",
             body: JSON.stringify(property),
             headers: {"content-type": "application/json"}
@@ -94,7 +97,7 @@ export default {
     deleteProperty,
     updateProperty,
     findHostedProperties,
-    findFavProperties,
     createFavProperty,
-    deleteFavProperty
+    deleteFavProperty,
+    findFavouriteProperties
 }
