@@ -6,9 +6,6 @@ import './css/Map.css';
 const MapComponent = ({latitude, longitude}) => {
     const [center, setCenter] = useState({lat: latitude, lng: longitude});
     const [zoom, setZoom] = useState(16);
-    console.log(typeof(latitude))
-    console.log(latitude)
-    console.log(longitude)
     return (
         <div className="google-map" >
             <GoogleMapReact

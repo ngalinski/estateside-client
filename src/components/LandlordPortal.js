@@ -6,7 +6,6 @@ import PropertyGridComponent from "./PropertyGridComponent";
 
 export default class LandlordPortal extends React.Component {
     state = {
-        // not google id but id in mongodb
         landlordId: '',
         properties: [],
         hits: 0,
@@ -54,27 +53,15 @@ export default class LandlordPortal extends React.Component {
     }
 
     createListing = () => {
+        const fullAddress = this.state.newProperty.house
+                            + ', ' + this.state.newProperty.street
+                            + ', ' + this.state.newProperty.city
+                            + ', ' + this.state.newProperty.state
+                            + ', ' + this.state.newProperty.zip;
         PropertyService.createProperty({
                                            zpid: Date.now(),
                                            address: {
-                                               full: (this.state.newProperty.house)
-                                                     ? this.state.newProperty.house + ', ' : '' +
-                                                                                             (this.state.newProperty.street)
-                                                                                             ? this.state.newProperty.street
-                                                                                               +
-                                                                                               ', '
-                                                                                             : ''
-                                                                                               + (this.state.newProperty.city)
-                                                                                               ? this.state.newProperty.city
-                                                                                                 + ', '
-                                                                                               : ''
-                                                                                                 + (this.state.newProperty.state)
-                                                                                                 ? this.state.newProperty.state
-                                                                                                   + ', '
-                                                                                                 : ''
-                                                                                                   + (this.state.newProperty.zip)
-                                                                                                   ? this.state.newProperty.zip
-                                                                                                   : '',
+                                               full: fullAddress,
                                                street: this.state.newProperty.street,
                                                city: this.state.newProperty.city,
                                                house: this.state.newProperty.house,
@@ -85,14 +72,19 @@ export default class LandlordPortal extends React.Component {
                                            date: this.state.newProperty.date,
                                            zestimate: this.state.newProperty.zestimate,
                                            rental: {zestimate: this.state.newProperty.zestimate},
-                                           userId: this.state.landlordId
+                                           userId: this.props.state.userProfile.userId,
+                                           coordinates: ["-71.105659", "42.332939"]
                                        })
             .then(newProperty => {
-                this.setState(prevState => ({
-                    properties: [...prevState.properties, newProperty],
-                    hits: prevState.hits + 1
-                }));
-                window.alert("Property added!")
+                PropertyService.findPropertyById(newProperty.zpid)
+                    .then(property => {
+                              this.setState(prevState => ({
+                                  properties: [...this.state.properties, property],
+                                  hits: this.state.hits + 1
+                              }));
+                              window.alert("Property added!");
+                          }
+                    );
             })
     };
     updateNewProperty = (newProperty) => this.setState(prevState => ({
