@@ -25,8 +25,8 @@ export const BookAppointmentComponent = ({
                         <div className="col-md-4 col-md-pull-7">
                             <div className="booking-form">
                                 <form>
-                                    <div className="row">
-                                        <div className="col-sm-8">
+                                    {/*<div className="row">*/}
+                                        {/*<div className="col-sm-8">*/}
                                             <div className="form-group">
                                                 <span className="form-label"
                                                       style={{color: "white"}}>Date</span>
@@ -34,14 +34,15 @@ export const BookAppointmentComponent = ({
                                                        onChange={(event) => updateAppointmentDate(
                                                            event.target.value)} required/>
                                             </div>
-                                        </div>
-                                        {/*                                        <div className="col-sm-6">
-                                            <span className="form-label"
-                                                  style={{color: "white"}}>Time</span>
-                                            <input className="form-control" type="time"
-                                                   min="09:00" max="18:00" required/>
-                                        </div>*/}
-                                    </div>
+                                        {/*</div>*/}
+
+                                        {/*<div className="col-sm-6">*/}
+                                        {/*    <span className="form-label"*/}
+                                        {/*          style={{color: "white"}}>Time</span>*/}
+                                        {/*    <input className="form-control" type="time"*/}
+                                        {/*           min="09:00" max="18:00" required/>*/}
+                                        {/*</div>*/}
+                                    {/*</div>*/}
                                     <div className="form-group">
                                         <label htmlFor="message">
                                             Message:</label>
