@@ -109,17 +109,6 @@ export default class AppContainer extends React.Component {
         }
     }
 
-    /*
-
-        componentWillMount() {
-            onbeforeunload = e => "Don't leave me"
-        }
-
-        componentWillUnmount() {
-            onbeforeunload = null
-        }
-    */
-
     render() {
         return (
             <div>
