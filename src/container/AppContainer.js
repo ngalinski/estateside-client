@@ -11,6 +11,8 @@ import SearchResultComponent from "../components/SearchResultComponent";
 import AppointmentListComponent from "../components/AppointmentListComponent";
 import RegisterComponent from "../components/RegisterComponent";
 import LandlordPortal from "../components/LandlordPortal";
+import UserPortalComponent from "../components/UserPortalComponent";
+import FavouritePropertyComponent from "../components/FavouritePropertyComponent";
 
 export default class AppContainer extends React.Component {
     state = {
@@ -94,6 +96,8 @@ export default class AppContainer extends React.Component {
             this.setState({selectedNavItem: "Help"})
         } else if (path.includes("portal")) {
             this.setState({selectedNavItem: "Portal"})
+        } else if (path.includes("favourites")) {
+            this.setState({selectedNavItem: "Favourites"})
         }
     }
 
@@ -227,6 +231,39 @@ export default class AppContainer extends React.Component {
                         />
                     }>
                     </Route>
+
+                    <Route path={["/user/portal", "/user/portal/:userId/properties",
+                                  "/user/portal/:userId/appointments"]}
+                           exact render={(props) =>
+                        <UserPortalComponent state={this.state}
+                                             login={this.login}
+                                             logout={this.logout}
+                                             updateSelectedNavItem={this.updateSelectedNavItem}
+                                             toggleProfileUpdated={this.toggleProfileUpdated}
+                                             toggleContactRequested={this.toggleContactRequested}
+                                             updateContact={this.updateContact}
+                                             updateSearchLocation={this.updateSearchLocation}
+                                             {...props}
+                        />
+                    }>
+                    </Route>
+
+                    <Route path={["/user/:userId/favourites"]}
+                           exact render={(props) =>
+                        <FavouritePropertyComponent state={this.state}
+                                                    userId={this.state.userProfile.userId}
+                                                    login={this.login}
+                                                    logout={this.logout}
+                                                    updateSelectedNavItem={this.updateSelectedNavItem}
+                                                    toggleProfileUpdated={this.toggleProfileUpdated}
+                                                    toggleContactRequested={this.toggleContactRequested}
+                                                    updateContact={this.updateContact}
+                                                    updateSearchLocation={this.updateSearchLocation}
+                                                    {...props}
+                        />
+                    }>
+                    </Route>
+
                 </BrowserRouter>
             </div>
         )
