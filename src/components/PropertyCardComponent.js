@@ -61,7 +61,10 @@ export default class PropertyCardComponent extends React.Component {
                             <a
                                 onClick={this.togglePropertyDetailModal}
                                 title="view the property"
-                                className="wbdv-hyperlink">{this.props.property.address}
+                                className="wbdv-hyperlink">{this.props.property.address.full
+                                                            !== undefined
+                                                            && this.props.property.address.full}
+                                {!this.props.property.address.full && this.props.property.address}
                             </a>
                         </h4>
                         <Modal isOpen={this.state.propertyDetailIsActive}

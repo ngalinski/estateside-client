@@ -10,11 +10,9 @@ class IndividualPropertyDetailComponent extends React.Component {
 
     componentDidMount() {
         const propertyId = this.props.property.zpid
-        // console.log(propertyId)
         this.setState(() => {
             PropertyService.findPropertyById(propertyId)
                 .then(response => {
-                    console.log(response)
                     this.setState({
                                       property: response
                                   })
@@ -30,7 +28,7 @@ class IndividualPropertyDetailComponent extends React.Component {
                         <div>
                             <div className="property-detail">
                                 <h1>Details</h1>
-                                <table>
+                                <table className="textfield">
                                     <tr>
                                         <td>
                                             <h6>Address</h6>
@@ -39,7 +37,12 @@ class IndividualPropertyDetailComponent extends React.Component {
                                             &nbsp;
                                         </td>
                                         <td>
-                                            {this.state.property.address}
+                                            {this.state.property.address
+                                             && !this.state.property.address.full
+                                             && this.state.property.address}
+                                            {this.state.property.address
+                                             && this.state.property.address.full
+                                             && this.state.property.address.full}
                                         </td>
                                     </tr>
                                     <tr>
@@ -83,15 +86,16 @@ class IndividualPropertyDetailComponent extends React.Component {
                                 </table>
                             </div>
                         </div>
-                        <div >
+                        <div>
                             <div className="booking-form">
                                 {
                                     this.state.property.coordinates &&
-                                    <MapComponent latitude={parseFloat(this.state.property.coordinates[1])}
-                                                  longitude={parseFloat(this.state.property.coordinates[0])
-                                                  }/>
-                                }
-                                </div>
+                                    <MapComponent
+                                        latitude={parseFloat(this.state.property.coordinates[1])}
+                                        longitude={parseFloat(this.state.property.coordinates[0])
+                                        }/>
+                                }c
+                            </div>
                         </div>
                     </div>
                 </div>
