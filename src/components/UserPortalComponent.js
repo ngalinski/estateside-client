@@ -41,7 +41,7 @@ export default class UserPortal extends React.Component {
                 PropertyService.findFavouriteProperties(this.state.userId)
                     .then(response =>
                               this.setState(prevState => ({
-                                  properties: response.bundle,
+                                  properties: response,
                                   hits: response.total
                               }))
                     )

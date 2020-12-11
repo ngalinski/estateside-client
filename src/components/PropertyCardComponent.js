@@ -21,13 +21,20 @@ export default class PropertyCardComponent extends React.Component {
         super(props);
         this.state = {
             isActive: false,
-            propertyDetailIsActive: false
+            propertyDetailIsActive: false,
+            isFavourite: false,
         }
     }
 
     toggleModal = () => {
         this.setState({
                           isActive: !this.state.isActive
+                      })
+    };
+
+    toggleFavourite = () => {
+        this.setState({
+                          isFavourite: !this.state.isFavourite
                       })
     };
 
@@ -39,6 +46,9 @@ export default class PropertyCardComponent extends React.Component {
 
     componentWillMount() {
         Modal.setAppElement('body');
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
     }
 
     render() {
@@ -82,10 +92,11 @@ export default class PropertyCardComponent extends React.Component {
                     </div>
                     {this.props.showOptions &&
                      <div className="card-footer">
-                         {this.props.parentState.isLoggedIn
-                          && this.props.parentState.userProfile.role === 'landlord' &&
+                         {this.props.parentState.isLoggedIn &&
+                          this.props.parentState.userProfile.role === 'landlord' &&
                           <i title="delete property"
-                             className="fa fa-trash-alt wbdv-property-card-icon float-right"/>
+                             className="fa fa-trash-alt wbdv-property-card-icon float-right"
+                             />
                          }
                          {
                              this.props.parentState.isLoggedIn &&
@@ -113,10 +124,15 @@ export default class PropertyCardComponent extends React.Component {
                          }
                          {this.props.parentState.isLoggedIn &&
                           <span className="float-right">
-                            {/*show/hide one of the heart icons below depending on the data of the property (fav vs not fav)*/}
-                              <i className="fa fa-heart wbdv-fav-property-icon-active"/>
-                              {/*<i className="fa fa-heart wbdv-fav-property-icon-inactive"></i>*/}
-                        </span>}
+                            {this.state.isFavourite &&
+                             <i className="fa fa-heart wbdv-fav-property-icon-active"
+                                onClick={this.toggleFavourite}/>
+                            }
+                              {!this.state.isFavourite &&
+                               <i className="fa fa-heart wbdv-fav-property-icon-inactive"
+                                  onClick={this.toggleFavourite}/>
+                              }
+                          </span>}
 
                      </div>}
 
