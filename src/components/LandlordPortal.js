@@ -120,7 +120,7 @@ export default class LandlordPortal extends React.Component {
     render() {
         return (
             <div>
-                <TopNavigationComponent state={this.state}
+                <TopNavigationComponent state={this.props.state}
                                         login={this.props.login}
                                         logout={this.props.logout}
                                         updateSelectedNavItem={this.props.updateSelectedNavItem}
