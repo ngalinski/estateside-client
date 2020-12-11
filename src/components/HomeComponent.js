@@ -11,6 +11,12 @@ const HomeComponent = ({
                        }) => {
     return (
         <div className="home-page-components">
+            {
+                state.isLoggedIn &&
+                <div className="float-right">
+                    <h6>Welcome, {state.userProfile.name}!</h6>
+                </div>
+            }
             <div className="home-page-top">
                 <TopNavigationComponent state={state}
                                         login={login}
