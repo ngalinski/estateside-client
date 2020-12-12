@@ -53,11 +53,19 @@ export default class LandlordPortal extends React.Component {
     }
 
     createListing = () => {
-        const fullAddress = this.state.newProperty.house
-                            + ', ' + this.state.newProperty.street
-                            + ', ' + this.state.newProperty.city
-                            + ', ' + this.state.newProperty.state
-                            + ', ' + this.state.newProperty.zip;
+        let house = this.state.newProperty.house;
+        let street = this.state.newProperty.street;
+        let city = this.state.newProperty.city;
+        let state = this.state.newProperty.state;
+        let zip = this.state.newProperty.zip;
+
+        if (house && house.replace(/ /g, "")) {house += ", "}
+        if (street && street.replace(/ /g, "")) {street += ", "}
+        if (city && city.replace(/ /g, "")) {city += ", "}
+        if (state && state.replace(/ /g, "")) {state += " "}
+
+        const fullAddress = house + street + city + state + zip;
+
         PropertyService.createProperty({
                                            zpid: Date.now(),
                                            address: {
