@@ -4,6 +4,7 @@ import Modal from 'react-modal'
 import {BookAppointmentComponent} from "./BookAppointmentComponent";
 import DateUtil from "../util/DateUtil";
 import IndividualPropertyDetailComponent from "./IndividualPropertyDetailComponent";
+import PropertyService from "../services/PropertyService";
 
 const customStyles = {
     content: {
@@ -19,9 +20,12 @@ const customStyles = {
 export default class PropertyCardComponent extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
             isActive: false,
-            propertyDetailIsActive: false
+            propertyDetailIsActive: false,
+            isFavourite: false,
+            countFavourite: 0
         }
     }
 
@@ -31,6 +35,26 @@ export default class PropertyCardComponent extends React.Component {
                       })
     };
 
+    toggleFavourite = () => {
+        if (!this.state.isFavourite) { //fav a property
+            PropertyService.createFavProperty(this.props.parentState.userProfile.userId,
+                                              this.props.property.zpid)
+                .then(r => this.setState({
+                                             isFavourite: true,
+                                             countFavourite: this.state.countFavourite + 1
+                                         }))
+        } else { //undo fav
+            PropertyService.deleteFavProperty(this.props.parentState.userProfile.userId,
+                                              this.props.property.zpid)
+                .then(r => this.setState({
+                                             isFavourite: false,
+                                             countFavourite: this.state.countFavourite - 1
+                                         }))
+            //Re-render parent when marked un-favourite
+            //https://stackoverflow.com/questions/53441584/how-to-re-render-parent-component-when-anything-changes-in-child-component/53441679
+        }
+    };
+
     togglePropertyDetailModal = () => {
         this.setState({
                           propertyDetailIsActive: !this.state.propertyDetailIsActive
@@ -38,7 +62,30 @@ export default class PropertyCardComponent extends React.Component {
     };
 
     componentWillMount() {
+        PropertyService.isPropertyFavouritesForUser(this.props.parentState.userProfile.userId,
+                                                    this.props.property.zpid)
+            .then(res => {
+                console.log(res.isFav)
+                if (res.isFav === true) {
+                    this.setState({
+                                      isFavourite: res
+                                  })
+                }
+            })
+
+        PropertyService.countInterestedUsers(this.props.property.zpid)
+            .then(res => {
+                if (res.count !== 0) {
+                    this.setState({
+                                      countFavourite: res.count
+                                  })
+                }
+            })
+
         Modal.setAppElement('body');
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
     }
 
     render() {
@@ -87,10 +134,11 @@ export default class PropertyCardComponent extends React.Component {
                     </div>
                     {this.props.showOptions &&
                      <div className="card-footer">
-                         {this.props.parentState.isLoggedIn
-                          && this.props.parentState.userProfile.role === 'landlord' &&
+                         {this.props.parentState.isLoggedIn &&
+                          this.props.parentState.userProfile.role === 'landlord' &&
                           <i title="delete property"
-                             className="fa fa-trash-alt wbdv-property-card-icon float-right"/>
+                             className="fa fa-trash-alt wbdv-property-card-icon float-right"
+                          />
                          }
                          {
                              this.props.parentState.isLoggedIn &&
@@ -118,10 +166,18 @@ export default class PropertyCardComponent extends React.Component {
                          }
                          {this.props.parentState.isLoggedIn &&
                           <span className="float-right">
-                            {/*show/hide one of the heart icons below depending on the data of the property (fav vs not fav)*/}
-                              <i className="fa fa-heart wbdv-fav-property-icon-active"/>
-                              {/*<i className="fa fa-heart wbdv-fav-property-icon-inactive"></i>*/}
-                        </span>}
+                              <button className="align-content-sm-around small rounded-circle">
+                                  {this.state.countFavourite}
+                              </button>
+                            {this.state.isFavourite &&
+                             <i className="fa fa-heart wbdv-fav-property-icon-active"
+                                onClick={this.toggleFavourite}/>
+                            }
+                              {!this.state.isFavourite &&
+                               <i className="fa fa-heart wbdv-fav-property-icon-inactive"
+                                  onClick={this.toggleFavourite}/>
+                              }
+                          </span>}
 
                      </div>}
 

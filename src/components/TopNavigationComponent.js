@@ -112,19 +112,6 @@ const TopNavigationComponent = ({
                  </Tooltip>
                 }
                 {state.isLoggedIn && state.userProfile.role === 'user' &&
-                 <Tooltip title="UserPortal">
-                     <li><Link to="/user/portal"
-                               className={`${state.selectedNavItem === "UserPortal" ? "active"
-                                                                                    : ""}`}
-                               onClick={() => {
-                                   updateSelectedNavItem("UserPortal")
-                               }}>
-                         User Portal
-                     </Link>
-                     </li>
-                 </Tooltip>
-                }
-                {state.isLoggedIn && state.userProfile.role === 'user' &&
                  <Tooltip title="UserFav">
                      <li><Link to={`/user/${state.userProfile.userId}/favourites`}
                                className={`${state.selectedNavItem === "UserFav" ? "active"

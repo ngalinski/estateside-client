@@ -11,7 +11,6 @@ import SearchResultComponent from "../components/SearchResultComponent";
 import AppointmentListComponent from "../components/AppointmentListComponent";
 import RegisterComponent from "../components/RegisterComponent";
 import LandlordPortal from "../components/LandlordPortal";
-import UserPortalComponent from "../components/UserPortalComponent";
 import FavouritePropertyComponent from "../components/FavouritePropertyComponent";
 
 export default class AppContainer extends React.Component {
@@ -228,22 +227,6 @@ export default class AppContainer extends React.Component {
                                         updateContact={this.updateContact}
                                         updateSearchLocation={this.updateSearchLocation}
                                         {...props}
-                        />
-                    }>
-                    </Route>
-
-                    <Route path={["/user/portal", "/user/portal/:userId/properties",
-                                  "/user/portal/:userId/appointments"]}
-                           exact render={(props) =>
-                        <UserPortalComponent state={this.state}
-                                             login={this.login}
-                                             logout={this.logout}
-                                             updateSelectedNavItem={this.updateSelectedNavItem}
-                                             toggleProfileUpdated={this.toggleProfileUpdated}
-                                             toggleContactRequested={this.toggleContactRequested}
-                                             updateContact={this.updateContact}
-                                             updateSearchLocation={this.updateSearchLocation}
-                                             {...props}
                         />
                     }>
                     </Route>
