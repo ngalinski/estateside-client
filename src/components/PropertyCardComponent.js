@@ -4,6 +4,7 @@ import Modal from 'react-modal'
 import {BookAppointmentComponent} from "./BookAppointmentComponent";
 import DateUtil from "../util/DateUtil";
 import IndividualPropertyDetailComponent from "./IndividualPropertyDetailComponent";
+import PropertyService from "../services/PropertyService";
 
 const customStyles = {
     content: {
@@ -19,6 +20,7 @@ const customStyles = {
 export default class PropertyCardComponent extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
             isActive: false,
             propertyDetailIsActive: false,
@@ -33,9 +35,21 @@ export default class PropertyCardComponent extends React.Component {
     };
 
     toggleFavourite = () => {
-        this.setState({
-                          isFavourite: !this.state.isFavourite
-                      })
+        if (!this.state.isFavourite) { //fav a property
+            PropertyService.createFavProperty(this.props.parentState.userProfile.userId,
+                                              this.props.property.zpid)
+                .then(r => this.setState({
+                                             isFavourite: true
+                                         }))
+        } else { //undo fav
+            PropertyService.deleteFavProperty(this.props.parentState.userProfile.userId,
+                                              this.props.property.zpid)
+                .then(r => this.setState({
+                                             isFavourite: false
+                                         }))
+            //Re-render parent when marked un-favourite
+            //https://stackoverflow.com/questions/53441584/how-to-re-render-parent-component-when-anything-changes-in-child-component/53441679
+        }
     };
 
     togglePropertyDetailModal = () => {
@@ -45,6 +59,16 @@ export default class PropertyCardComponent extends React.Component {
     };
 
     componentWillMount() {
+        PropertyService.isPropertyFavouritesForUser(this.props.parentState.userProfile.userId,
+                                                    this.props.property.zpid)
+            .then(res => {
+                console.log(res.isFav)
+                if (res.isFav === true) {
+                    this.setState({
+                                      isFavourite: res
+                                  })
+                }
+            })
         Modal.setAppElement('body');
     }
 
@@ -96,7 +120,7 @@ export default class PropertyCardComponent extends React.Component {
                           this.props.parentState.userProfile.role === 'landlord' &&
                           <i title="delete property"
                              className="fa fa-trash-alt wbdv-property-card-icon float-right"
-                             />
+                          />
                          }
                          {
                              this.props.parentState.isLoggedIn &&

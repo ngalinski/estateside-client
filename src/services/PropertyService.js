@@ -69,11 +69,14 @@ const findFavouriteProperties = (userId) => {
 }
 
 // mark a property as favourite for a user
-const createFavProperty = (userId, property) => {
+const createFavProperty = (userId, zpid) => {
+    console.log(userId)
+    console.log(zpid)
+    const favMapping = {"userId": userId, "zpid": zpid};
     return (
-        fetch(`${userUrl}/${userId}/favourites`, {
+        fetch(`${propertyUrl}/addFav`, {
             method: "POST",
-            body: JSON.stringify(property),
+            body: JSON.stringify(favMapping),
             headers: {"content-type": "application/json"}
         })
             .then(response => response.json())
@@ -81,12 +84,22 @@ const createFavProperty = (userId, property) => {
 }
 
 // unmark a favourite property for a user
-const deleteFavProperty = (userId, propertyId) => {
+const deleteFavProperty = (userId, zpid) => {
     return (
-        fetch(`${userUrl}/${userId}/favorites/${propertyId}`, {
+        fetch(`${propertyUrl}/${zpid}/favourites/${userId}`, {
             method: "DELETE",
         })
             .then(response => response.json())
+    )
+}
+
+const isPropertyFavouritesForUser = (userId, zpid) => {
+    return (
+        fetch(`${propertyUrl}/${zpid}/favourites/${userId}`)
+            .then(response => {
+                console.log(response)
+                return response.json()
+            })
     )
 }
 
@@ -99,5 +112,6 @@ export default {
     findHostedProperties,
     createFavProperty,
     deleteFavProperty,
-    findFavouriteProperties
+    findFavouriteProperties,
+    isPropertyFavouritesForUser
 }
