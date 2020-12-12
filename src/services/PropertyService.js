@@ -103,6 +103,16 @@ const isPropertyFavouritesForUser = (userId, zpid) => {
     )
 }
 
+const countInterestedUsers = (zpid) => {
+    return (
+        fetch(`${propertyUrl}/${zpid}/favourites/`)
+            .then(response => {
+                //console.log(response)
+                return response.json()
+            })
+    )
+}
+
 export default {
     findPropertiesForCity,
     findPropertyById,
@@ -113,5 +123,6 @@ export default {
     createFavProperty,
     deleteFavProperty,
     findFavouriteProperties,
-    isPropertyFavouritesForUser
+    isPropertyFavouritesForUser,
+    countInterestedUsers
 }

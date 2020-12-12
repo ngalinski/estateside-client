@@ -25,6 +25,7 @@ export default class PropertyCardComponent extends React.Component {
             isActive: false,
             propertyDetailIsActive: false,
             isFavourite: false,
+            countFavourite: 0
         }
     }
 
@@ -39,13 +40,15 @@ export default class PropertyCardComponent extends React.Component {
             PropertyService.createFavProperty(this.props.parentState.userProfile.userId,
                                               this.props.property.zpid)
                 .then(r => this.setState({
-                                             isFavourite: true
+                                             isFavourite: true,
+                                             countFavourite: this.state.countFavourite + 1
                                          }))
         } else { //undo fav
             PropertyService.deleteFavProperty(this.props.parentState.userProfile.userId,
                                               this.props.property.zpid)
                 .then(r => this.setState({
-                                             isFavourite: false
+                                             isFavourite: false,
+                                             countFavourite: this.state.countFavourite - 1
                                          }))
             //Re-render parent when marked un-favourite
             //https://stackoverflow.com/questions/53441584/how-to-re-render-parent-component-when-anything-changes-in-child-component/53441679
@@ -69,6 +72,16 @@ export default class PropertyCardComponent extends React.Component {
                                   })
                 }
             })
+
+        PropertyService.countInterestedUsers(this.props.property.zpid)
+            .then(res => {
+                if (res.count !== 0) {
+                    this.setState({
+                                      countFavourite: res.count
+                                  })
+                }
+            })
+
         Modal.setAppElement('body');
     }
 
@@ -153,6 +166,9 @@ export default class PropertyCardComponent extends React.Component {
                          }
                          {this.props.parentState.isLoggedIn &&
                           <span className="float-right">
+                              <button className="align-content-sm-around small rounded-circle">
+                                  {this.state.countFavourite}
+                              </button>
                             {this.state.isFavourite &&
                              <i className="fa fa-heart wbdv-fav-property-icon-active"
                                 onClick={this.toggleFavourite}/>
