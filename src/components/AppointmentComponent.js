@@ -9,7 +9,7 @@ const AppointmentComponent = ({appointment}) => {
             <td className="wbdv-appt-font-size">{appointment.viewer}</td>
             <td className="wbdv-appt-font-size">{appointment.date} {appointment.time}</td>
             <td className="d-none d-md-table-cell">
-                <i title="delete appointment" className="fa fa-trash fa-pull-right wbdv-table-body-icon"/>
+                <i title="delete appointment" className="fa fa-times fa-pull-right wbdv-table-body-icon"/>
             </td>
         </tr>
     )

@@ -76,7 +76,9 @@ export default class PropertyCardComponent extends React.Component {
     }
 
     render() {
-        const imageUrl = "https://picsum.photos/300/200";
+        let randomNum = Math.random() * 100;
+        const imageUrl = `https://source.unsplash.com/collection/1896718/300x200/?sig=${randomNum}`
+        // const imageUrl = "https://picsum.photos/300/200"; // use this if the other image url fails to load images
         return (
             // creating a property card
             <div className="col-sm-6 col-md-4 col-lg-3 wbdv-property-card">
@@ -93,7 +95,10 @@ export default class PropertyCardComponent extends React.Component {
                             <a
                                 onClick={this.togglePropertyDetailModal}
                                 title="view the property"
-                                className="wbdv-hyperlink">{this.props.property.address}
+                                className="wbdv-hyperlink">{this.props.property.address.full
+                                                            !== undefined
+                                                            && this.props.property.address.full}
+                                {!this.props.property.address.full && this.props.property.address}
                             </a>
                         </h4>
                         <Modal isOpen={this.state.propertyDetailIsActive}
