@@ -145,13 +145,19 @@ export default class PropertyCardComponent extends React.Component {
                              onClick={() => this.props.deleteListing(this.props.property.zpid)}/>
                          }
 
+                         <span className="float-left">
+                              <label className="wbdv-like-count">
+                                  Interested: {this.state.countFavourite}
+                              </label>
+                         </span>
+
                          {/*book appointment as a regular user*/}
                          {
                              this.props.parentState.isLoggedIn &&
                              this.props.parentState.userProfile.role !== 'landlord' &&
                              <div>
                                  <i title="book appointments"
-                                    className="fa fa-address-book wbdv-property-card-icon float-right"
+                                    className="fa fa-calendar-alt fa-lg wbdv-property-card-icon float-left"
                                     onClick={this.toggleModal}/>
                                  <Modal isOpen={this.state.isActive}
                                         onRequestClose={this.toggleModal}
@@ -177,17 +183,17 @@ export default class PropertyCardComponent extends React.Component {
                              this.props.parentState.isLoggedIn &&
                              this.props.parentState.userProfile.role !== 'landlord' &&
                              <span className="float-right">
-                              <button className="align-content-sm-around small rounded-circle">
-                                  {this.state.countFavourite}
-                              </button>
+                                 <label className="wbdv-like-count">
+                                  Interested: {this.state.countFavourite}
+                              </label>
                             {
                                 this.state.isFavourite &&
-                                <i className="fa fa-heart wbdv-fav-property-icon-active"
+                                <i className="fa fa-heart fa-lg wbdv-fav-property-icon-active"
                                    onClick={this.toggleFavourite}/>
                             }
                               {
                                   !this.state.isFavourite &&
-                                <i className="fa fa-heart wbdv-fav-property-icon-inactive"
+                                <i className="fa fa-heart fa-lg wbdv-fav-property-icon-inactive"
                                    onClick={this.toggleFavourite}/>
                               }
                             </span>
