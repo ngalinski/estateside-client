@@ -40,17 +40,13 @@ export default class FavouriteProperty extends React.Component {
     componentDidMount() {
         const userId = this.props.match.params.userId;
         this.setState({userId: userId});
-        console.log(userId)
-        console.log(this.state.userId)
         this.setState(() => {
             PropertyService.findFavouriteProperties(userId)
                 .then(response => {
-                    console.log(response)
                     this.setState({
                                       properties: response,
                                       hits: response.total
                                   })
-                    console.log(this.state.properties)
                 });
         })
     }

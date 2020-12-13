@@ -62,7 +62,6 @@ const findFavouriteProperties = (userId) => {
     return (
         fetch(`${userUrl}/${userId}/favourites`)
             .then(response => {
-                console.log(response)
                 return response.json()
             })
     )
@@ -97,7 +96,6 @@ const isPropertyFavouritesForUser = (userId, zpid) => {
     return (
         fetch(`${propertyUrl}/${zpid}/favourites/${userId}`)
             .then(response => {
-                console.log(response)
                 return response.json()
             })
     )
