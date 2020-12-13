@@ -2,28 +2,53 @@ import React from "react";
 import "./css/AppointmentComponent.css"
 import PropertyService from "../services/PropertyService";
 import UserService from "../services/UserService";
+import IndividualPropertyDetailComponent from "./IndividualPropertyDetailComponent";
+import Modal from "react-modal";
+
+const customStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)'
+    }
+};
 
 export default class AppointmentComponent extends React.Component {
 
     state = {
         address: '',
-        userFullName: ''
+        userFullName: '',
+        propertyDetailIsActive: false,
+        property: ''
     }
 
     componentDidMount() {
         console.log(typeof (this.props.appointment.appointmentDate))
+        // PropertyService.findPropertyById(this.props.appointment.zpid)
+        //     .then(property => {
+        //             this.setState({
+        //                               address: property.address.full,
+        //                               property: property
+        //                           })
+        //     })
+
         PropertyService.findPropertyById(this.props.appointment.zpid)
             .then(property => {
-                // if (this.state.address.full !== undefined) {
+                if (property.address.full !== undefined && property.address.full) {
+                this.setState({
+                                  address: property.address.full,
+                                  property: property
+                              })
+                }
+                if(!property.address.full && property.address) {
                     this.setState({
-                                      address: property.address.full
+                                      address: property.address,
+                                      property: property
                                   })
-                // }
-                // else {
-                //     this.setState({
-                //                       address: property.address
-                //                   })
-                // }
+                }
             })
 
         UserService.findUserById(this.props.appointment.userId)
@@ -34,11 +59,37 @@ export default class AppointmentComponent extends React.Component {
             })
     }
 
+    togglePropertyDetailModal = () => {
+        this.setState({
+                          propertyDetailIsActive: !this.state.propertyDetailIsActive
+                      })
+    };
+
     render() {
         return (
             // create an appointment row
             <tr key={this.props.appointment._id} className="table-secondary">
-                <td className="wbdv-appt-font-size">{this.state.address}</td>
+                <td>
+                    <a
+                        onClick={this.togglePropertyDetailModal}
+                        title="view the property"
+                        className="wbdv-hyperlink wbdv-appt-font-size">
+                        {this.state.address}
+                    </a>
+                </td>
+
+                <Modal isOpen={this.state.propertyDetailIsActive}
+                       onRequestClose={this.togglePropertyDetailModal}
+                       style={customStyles}>
+                    <div className="container">
+                        <IndividualPropertyDetailComponent
+                            property={this.state.property}/>
+                        <button onClick={this.togglePropertyDetailModal}
+                                className="btn-primary btn btn-block">
+                            Back
+                        </button>
+                    </div>
+                </Modal>
                 <td className="wbdv-appt-font-size">{this.state.userFullName}</td>
                 <td className="wbdv-appt-font-size">{this.props.appointment.appointmentDate.substring(0, 10)}</td>
                 <td className="wbdv-appt-font-size">{this.props.appointment.message}</td>
