@@ -7,15 +7,7 @@ import AppointmentService from "../services/AppointmentService";
 
 export default class VisitingAppointment extends React.Component {
     state = {
-        appointments:  [
-            // {
-            //     userId: "111191948250174770569",
-            //     zpid: "81855146",
-            //     appointmentDate: "2020-12-23T00:00:00.000Z",
-            //     message: "lklklklklk"
-            // }
-        ]
-
+        appointments:  []
     };
 
     componentDidMount() {
@@ -29,7 +21,6 @@ export default class VisitingAppointment extends React.Component {
                         this.setState({
                                           appointments: response
                                       })
-                        console.log(this.state.appointments)
                     });
             })
         }
@@ -41,7 +32,6 @@ export default class VisitingAppointment extends React.Component {
                         this.setState({
                                           appointments: response
                                       })
-                        console.log(this.state.appointments)
                     });
             })
         }
