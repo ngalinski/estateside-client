@@ -64,7 +64,15 @@ export default class FavouriteProperty extends React.Component {
                                             updateContact={this.props.updateContact}
                     />
                 </div>
-                {this.state.userId && this.state.properties && this.state.properties.length > 0 &&
+                {this.state.userId && this.state.properties.length === 0 &&
+                 <div className="no-result-div">
+                     <span>
+                         <i className="fa fa-exclamation-circle" aria-hidden="true"/>
+                         &nbsp; There are no favourite properties.
+                     </span>
+                 </div>
+                }
+                {this.state.userId && this.state.properties.length > 0 &&
                  <PropertyGridComponent parentState={this.props.state}
                                         state={this.state}
                                         login={this.props.login}

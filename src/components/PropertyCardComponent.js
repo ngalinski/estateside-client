@@ -5,7 +5,6 @@ import {BookAppointmentComponent} from "./BookAppointmentComponent";
 import DateUtil from "../util/DateUtil";
 import IndividualPropertyDetailComponent from "./IndividualPropertyDetailComponent";
 import PropertyService from "../services/PropertyService";
-import Link from "@material-ui/core/Link";
 import AppointmentService from "../services/AppointmentService";
 
 const customStyles = {

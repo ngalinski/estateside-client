@@ -2,7 +2,6 @@ import React from 'react';
 import PropertyGridComponent from "./PropertyGridComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 import PropertyService from "../services/PropertyService";
-import AppointmentService from "../services/AppointmentService";
 
 export default class SearchResultComponent extends React.Component {
     state = {
@@ -85,7 +84,8 @@ export default class SearchResultComponent extends React.Component {
                                         hits={this.state.hits}
                                         handleNextClick={this.handleNextClick}
                                         handlePrevClick={this.handlePrevClick}
-                                        showOptions={true}/>
+                                        showOptions={true}
+                                        showPagination={true}/>
                 }
 
                 <br/>
