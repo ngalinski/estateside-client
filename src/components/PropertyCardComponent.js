@@ -5,6 +5,7 @@ import {BookAppointmentComponent} from "./BookAppointmentComponent";
 import DateUtil from "../util/DateUtil";
 import IndividualPropertyDetailComponent from "./IndividualPropertyDetailComponent";
 import PropertyService from "../services/PropertyService";
+import {UpdateListingComponent} from "./UpdateListingComponent";
 import AppointmentService from "../services/AppointmentService";
 
 const customStyles = {
@@ -116,7 +117,8 @@ export default class PropertyCardComponent extends React.Component {
     render() {
         let randomNum = Math.random() * 100;
         const imageUrl = `https://source.unsplash.com/collection/1896718/300x200/?sig=${randomNum}`
-        // const imageUrl = "https://picsum.photos/300/200"; // use this if the other image url fails to load images
+        // const imageUrl = "https://picsum.photos/300/200"; // use this if the other image url
+        // fails to load images
         return (
             // creating a property card
             <div className="col-sm-6 col-md-4 col-lg-3 wbdv-property-card">
@@ -126,8 +128,7 @@ export default class PropertyCardComponent extends React.Component {
                         {(this.props.property.zestimate || (this.props.property.rental
                                                             && this.props.property.rental.zestimate))
                          &&
-                         <h2>${this.props.property.rental.zestimate
-                               || this.props.property.zestimate}</h2>
+                         <h2>${this.props.property.zestimate || this.props.property.rental.zestimate}</h2>
                         }
                         <h4 className="card-title">
                             <a
@@ -161,18 +162,51 @@ export default class PropertyCardComponent extends React.Component {
                     {/* card footer that displays option buttons */}
                     {this.props.showOptions &&
                      <div className="card-footer">
-                         {/*delete a property as a landlord (on his own property list page)*/}
-                         {this.props.parentState.isLoggedIn &&
-                          this.props.parentState.userProfile.role === 'landlord' &&
-                          window.location.href.indexOf("portal") > -1 && // check if the current page is the landlord's property list
-                          <span>
-                              <i title="delete property"
-                                 className="fa fa-trash-alt wbdv-property-card-icon float-right"
-                                 onClick={() => this.props.deleteListing(this.props.property.zpid)}/>
-                              <a title="view the appointments for property"
-                                 href={`/properties/${this.props.property.zpid}/appointments`}
-                                 className="wbdv-hyperlink float-left"> View all appointments </a>
-                          </span>
+                         {
+                             this.props.parentState.isLoggedIn &&
+                             this.props.parentState.userProfile.role === 'landlord' &&
+                             window.location.href.indexOf("portal") > -1 && // check if the current page is the landlord's property list
+                             <span>
+                                <div>
+                                    {/*delete a property as a landlord (on his own property list page)*/}
+                                    <i title="delete property"
+                                       className="fa fa-trash-alt wbdv-property-card-icon wbdv-property-card-icon-position float-right"
+                                       onClick={() => this.props.deleteListing(this.props.property.zpid)}/>
+                                </div>
+                                 <div>
+                                     {/*view a property appointment as a landlord (on his own property list page)*/}
+                                     <a title="view the appointments for property"
+                                        href={`/properties/${this.props.property.zpid}/appointments`}
+                                        className="wbdv-hyperlink wbdv-property-card-icon float-right">
+                                         <i className="fa fa-calendar-alt"/>
+                                     </a>
+                                 </div>
+                                 <div>
+                                     {/*update a property as a landlord (on his own property list page)*/}
+                                     <i title="edit property"
+                                        className="fa fa-pencil-alt wbdv-property-card-icon wbdv-property-card-icon-position float-right"
+                                        onClick={() => {
+                                            this.props.setTemporaryPropertyObject(this.props.property.zpid);
+                                            this.toggleModal();
+                                            this.props.startEditingProperty(this.props.property);
+                                        }}/>
+                                     <Modal isOpen={this.state.isActive}
+                                            onRequestClose={this.toggleModal}
+                                            style={customStyles}>
+                                         <div className="container">
+                                             <UpdateListingComponent property={this.props.property}
+                                                                     updateExistingProperty={this.props.updateExistingProperty}
+                                                                     finishEditingProperty={this.props.finishEditingProperty}
+                                                                     state={this.props.state}
+                                                                     toggleModal={this.toggleModal}/>
+                                             <button onClick={this.toggleModal}
+                                                     className="btn-danger btn btn-block">
+                                                 Cancel
+                                             </button>
+                                         </div>
+                                     </Modal>
+                                 </div>
+                            </span>
                          }
 
                          {/*book appointment as a regular user*/}
@@ -208,24 +242,27 @@ export default class PropertyCardComponent extends React.Component {
                              this.props.parentState.isLoggedIn &&
                              this.props.parentState.userProfile.role !== 'landlord' &&
                              <span className="float-right">
-                                 <label className="wbdv-like-count">
+
+                              {/*<button className="align-content-sm-around small rounded-circle">*/}
+                              {/*    {this.state.countFavourite}*/}
+                              {/*</button>*/}
+
+                              <label className="wbdv-like-count">
                                   Interested: {this.state.countFavourite}
                               </label>
-                            {
+                                 {
                                 this.state.isFavourite &&
                                 <i className="fa fa-heart fa-lg wbdv-fav-property-icon-active"
                                    onClick={this.toggleFavourite}/>
-                            }
-                              {
+                                 }
+                                 {
                                   !this.state.isFavourite &&
                                 <i className="fa fa-heart fa-lg wbdv-fav-property-icon-inactive"
                                    onClick={this.toggleFavourite}/>
-                              }
+                                 }
                             </span>
                          }
-
                      </div>}
-
                 </div>
             </div>
         )

@@ -16,6 +16,13 @@ export default class LandlordPortal extends React.Component {
             date: '',
             zestimate: '',
             userId: ''
+        },
+        temporaryProperty: {
+            zpid: '',
+            street: '', city: '', house: '', state: '', zip: '',
+            date: '',
+            zestimate: '',
+            userId: ''
         }
     };
 
@@ -53,26 +60,7 @@ export default class LandlordPortal extends React.Component {
     }
 
     createListing = () => {
-        let house = this.state.newProperty.house;
-        let street = this.state.newProperty.street;
-        let city = this.state.newProperty.city;
-        let state = this.state.newProperty.state;
-        let zip = this.state.newProperty.zip;
-
-        if (house && house.replace(/ /g, "")) {
-            house += ", "
-        }
-        if (street && street.replace(/ /g, "")) {
-            street += ", "
-        }
-        if (city && city.replace(/ /g, "")) {
-            city += ", "
-        }
-        if (state && state.replace(/ /g, "")) {
-            state += " "
-        }
-
-        const fullAddress = house + street + city + state + zip;
+        const fullAddress = this.generateFullAddress(this.state.newProperty);
 
         PropertyService.createProperty({
                                            zpid: Date.now(),
@@ -103,6 +91,26 @@ export default class LandlordPortal extends React.Component {
                     );
             })
     };
+
+    setTemporaryPropertyObject = (zpid) => {
+        PropertyService.findPropertyById(zpid)
+            .then(response => {
+                this.setState(prevState => ({
+                    newProperty: {
+                        zpid: zpid,
+                        street: response.address.street,
+                        city: response.address.city,
+                        house: response.address.house,
+                        state: response.address.state,
+                        zip: response.address.zip,
+                        date: response.date,
+                        zestimate: response.zestimate,
+                        userId: this.props.state.userProfile.userId
+                    }
+                }))
+            })
+    };
+
     updateNewProperty = (newProperty) => this.setState(prevState => ({
         newProperty: newProperty
     }));
@@ -112,6 +120,34 @@ export default class LandlordPortal extends React.Component {
             .then(this.setState(prevState => ({
                 properties: prevState.properties.filter(p => p.zpid !== propertyId)
             })));
+    };
+
+    startEditingProperty = (currentProperty) => {
+        this.setState(prevState => ({
+            temporaryProperty: {...currentProperty}
+        }));
+    }
+
+    updateExistingProperty = (updatedProperty) => this.setState(prevState => ({
+        temporaryProperty: {...updatedProperty}
+    }));
+
+    finishEditingProperty = () => {
+        this.state.temporaryProperty.address.full =
+            this.generateFullAddress(this.state.temporaryProperty.address);
+        this.state.temporaryProperty.rental.zestimate = this.state.temporaryProperty.zestimate;
+        PropertyService.updateProperty(this.state.temporaryProperty.zpid,
+                                       this.state.temporaryProperty)
+            .then(status => {
+                this.setState(prevState => ({
+                    properties:
+                        prevState.properties.map(p => p.zpid === prevState.temporaryProperty.zpid ?
+                                                      prevState.temporaryProperty : p)
+                }), () => {
+                })
+
+            });
+        window.alert("Property updated!");
     };
 
     handleNextClick = () => {
@@ -139,6 +175,30 @@ export default class LandlordPortal extends React.Component {
                 window.scrollTo(0, 0);
             });
     };
+
+    generateFullAddress = (propertyAddress) => {
+        let house = propertyAddress.house;
+        let street = propertyAddress.street;
+        let city = propertyAddress.city;
+        let state = propertyAddress.state;
+        let zip = propertyAddress.zip;
+
+        if (house && house.replace(/ /g, "")) {
+            house += ", "
+        }
+        if (street && street.replace(/ /g, "")) {
+            street += ", "
+        }
+        if (city && city.replace(/ /g, "")) {
+            city += ", "
+        }
+        if (state && state.replace(/ /g, "")) {
+            state += " "
+        }
+
+        const fullAddress = house + street + city + state + zip;
+        return fullAddress;
+    }
 
     render() {
         return (
@@ -178,8 +238,12 @@ export default class LandlordPortal extends React.Component {
                                         handleNextClick={this.handleNextClick}
                                         handlePrevClick={this.handlePrevClick}
                                         showOptions={true}
-                     // showOptions={false}
+                                        // showOptions={false}
+                                        setTemporaryPropertyObject={this.setTemporaryPropertyObject}
                                         deleteListing={this.deleteListing}
+                                        startEditingProperty={this.startEditingProperty}
+                                        updateExistingProperty={this.updateExistingProperty}
+                                        finishEditingProperty={this.finishEditingProperty}
                  />
                 }
             </div>

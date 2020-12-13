@@ -16,6 +16,11 @@
     color: dodgerblue;
 }
 
+.wbdv-property-card-icon-position{
+    position: relative;
+    bottom: -4px;
+}
+
 .wbdv-fav-property-icon-active {
     margin-left: 20px;
     color: orange;
