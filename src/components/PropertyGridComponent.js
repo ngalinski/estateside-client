@@ -7,8 +7,7 @@ import PaginationComponent from "./PaginationComponent";
 const PropertyGridComponent = ({
                                    parentState, state, login, logout, updateSelectedNavItem, toggleProfileUpdated,
                                    toggleContactRequested, updateContact, properties, hits,
-                                   handleNextClick, handlePrevClick, submitAppointment,
-                                   updateAppointmentDate, updateAppointmentMessage, showOptions, deleteListing
+                                   handleNextClick, handlePrevClick, showOptions, deleteListing
                                }) => {
 
     return (
@@ -22,9 +21,6 @@ const PropertyGridComponent = ({
                         properties.map(property =>
                                            <PropertyCardComponent property={property}
                                                                   state={state}
-                                                                  submitAppointment={submitAppointment}
-                                                                  updateAppointmentDate={updateAppointmentDate}
-                                                                  updateAppointmentMessage={updateAppointmentMessage}
                                                                   parentState={parentState}
                                                                   showOptions={showOptions}
                                                                   deleteListing={deleteListing}

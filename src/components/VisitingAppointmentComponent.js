@@ -3,54 +3,17 @@ import PropertyGridComponent from "./PropertyGridComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
 import PropertyService from "../services/PropertyService";
 import AppointmentListComponent from "./AppointmentListComponent";
+import AppointmentService from "../services/AppointmentService";
 
 export default class VisitingAppointment extends React.Component {
     state = {
         appointments:  [
-            {
-                _id: "1",
-                propertyId: "111",
-                propertyAddress: "900 Huntington Avenue, Boston",
-                date: "12-14-2020",
-                time: "5pm",
-                viewerId: "001",
-                viewer: "Zoheb",
-                landlord: "Jose",
-                message: "I'm interested in renting your apartment."
-            },
-            {
-                _id: "2",
-                propertyId: "111",
-                propertyAddress: "900 Huntington Avenue, Boston",
-                date: "12-14-2020",
-                time: "5pm",
-                viewerId: "002",
-                viewer: "Japher",
-                landlord: "Jose",
-                message: "I'm interested in renting your apartment."
-            },
-            {
-                _id: "3",
-                propertyId: "111",
-                propertyAddress: "900 Huntington Avenue, Boston",
-                date: "12-14-2020",
-                time: "5pm",
-                viewerId: "003",
-                viewer: "Nic",
-                landlord: "Jose",
-                message: "I'm interested in renting your apartment."
-            },
-            {
-                _id: "4",
-                propertyId: "111",
-                propertyAddress: "900 Huntington Avenue, Boston",
-                date: "12-14-2020",
-                time: "5pm",
-                viewerId: "004",
-                viewer: "Prajakta",
-                landlord: "Jose",
-                message: "I'm interested in renting your apartment."
-            }
+            // {
+            //     userId: "111191948250174770569",
+            //     zpid: "81855146",
+            //     appointmentDate: "2020-12-23T00:00:00.000Z",
+            //     message: "lklklklklk"
+            // }
         ]
 
     };
@@ -59,27 +22,29 @@ export default class VisitingAppointment extends React.Component {
         const userId = this.props.match.params.userId;
         const zpid = this.props.match.params.zpid;
 
-        // if (userId === null || userId === undefined || userId === '') { //search appointments by property
-        //     this.setState(() => {
-        //         PropertyService.findFavouriteProperties(userId)
-        //             .then(response => {
-        //                 this.setState({
-        //                                   properties: response
-        //                               })
-        //             });
-        //     })
-        // }
-        //
-        // if (zpid === null || zpid === undefined || zpid === '') { //search appointments by user
-        //     this.setState(() => {
-        //         PropertyService.findFavouriteProperties(userId)
-        //             .then(response => {
-        //                 this.setState({
-        //                                   properties: response
-        //                               })
-        //             });
-        //     })
-        // }
+        if (userId === null || userId === undefined || userId === '') { //search appointments by property
+            this.setState(() => {
+                AppointmentService.findAppointmentsForProperty(zpid)
+                    .then(response => {
+                        this.setState({
+                                          appointments: response
+                                      })
+                        console.log(this.state.appointments)
+                    });
+            })
+        }
+
+        if (zpid === null || zpid === undefined || zpid === '') { //search appointments by user
+            this.setState(() => {
+                AppointmentService.findAppointmentsForUser(userId)
+                    .then(response => {
+                        this.setState({
+                                          appointments: response
+                                      })
+                        console.log(this.state.appointments)
+                    });
+            })
+        }
 
 
     }

@@ -15,9 +15,9 @@ const findAppointmentsForUser = (userId) => {
     )
 }
 
-const createAppointmentForProperty = (propertyId, appointment) => {
+const createAppointmentForProperty = (zpid, appointment) => {
     return (
-        fetch(`${propertyUrl}/${propertyId}/appointments`, {
+        fetch(`${propertyUrl}/${zpid}/appointments`, {
             method: "POST",
             body: JSON.stringify(appointment),
             headers: {"content-type": "application/json"}

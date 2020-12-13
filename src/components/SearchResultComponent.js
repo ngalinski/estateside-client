@@ -9,32 +9,7 @@ export default class SearchResultComponent extends React.Component {
         location: '',
         properties: [],
         hits: 0,
-        propertySearchPage: 1,
-        appointmentDate: new Date(),
-        appointmentMessage: ''
-    };
-
-    updateAppointmentDate = (date) => {
-        this.setState(prevState => ({
-            appointmentDate: new Date(date)
-        }))
-    };
-
-    updateAppointmentMessage = (message) => {
-        this.setState(prevState => ({
-            appointmentMessage: message
-        }))
-    };
-
-    submitAppointment = (propertyId) => {
-        AppointmentService.createAppointmentForProperty(propertyId, {
-            userId: this.props.state.userProfile._id,
-            propertyId: propertyId,
-            appointmentDate: this.state.appointmentDate,
-            message: this.state.appointmentMessage
-        }).then(response => {
-            window.alert('Appointment created!');
-        })
+        propertySearchPage: 1
     };
 
     handleNextClick = () => {
@@ -110,9 +85,6 @@ export default class SearchResultComponent extends React.Component {
                                         hits={this.state.hits}
                                         handleNextClick={this.handleNextClick}
                                         handlePrevClick={this.handlePrevClick}
-                                        submitAppointment={this.submitAppointment}
-                                        updateAppointmentDate={this.updateAppointmentDate}
-                                        updateAppointmentMessage={this.updateAppointmentMessage}
                                         showOptions={true}/>
                 }
 
