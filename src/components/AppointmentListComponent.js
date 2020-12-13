@@ -47,6 +47,7 @@ export default class AppointmentListComponent extends React.Component {
                                 this.state.appointments &&
                                 this.state.appointments.map(appointment =>
                                                      <AppointmentComponent
+                                                         key={appointment.userId+appointment.zpid}
                                                          appointment={appointment}
                                                          cancelAppointment={this.props.cancelAppointment}
                                                      />)

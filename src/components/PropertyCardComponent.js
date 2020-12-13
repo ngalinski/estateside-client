@@ -92,7 +92,6 @@ export default class PropertyCardComponent extends React.Component {
         PropertyService.isPropertyFavouritesForUser(this.props.parentState.userProfile.userId,
                                                     this.props.property.zpid)
             .then(res => {
-                console.log(res.isFav)
                 if (res.isFav === true) {
                     this.setState({
                                       isFavourite: res
