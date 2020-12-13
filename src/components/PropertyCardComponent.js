@@ -132,18 +132,25 @@ export default class PropertyCardComponent extends React.Component {
                          </p>
                         }
                     </div>
+
+                    {/* card footer that displays option buttons */}
                     {this.props.showOptions &&
                      <div className="card-footer">
+                         {/*delete a property as a landlord (on his own property list page)*/}
                          {this.props.parentState.isLoggedIn &&
                           this.props.parentState.userProfile.role === 'landlord' &&
+                          window.location.href.indexOf("portal") > -1 && // check if the current page is the landlord's property list
                           <i title="delete property"
                              className="fa fa-trash-alt wbdv-property-card-icon float-right"
-                          />
+                             onClick={() => this.props.deleteListing(this.props.property.zpid)}/>
                          }
+
+                         {/*book appointment as a regular user*/}
                          {
                              this.props.parentState.isLoggedIn &&
+                             this.props.parentState.userProfile.role !== 'landlord' &&
                              <div>
-                                 <i title="manage appointments"
+                                 <i title="book appointments"
                                     className="fa fa-address-book wbdv-property-card-icon float-right"
                                     onClick={this.toggleModal}/>
                                  <Modal isOpen={this.state.isActive}
@@ -164,20 +171,27 @@ export default class PropertyCardComponent extends React.Component {
                                  </Modal>
                              </div>
                          }
-                         {this.props.parentState.isLoggedIn &&
-                          <span className="float-right">
+
+                         {/*see fav property info as a regular user*/}
+                         {
+                             this.props.parentState.isLoggedIn &&
+                             this.props.parentState.userProfile.role !== 'landlord' &&
+                             <span className="float-right">
                               <button className="align-content-sm-around small rounded-circle">
                                   {this.state.countFavourite}
                               </button>
-                            {this.state.isFavourite &&
-                             <i className="fa fa-heart wbdv-fav-property-icon-active"
-                                onClick={this.toggleFavourite}/>
+                            {
+                                this.state.isFavourite &&
+                                <i className="fa fa-heart wbdv-fav-property-icon-active"
+                                   onClick={this.toggleFavourite}/>
                             }
-                              {!this.state.isFavourite &&
-                               <i className="fa fa-heart wbdv-fav-property-icon-inactive"
-                                  onClick={this.toggleFavourite}/>
+                              {
+                                  !this.state.isFavourite &&
+                                <i className="fa fa-heart wbdv-fav-property-icon-inactive"
+                                   onClick={this.toggleFavourite}/>
                               }
-                          </span>}
+                            </span>
+                         }
 
                      </div>}
 

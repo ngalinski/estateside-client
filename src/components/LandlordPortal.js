@@ -99,6 +99,16 @@ export default class LandlordPortal extends React.Component {
         newProperty: newProperty
     }));
 
+
+    deleteListing = (propertyId) => {
+        PropertyService.deleteProperty(propertyId)
+            .then(this.setState(prevState => ({
+                properties: prevState.properties.filter(p => p.zpid !== propertyId)
+            })));
+    };
+
+
+
     handleNextClick = () => {
         PropertyService.findPropertiesForCity(this.state.location,
                                               (this.state.propertySearchPage)
@@ -155,7 +165,9 @@ export default class LandlordPortal extends React.Component {
                                         hits={this.state.hits}
                                         handleNextClick={this.handleNextClick}
                                         handlePrevClick={this.handlePrevClick}
-                                        showOptions={false}
+                                        showOptions={true}
+                                        // showOptions={false}
+                                        deleteListing={this.deleteListing}
                  />
                 }
             </div>

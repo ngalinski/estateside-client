@@ -50,6 +50,7 @@ class IndividualPropertyDetailComponent extends React.Component {
                                             <h6>Owners</h6>
                                         </td>
                                         <td>
+
                                             &nbsp;
                                         </td>
                                         <td>
