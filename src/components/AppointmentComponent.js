@@ -20,21 +20,13 @@ export default class AppointmentComponent extends React.Component {
 
     state = {
         address: '',
-        userFullName: '',
+        user: '',
         propertyDetailIsActive: false,
+        profilePicIsActive: false,
         property: ''
     }
 
     componentDidMount() {
-        console.log(typeof (this.props.appointment.appointmentDate))
-        // PropertyService.findPropertyById(this.props.appointment.zpid)
-        //     .then(property => {
-        //             this.setState({
-        //                               address: property.address.full,
-        //                               property: property
-        //                           })
-        //     })
-
         PropertyService.findPropertyById(this.props.appointment.zpid)
             .then(property => {
                 if (property.address.full !== undefined && property.address.full) {
@@ -54,14 +46,21 @@ export default class AppointmentComponent extends React.Component {
         UserService.findUserById(this.props.appointment.userId)
             .then(user => {
                 this.setState({
-                                  userFullName: user.name
+                                  user: user
                               })
+                console.log(this.state.user)
             })
     }
 
     togglePropertyDetailModal = () => {
         this.setState({
                           propertyDetailIsActive: !this.state.propertyDetailIsActive
+                      })
+    };
+
+    toggleProfilePicModal = () => {
+        this.setState({
+                          profilePicIsActive: !this.state.profilePicIsActive
                       })
     };
 
@@ -90,7 +89,25 @@ export default class AppointmentComponent extends React.Component {
                         </button>
                     </div>
                 </Modal>
-                <td className="wbdv-appt-font-size">{this.state.userFullName}</td>
+                <td>
+                    <a
+                        onClick={this.toggleProfilePicModal}
+                        title="see user"
+                        className="wbdv-hyperlink wbdv-appt-font-size">
+                        {this.state.user.name}
+                    </a>
+                </td>
+                <Modal isOpen={this.state.profilePicIsActive}
+                       onRequestClose={this.toggleProfilePicModal}
+                       style={customStyles}>
+                    {this.state && this.state.user !== '' && this.state.user !== undefined && this.state.user.profilePic !== undefined &&
+                     <div className="container">
+                             <div className="profilePicture">
+                                 <img src={this.state.user.profilePic}/>
+                             </div>
+                         </div>
+                    }
+                </Modal>
                 <td className="wbdv-appt-font-size">{this.props.appointment.appointmentDate.substring(0, 10)}</td>
                 <td className="wbdv-appt-font-size">{this.props.appointment.message}</td>
                 <td className="d-none d-md-table-cell">

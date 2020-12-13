@@ -9,20 +9,17 @@ export default class VisitingAppointment extends React.Component {
     };
 
     cancelAppointment = (zpid, userId) => {
-        //console.log("In cancel, state is")
-        //console.log(this.state.appointments)
         AppointmentService.deleteAppointment(zpid, userId)
-            .then(status => {
-                window.alert('Appointment cancelled');
-                this.setState(prevState => {
-                    return ({
-                        appointments: prevState.appointments.filter(app =>
-                                                                        app.zpid !== zpid)
-                    })
-                })
-                //console.log("After setting state")
-                //console.log(this.state.appointments)
+            .then(r => {
+                this.setState({
+                                  appointments: this.state.appointments.filter(a => a.zpid !== zpid),
+                              })
+                console.log(this.state.appointments)
             })
+
+            // .then(this.setState(prevState => ({
+            //     appointments: prevState.appointments.filter(a => a.zpid !== zpid) //&& a.userId !== userId
+            // })));
     }
 
     componentDidMount() {
