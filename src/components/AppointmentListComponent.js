@@ -1,6 +1,7 @@
 import React from "react";
 import AppointmentComponent from "./AppointmentComponent";
 import "./css/AppointmentListComponent.css"
+import AppointmentService from "../services/AppointmentService";
 
 export default class AppointmentListComponent extends React.Component {
 
@@ -47,6 +48,7 @@ export default class AppointmentListComponent extends React.Component {
                                 this.state.appointments.map(appointment =>
                                                      <AppointmentComponent
                                                          appointment={appointment}
+                                                         cancelAppointment={this.props.cancelAppointment}
                                                      />)
                             }
                             </tbody>
