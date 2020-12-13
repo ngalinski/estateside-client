@@ -78,14 +78,12 @@ export default class PropertyCardComponent extends React.Component {
     };
 
     submitAppointment = (zpid) => {
-        console.log("submitting a new appointment")
         AppointmentService.createAppointmentForProperty(zpid, {
             userId: this.props.parentState.userProfile.userId,
             zpid: zpid,
             appointmentDate: this.state.appointmentDate,
             message: this.state.appointmentMessage
         }).then(response => {
-            console.log("appointment created")
             window.alert('Appointment created!');
         })
     };

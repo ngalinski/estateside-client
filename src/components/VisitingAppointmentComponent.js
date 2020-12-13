@@ -7,16 +7,25 @@ import AppointmentService from "../services/AppointmentService";
 
 export default class VisitingAppointment extends React.Component {
     state = {
-        appointments:  [
-            // {
-            //     userId: "111191948250174770569",
-            //     zpid: "81855146",
-            //     appointmentDate: "2020-12-23T00:00:00.000Z",
-            //     message: "lklklklklk"
-            // }
-        ]
-
+        appointments:  []
     };
+
+    cancelAppointment = (zpid, userId) => {
+        //console.log("In cancel, state is")
+        //console.log(this.state.appointments)
+        AppointmentService.deleteAppointment(zpid, userId)
+            .then(status => {
+                window.alert('Appointment cancelled');
+                this.setState(prevState => {
+                                  return({
+                                      appointments: prevState.appointments.filter(app =>
+                                      app.zpid !== zpid)
+                                  })
+                              })
+                //console.log("After setting state")
+                //console.log(this.state.appointments)
+            })
+    }
 
     componentDidMount() {
         const userId = this.props.match.params.userId;
@@ -29,7 +38,6 @@ export default class VisitingAppointment extends React.Component {
                         this.setState({
                                           appointments: response
                                       })
-                        console.log(this.state.appointments)
                     });
             })
         }
@@ -41,7 +49,6 @@ export default class VisitingAppointment extends React.Component {
                         this.setState({
                                           appointments: response
                                       })
-                        console.log(this.state.appointments)
                     });
             })
         }
@@ -76,6 +83,7 @@ export default class VisitingAppointment extends React.Component {
                                            toggleContactRequested={this.props.toggleContactRequested}
                                            updateContact={this.props.updateContact}
                                            appointments={this.state.appointments}
+                                           cancelAppointment={this.cancelAppointment}
 
                  />
                 }

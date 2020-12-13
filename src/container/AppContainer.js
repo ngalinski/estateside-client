@@ -254,19 +254,6 @@ export default class AppContainer extends React.Component {
                         />
                     }>
                     </Route>
-
-                    {/*<Route path={["/properties/:propertyId/appointments",*/}
-                    {/*              "/users/:userId/appointments"]} exact>*/}
-                    {/*    <AppointmentListComponent state={this.state}*/}
-                    {/*                              login={this.login}*/}
-                    {/*                              logout={this.logout}*/}
-                    {/*                              updateSelectedNavItem={this.updateSelectedNavItem}*/}
-                    {/*                              toggleProfileUpdated={this.toggleProfileUpdated}*/}
-                    {/*                              toggleContactRequested={this.toggleContactRequested}*/}
-                    {/*                              updateContact={this.updateContact}*/}
-                    {/*    />*/}
-                    {/*</Route>*/}
-
                 </BrowserRouter>
             </div>
         )
