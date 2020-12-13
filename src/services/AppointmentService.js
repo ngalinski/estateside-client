@@ -15,9 +15,9 @@ const findAppointmentsForUser = (userId) => {
     )
 }
 
-const createAppointmentForProperty = (propertyId, appointment) => {
+const createAppointmentForProperty = (zpid, appointment) => {
     return (
-        fetch(`${propertyUrl}/${propertyId}/appointments`, {
+        fetch(`${propertyUrl}/${zpid}/appointments`, {
             method: "POST",
             body: JSON.stringify(appointment),
             headers: {"content-type": "application/json"}
@@ -37,18 +37,9 @@ const createAppointmentForUser = (userId, appointment) => {
     )
 }
 
-const deleteAppointmentForProperty = (propertyId, appointmentId) => {
+const deleteAppointment = (zpid, userId) => {
     return (
-        fetch(`${propertyUrl}/${propertyId}/appointments/${appointmentId}`, {
-            method: "DELETE"
-        })
-            .then(response => response.json())
-    )
-}
-
-const deleteAppointmentForUser = (userId, appointmentId) => {
-    return (
-        fetch(`${userUrl}/${userId}/appointments/${appointmentId}`, {
+        fetch(`${propertyUrl}/${zpid}/appointments/${userId}`, {
             method: "DELETE"
         })
             .then(response => response.json())
@@ -60,6 +51,5 @@ export default {
     findAppointmentsForUser,
     createAppointmentForProperty,
     createAppointmentForUser,
-    deleteAppointmentForProperty,
-    deleteAppointmentForUser
+    deleteAppointment
 }

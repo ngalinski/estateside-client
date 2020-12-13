@@ -18,6 +18,14 @@ const findPropertyById = (propertyId) => {
     )
 }
 
+
+const findSpecificPropertyById = (propertyId) => {
+    return (
+        fetch(`${propertyUrl}/bridge/${propertyId}`)
+            .then(response => response.json())
+    )
+}
+
 const createProperty = (property) => {
     return (
         fetch(propertyUrl, {
@@ -119,5 +127,6 @@ export default {
     deleteFavProperty,
     findFavouriteProperties,
     isPropertyFavouritesForUser,
-    countInterestedUsers
+    countInterestedUsers,
+    findSpecificPropertyById
 }

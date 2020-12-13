@@ -6,6 +6,7 @@ import DateUtil from "../util/DateUtil";
 import IndividualPropertyDetailComponent from "./IndividualPropertyDetailComponent";
 import PropertyService from "../services/PropertyService";
 import {UpdateListingComponent} from "./UpdateListingComponent";
+import AppointmentService from "../services/AppointmentService";
 
 const customStyles = {
     content: {
@@ -26,7 +27,9 @@ export default class PropertyCardComponent extends React.Component {
             isActive: false,
             propertyDetailIsActive: false,
             isFavourite: false,
-            countFavourite: 0
+            countFavourite: 0,
+            appointmentDate: new Date(),
+            appointmentMessage: ''
         }
     }
 
@@ -60,6 +63,29 @@ export default class PropertyCardComponent extends React.Component {
         this.setState({
                           propertyDetailIsActive: !this.state.propertyDetailIsActive
                       })
+    };
+
+    updateAppointmentDate = (date) => {
+        this.setState(prevState => ({
+            appointmentDate: new Date(date)
+        }))
+    };
+
+    updateAppointmentMessage = (message) => {
+        this.setState(prevState => ({
+            appointmentMessage: message
+        }))
+    };
+
+    submitAppointment = (zpid) => {
+        AppointmentService.createAppointmentForProperty(zpid, {
+            userId: this.props.parentState.userProfile.userId,
+            zpid: zpid,
+            appointmentDate: this.state.appointmentDate,
+            message: this.state.appointmentMessage
+        }).then(response => {
+            window.alert('Appointment created!');
+        })
     };
 
     componentWillMount() {
@@ -136,51 +162,51 @@ export default class PropertyCardComponent extends React.Component {
                     {/* card footer that displays option buttons */}
                     {this.props.showOptions &&
                      <div className="card-footer">
-                         {/*delete a property as a landlord (on his own property list page)*/}
                          {
                              this.props.parentState.isLoggedIn &&
                              this.props.parentState.userProfile.role === 'landlord' &&
-                             window.location.href.indexOf("portal") > -1 && // check if the current
-                                                                            // page is the
-                                                                            // landlord's property
-                                                                            // list
-                             <i title="delete property"
-                                className="fa fa-trash-alt wbdv-property-card-icon float-right"
-                                onClick={() => this.props.deleteListing(this.props.property.zpid)}/>
-                         }
-
-                         {/*update a property as a landlord (on his own property list page)*/}
-                         {
-                             this.props.parentState.isLoggedIn &&
-                             this.props.parentState.userProfile.role === 'landlord' &&
-                             window.location.href.indexOf("portal") > -1 && // check if the current
-                                                                            // page is the
-                                                                            // landlord's property
-                                                                            // list
-                             <div>
-                                 <i title="edit property"
-                                    className="fa fa-pencil-alt wbdv-property-card-icon float-right"
-                                    onClick={() => {
-                                        this.props.setTemporaryPropertyObject(this.props.property.zpid);
-                                        this.toggleModal();
-                                        this.props.startEditingProperty(this.props.property);
-                                    }}/>
-                                 <Modal isOpen={this.state.isActive}
-                                        onRequestClose={this.toggleModal}
-                                        style={customStyles}>
-                                     <div className="container">
-                                         <UpdateListingComponent property={this.props.property}
-                                                                 updateExistingProperty={this.props.updateExistingProperty}
-                                                                 finishEditingProperty={this.props.finishEditingProperty}
-                                                                 state={this.props.state}
-                                                                 toggleModal={this.toggleModal}/>
-                                         <button onClick={this.toggleModal}
-                                                 className="btn-danger btn btn-block">
-                                             Cancel
-                                         </button>
-                                     </div>
-                                 </Modal>
-                             </div>
+                             window.location.href.indexOf("portal") > -1 && // check if the current page is the landlord's property list
+                             <span>
+                                <div>
+                                    {/*delete a property as a landlord (on his own property list page)*/}
+                                    <i title="delete property"
+                                       className="fa fa-trash-alt wbdv-property-card-icon wbdv-property-card-icon-position float-right"
+                                       onClick={() => this.props.deleteListing(this.props.property.zpid)}/>
+                                </div>
+                                 <div>
+                                     {/*view a property appointment as a landlord (on his own property list page)*/}
+                                     <a title="view the appointments for property"
+                                        href={`/properties/${this.props.property.zpid}/appointments`}
+                                        className="wbdv-hyperlink wbdv-property-card-icon float-right">
+                                         <i className="fa fa-calendar-alt"/>
+                                     </a>
+                                 </div>
+                                 <div>
+                                     {/*update a property as a landlord (on his own property list page)*/}
+                                     <i title="edit property"
+                                        className="fa fa-pencil-alt wbdv-property-card-icon wbdv-property-card-icon-position float-right"
+                                        onClick={() => {
+                                            this.props.setTemporaryPropertyObject(this.props.property.zpid);
+                                            this.toggleModal();
+                                            this.props.startEditingProperty(this.props.property);
+                                        }}/>
+                                     <Modal isOpen={this.state.isActive}
+                                            onRequestClose={this.toggleModal}
+                                            style={customStyles}>
+                                         <div className="container">
+                                             <UpdateListingComponent property={this.props.property}
+                                                                     updateExistingProperty={this.props.updateExistingProperty}
+                                                                     finishEditingProperty={this.props.finishEditingProperty}
+                                                                     state={this.props.state}
+                                                                     toggleModal={this.toggleModal}/>
+                                             <button onClick={this.toggleModal}
+                                                     className="btn-danger btn btn-block">
+                                                 Cancel
+                                             </button>
+                                         </div>
+                                     </Modal>
+                                 </div>
+                            </span>
                          }
 
                          {/*book appointment as a regular user*/}
@@ -189,7 +215,7 @@ export default class PropertyCardComponent extends React.Component {
                              this.props.parentState.userProfile.role !== 'landlord' &&
                              <div>
                                  <i title="book appointments"
-                                    className="fa fa-address-book wbdv-property-card-icon float-right"
+                                    className="fa fa-calendar-alt fa-lg wbdv-property-card-icon float-left"
                                     onClick={this.toggleModal}/>
                                  <Modal isOpen={this.state.isActive}
                                         onRequestClose={this.toggleModal}
@@ -197,9 +223,9 @@ export default class PropertyCardComponent extends React.Component {
                                      <div className="container">
                                          <BookAppointmentComponent
                                              property={this.props.property}
-                                             submitAppointment={this.props.submitAppointment}
-                                             updateAppointmentDate={this.props.updateAppointmentDate}
-                                             updateAppointmentMessage={this.props.updateAppointmentMessage}
+                                             submitAppointment={this.submitAppointment}
+                                             updateAppointmentDate={this.updateAppointmentDate}
+                                             updateAppointmentMessage={this.updateAppointmentMessage}
                                          />
                                          <button onClick={this.toggleModal}
                                                  className="btn-primary btn btn-block">
@@ -207,6 +233,7 @@ export default class PropertyCardComponent extends React.Component {
                                          </button>
                                      </div>
                                  </Modal>
+
                              </div>
                          }
 
@@ -215,24 +242,27 @@ export default class PropertyCardComponent extends React.Component {
                              this.props.parentState.isLoggedIn &&
                              this.props.parentState.userProfile.role !== 'landlord' &&
                              <span className="float-right">
-                              <button className="align-content-sm-around small rounded-circle">
-                                  {this.state.countFavourite}
-                              </button>
+
+                              {/*<button className="align-content-sm-around small rounded-circle">*/}
+                              {/*    {this.state.countFavourite}*/}
+                              {/*</button>*/}
+
+                              <label className="wbdv-like-count">
+                                  Interested: {this.state.countFavourite}
+                              </label>
                                  {
-                                     this.state.isFavourite &&
-                                     <i className="fa fa-heart wbdv-fav-property-icon-active"
-                                        onClick={this.toggleFavourite}/>
+                                this.state.isFavourite &&
+                                <i className="fa fa-heart fa-lg wbdv-fav-property-icon-active"
+                                   onClick={this.toggleFavourite}/>
                                  }
                                  {
-                                     !this.state.isFavourite &&
-                                     <i className="fa fa-heart wbdv-fav-property-icon-inactive"
-                                        onClick={this.toggleFavourite}/>
+                                  !this.state.isFavourite &&
+                                <i className="fa fa-heart fa-lg wbdv-fav-property-icon-inactive"
+                                   onClick={this.toggleFavourite}/>
                                  }
                             </span>
                          }
-
                      </div>}
-
                 </div>
             </div>
         )

@@ -10,22 +10,22 @@ const PropertyGridComponent = ({
                                    handleNextClick, handlePrevClick, submitAppointment,
                                    updateAppointmentDate, updateAppointmentMessage, showOptions, deleteListing,
                                    startEditingProperty, updateExistingProperty, finishEditingProperty,
-                                   setTemporaryPropertyObject
+                                   setTemporaryPropertyObject, showPagination = false
                                }) => {
+
     return (
         <div className="wbdv-property">
             <div className="container">
-                <PaginationComponent handlePrevClick={handlePrevClick}
-                                     handleNextClick={handleNextClick} state={state}
-                                     hits={hits}/>
+                {showPagination &&
+                 <PaginationComponent handlePrevClick={handlePrevClick}
+                                      handleNextClick={handleNextClick} state={state}
+                                      hits={hits}/>
+                }
                 <div className="form-group row property-body">
                     {
                         properties.map(property =>
                                            <PropertyCardComponent property={property}
                                                                   state={state}
-                                                                  submitAppointment={submitAppointment}
-                                                                  updateAppointmentDate={updateAppointmentDate}
-                                                                  updateAppointmentMessage={updateAppointmentMessage}
                                                                   parentState={parentState}
                                                                   showOptions={showOptions}
                                                                   deleteListing={deleteListing}
@@ -36,13 +36,15 @@ const PropertyGridComponent = ({
                                            />)
                     }
                 </div>
-                <PaginationComponent handlePrevClick={handlePrevClick}
-                                     handleNextClick={handleNextClick} state={state}
-                                     hits={hits}/>
+                {showPagination &&
+                 <PaginationComponent handlePrevClick={handlePrevClick}
+                                      handleNextClick={handleNextClick} state={state}
+                                      hits={hits}/>
+                }
             </div>
             <FooterComponent/>
         </div>
     )
-}
+};
 
 export default PropertyGridComponent;

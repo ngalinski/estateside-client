@@ -7,9 +7,18 @@
     margin-bottom: 15px;
 }
 
+.wbdv-like-count {
+    color: darksalmon
+}
+
 .wbdv-property-card-icon {
     margin-left: 20px;
     color: dodgerblue;
+}
+
+.wbdv-property-card-icon-position{
+    position: relative;
+    bottom: -4px;
 }
 
 .wbdv-fav-property-icon-active {
