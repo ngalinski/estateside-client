@@ -6,6 +6,7 @@ import DateUtil from "../util/DateUtil";
 import IndividualPropertyDetailComponent from "./IndividualPropertyDetailComponent";
 import PropertyService from "../services/PropertyService";
 import Link from "@material-ui/core/Link";
+import AppointmentService from "../services/AppointmentService";
 
 const customStyles = {
     content: {
@@ -26,7 +27,9 @@ export default class PropertyCardComponent extends React.Component {
             isActive: false,
             propertyDetailIsActive: false,
             isFavourite: false,
-            countFavourite: 0
+            countFavourite: 0,
+            appointmentDate: new Date(),
+            appointmentMessage: ''
         }
     }
 
@@ -60,6 +63,31 @@ export default class PropertyCardComponent extends React.Component {
         this.setState({
                           propertyDetailIsActive: !this.state.propertyDetailIsActive
                       })
+    };
+
+    updateAppointmentDate = (date) => {
+        this.setState(prevState => ({
+            appointmentDate: new Date(date)
+        }))
+    };
+
+    updateAppointmentMessage = (message) => {
+        this.setState(prevState => ({
+            appointmentMessage: message
+        }))
+    };
+
+    submitAppointment = (zpid) => {
+        console.log("submitting a new appointment")
+        AppointmentService.createAppointmentForProperty(zpid, {
+            userId: this.props.parentState.userProfile.userId,
+            zpid: zpid,
+            appointmentDate: this.state.appointmentDate,
+            message: this.state.appointmentMessage
+        }).then(response => {
+            console.log("appointment created")
+            window.alert('Appointment created!');
+        })
     };
 
     componentWillMount() {
@@ -165,9 +193,9 @@ export default class PropertyCardComponent extends React.Component {
                                      <div className="container">
                                          <BookAppointmentComponent
                                              property={this.props.property}
-                                             submitAppointment={this.props.submitAppointment}
-                                             updateAppointmentDate={this.props.updateAppointmentDate}
-                                             updateAppointmentMessage={this.props.updateAppointmentMessage}
+                                             submitAppointment={this.submitAppointment}
+                                             updateAppointmentDate={this.updateAppointmentDate}
+                                             updateAppointmentMessage={this.updateAppointmentMessage}
                                          />
                                          <button onClick={this.toggleModal}
                                                  className="btn-primary btn btn-block">

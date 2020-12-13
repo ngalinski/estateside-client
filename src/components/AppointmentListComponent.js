@@ -34,6 +34,10 @@ export default class AppointmentListComponent extends React.Component {
                                     <i className="fa fa-calendar-plus wbdv-table-header-icon"/>
                                     Appointment Date
                                 </th>
+                                <th>
+                                    <i className="fa fa-check-square wbdv-table-header-icon"/>
+                                    Message
+                                </th>
                                 <th className="d-none d-md-table-cell wbdv-col-width"/>
                             </tr>
                             </thead>
