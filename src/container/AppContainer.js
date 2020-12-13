@@ -12,6 +12,7 @@ import AppointmentListComponent from "../components/AppointmentListComponent";
 import RegisterComponent from "../components/RegisterComponent";
 import LandlordPortal from "../components/LandlordPortal";
 import FavouritePropertyComponent from "../components/FavouritePropertyComponent";
+import VisitingAppointment from "../components/VisitingAppointmentComponent";
 
 export default class AppContainer extends React.Component {
     state = {
@@ -96,6 +97,8 @@ export default class AppContainer extends React.Component {
         } else if (path.includes("portal")) {
             this.setState({selectedNavItem: "Portal"})
         } else if (path.includes("favourites")) {
+            this.setState({selectedNavItem: "Favourites"})
+        } else if (path.includes("appointments")) {
             this.setState({selectedNavItem: "Favourites"})
         }
     }
@@ -195,17 +198,6 @@ export default class AppContainer extends React.Component {
                                />
                            )}>
                     </Route>
-                    <Route path={["/properties/:propertyId/appointments",
-                                  "/users/:userId/appointments"]} exact>
-                        <AppointmentListComponent state={this.state}
-                                                  login={this.login}
-                                                  logout={this.logout}
-                                                  updateSelectedNavItem={this.updateSelectedNavItem}
-                                                  toggleProfileUpdated={this.toggleProfileUpdated}
-                                                  toggleContactRequested={this.toggleContactRequested}
-                                                  updateContact={this.updateContact}
-                        />
-                    </Route>
                     <Route path="/register" exact>
                         <RegisterComponent state={this.state}
                                            login={this.login}
@@ -246,6 +238,34 @@ export default class AppContainer extends React.Component {
                         />
                     }>
                     </Route>
+
+                    <Route path={["/user/:userId/appointments", "/properties/:zpid/appointments"]}
+                           exact render={(props) =>
+                        <VisitingAppointment state={this.state}
+                                                    userId={this.state.userProfile.userId}
+                                                    login={this.login}
+                                                    logout={this.logout}
+                                                    updateSelectedNavItem={this.updateSelectedNavItem}
+                                                    toggleProfileUpdated={this.toggleProfileUpdated}
+                                                    toggleContactRequested={this.toggleContactRequested}
+                                                    updateContact={this.updateContact}
+                                                    updateSearchLocation={this.updateSearchLocation}
+                                                    {...props}
+                        />
+                    }>
+                    </Route>
+
+                    {/*<Route path={["/properties/:propertyId/appointments",*/}
+                    {/*              "/users/:userId/appointments"]} exact>*/}
+                    {/*    <AppointmentListComponent state={this.state}*/}
+                    {/*                              login={this.login}*/}
+                    {/*                              logout={this.logout}*/}
+                    {/*                              updateSelectedNavItem={this.updateSelectedNavItem}*/}
+                    {/*                              toggleProfileUpdated={this.toggleProfileUpdated}*/}
+                    {/*                              toggleContactRequested={this.toggleContactRequested}*/}
+                    {/*                              updateContact={this.updateContact}*/}
+                    {/*    />*/}
+                    {/*</Route>*/}
 
                 </BrowserRouter>
             </div>

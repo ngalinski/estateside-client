@@ -5,6 +5,7 @@ import {BookAppointmentComponent} from "./BookAppointmentComponent";
 import DateUtil from "../util/DateUtil";
 import IndividualPropertyDetailComponent from "./IndividualPropertyDetailComponent";
 import PropertyService from "../services/PropertyService";
+import Link from "@material-ui/core/Link";
 
 const customStyles = {
     content: {
@@ -140,9 +141,14 @@ export default class PropertyCardComponent extends React.Component {
                          {this.props.parentState.isLoggedIn &&
                           this.props.parentState.userProfile.role === 'landlord' &&
                           window.location.href.indexOf("portal") > -1 && // check if the current page is the landlord's property list
-                          <i title="delete property"
-                             className="fa fa-trash-alt wbdv-property-card-icon float-right"
-                             onClick={() => this.props.deleteListing(this.props.property.zpid)}/>
+                          <span>
+                              <i title="delete property"
+                                 className="fa fa-trash-alt wbdv-property-card-icon float-right"
+                                 onClick={() => this.props.deleteListing(this.props.property.zpid)}/>
+                              <a title="view the appointments for property"
+                                 href={`/properties/${this.props.property.zpid}/appointments`}
+                                 className="wbdv-hyperlink float-left"> View all appointments </a>
+                          </span>
                          }
 
                          {/*book appointment as a regular user*/}
@@ -151,7 +157,7 @@ export default class PropertyCardComponent extends React.Component {
                              this.props.parentState.userProfile.role !== 'landlord' &&
                              <div>
                                  <i title="book appointments"
-                                    className="fa fa-address-book wbdv-property-card-icon float-right"
+                                    className="fa fa-calendar-alt fa-lg wbdv-property-card-icon float-left"
                                     onClick={this.toggleModal}/>
                                  <Modal isOpen={this.state.isActive}
                                         onRequestClose={this.toggleModal}
@@ -169,6 +175,7 @@ export default class PropertyCardComponent extends React.Component {
                                          </button>
                                      </div>
                                  </Modal>
+
                              </div>
                          }
 
@@ -177,17 +184,17 @@ export default class PropertyCardComponent extends React.Component {
                              this.props.parentState.isLoggedIn &&
                              this.props.parentState.userProfile.role !== 'landlord' &&
                              <span className="float-right">
-                              <button className="align-content-sm-around small rounded-circle">
-                                  {this.state.countFavourite}
-                              </button>
+                                 <label className="wbdv-like-count">
+                                  Interested: {this.state.countFavourite}
+                              </label>
                             {
                                 this.state.isFavourite &&
-                                <i className="fa fa-heart wbdv-fav-property-icon-active"
+                                <i className="fa fa-heart fa-lg wbdv-fav-property-icon-active"
                                    onClick={this.toggleFavourite}/>
                             }
                               {
                                   !this.state.isFavourite &&
-                                <i className="fa fa-heart wbdv-fav-property-icon-inactive"
+                                <i className="fa fa-heart fa-lg wbdv-fav-property-icon-inactive"
                                    onClick={this.toggleFavourite}/>
                               }
                             </span>
