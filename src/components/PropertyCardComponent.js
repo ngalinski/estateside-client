@@ -102,8 +102,7 @@ export default class PropertyCardComponent extends React.Component {
                         {(this.props.property.zestimate || (this.props.property.rental
                                                             && this.props.property.rental.zestimate))
                          &&
-                         <h2>${this.props.property.rental.zestimate
-                               || this.props.property.zestimate}</h2>
+                         <h2>${this.props.property.zestimate || this.props.property.rental.zestimate}</h2>
                         }
                         <h4 className="card-title">
                             <a

@@ -60,19 +60,7 @@ export default class LandlordPortal extends React.Component {
     }
 
     createListing = () => {
-        // let house = this.state.newProperty.house;
-        // let street = this.state.newProperty.street;
-        // let city = this.state.newProperty.city;
-        // let state = this.state.newProperty.state;
-        // let zip = this.state.newProperty.zip;
-        //
-        // if (house && house.replace(/ /g, "")) {house += ", "}
-        // if (street && street.replace(/ /g, "")) {street += ", "}
-        // if (city && city.replace(/ /g, "")) {city += ", "}
-        // if (state && state.replace(/ /g, "")) {state += " "}
-
         const fullAddress = this.generateFullAddress(this.state.newProperty);
-        // const fullAddress = house + street + city + state + zip;
 
         PropertyService.createProperty({
                                            zpid: Date.now(),
@@ -147,6 +135,7 @@ export default class LandlordPortal extends React.Component {
     finishEditingProperty = () => {
         this.state.temporaryProperty.address.full =
             this.generateFullAddress(this.state.temporaryProperty.address);
+        this.state.temporaryProperty.rental.zestimate = this.state.temporaryProperty.zestimate;
         PropertyService.updateProperty(this.state.temporaryProperty.zpid,
                                        this.state.temporaryProperty)
             .then(status => {

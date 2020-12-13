@@ -26,7 +26,8 @@ export const UpdateListingComponent = ({property, updateExistingProperty, finish
             </div>
             <div className="form-group row">
                 <label htmlFor="house" className="col-sm-3 col-form-label"> Address line 2 </label>
-                <div className="col-sm-9">con
+                <div className="col-sm-9">
+                    <input className="textfield"
                            id="house" type="text" name="house"
                            placeholder="Apartment/House #"
                            defaultValue={state.temporaryProperty.address.house}
@@ -83,12 +84,14 @@ export const UpdateListingComponent = ({property, updateExistingProperty, finish
                 <label htmlFor="rent" className="col-sm-3 col-form-label"> Rent </label>
                 <div className="col-sm-9">
                     <input className="textfield"
+                           id="rent" type="text" name="rent" placeholder="Enter monthly rent"
                            defaultValue={state.temporaryProperty.zestimate}
-                           onChange={(event) => updateExistingProperty({
-                                                                      ...state.temporaryProperty,
-                                                                      zestimate: event.target.value
-                                                                  })}
-                           id="rent" type="text" name="rent" placeholder="Enter monthly rent"/>
+                           onChange={(event) => {
+                               updateExistingProperty({
+                                                          ...state.temporaryProperty,
+                                                          zestimate: event.target.value
+                                                      })
+                           }}/>
                 </div>
             </div>
             <div className="form-group row">
