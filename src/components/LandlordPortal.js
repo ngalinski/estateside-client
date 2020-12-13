@@ -59,10 +59,18 @@ export default class LandlordPortal extends React.Component {
         let state = this.state.newProperty.state;
         let zip = this.state.newProperty.zip;
 
-        if (house && house.replace(/ /g, "")) {house += ", "}
-        if (street && street.replace(/ /g, "")) {street += ", "}
-        if (city && city.replace(/ /g, "")) {city += ", "}
-        if (state && state.replace(/ /g, "")) {state += " "}
+        if (house && house.replace(/ /g, "")) {
+            house += ", "
+        }
+        if (street && street.replace(/ /g, "")) {
+            street += ", "
+        }
+        if (city && city.replace(/ /g, "")) {
+            city += ", "
+        }
+        if (state && state.replace(/ /g, "")) {
+            state += " "
+        }
 
         const fullAddress = house + street + city + state + zip;
 
@@ -99,15 +107,12 @@ export default class LandlordPortal extends React.Component {
         newProperty: newProperty
     }));
 
-
     deleteListing = (propertyId) => {
         PropertyService.deleteProperty(propertyId)
             .then(this.setState(prevState => ({
                 properties: prevState.properties.filter(p => p.zpid !== propertyId)
             })));
     };
-
-
 
     handleNextClick = () => {
         PropertyService.findPropertiesForCity(this.state.location,
@@ -151,7 +156,14 @@ export default class LandlordPortal extends React.Component {
                     createListing={this.createListing}
                     updateNewProperty={this.updateNewProperty}
                     state={this.state}/>
-
+                {this.props.match.params.landlordId && this.state.properties.length === 0 &&
+                 <div className="no-result-div">
+                     <span>
+                         <i className="fa fa-exclamation-circle" aria-hidden="true"/>
+                         &nbsp; There are no listed properties.
+                     </span>
+                 </div>
+                }
                 {this.props.match.params.landlordId && this.state.properties.length > 0 &&
                  <PropertyGridComponent parentState={this.props.state}
                                         state={this.state}
@@ -166,7 +178,7 @@ export default class LandlordPortal extends React.Component {
                                         handleNextClick={this.handleNextClick}
                                         handlePrevClick={this.handlePrevClick}
                                         showOptions={true}
-                                        // showOptions={false}
+                     // showOptions={false}
                                         deleteListing={this.deleteListing}
                  />
                 }

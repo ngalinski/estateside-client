@@ -8,11 +8,10 @@ import HelpComponent from "../components/HelpComponent";
 import ContactComponent from "../components/ContactComponent";
 import AboutComponent from "../components/AboutComponent";
 import SearchResultComponent from "../components/SearchResultComponent";
-import AppointmentListComponent from "../components/AppointmentListComponent";
 import RegisterComponent from "../components/RegisterComponent";
 import LandlordPortal from "../components/LandlordPortal";
-import FavouritePropertyComponent from "../components/FavouritePropertyComponent";
-import VisitingAppointment from "../components/VisitingAppointmentComponent";
+import FavouritePropertyComponent from "../components/FavouriteProperty";
+import VisitingAppointment from "../components/VisitingAppointment";
 
 export default class AppContainer extends React.Component {
     state = {

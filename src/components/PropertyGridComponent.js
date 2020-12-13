@@ -7,15 +7,17 @@ import PaginationComponent from "./PaginationComponent";
 const PropertyGridComponent = ({
                                    parentState, state, login, logout, updateSelectedNavItem, toggleProfileUpdated,
                                    toggleContactRequested, updateContact, properties, hits,
-                                   handleNextClick, handlePrevClick, showOptions, deleteListing
+                                   handleNextClick, handlePrevClick, showOptions, deleteListing, showPagination = false
                                }) => {
 
     return (
         <div className="wbdv-property">
             <div className="container">
-                <PaginationComponent handlePrevClick={handlePrevClick}
-                                     handleNextClick={handleNextClick} state={state}
-                                     hits={hits}/>
+                {showPagination &&
+                 <PaginationComponent handlePrevClick={handlePrevClick}
+                                      handleNextClick={handleNextClick} state={state}
+                                      hits={hits}/>
+                }
                 <div className="form-group row property-body">
                     {
                         properties.map(property =>
@@ -27,13 +29,15 @@ const PropertyGridComponent = ({
                                            />)
                     }
                 </div>
-                <PaginationComponent handlePrevClick={handlePrevClick}
-                                     handleNextClick={handleNextClick} state={state}
-                                     hits={hits}/>
+                {showPagination &&
+                 <PaginationComponent handlePrevClick={handlePrevClick}
+                                      handleNextClick={handleNextClick} state={state}
+                                      hits={hits}/>
+                }
             </div>
             <FooterComponent/>
         </div>
     )
-}
+};
 
 export default PropertyGridComponent;

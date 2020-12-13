@@ -1,13 +1,11 @@
 import React from 'react';
-import PropertyGridComponent from "./PropertyGridComponent";
 import TopNavigationComponent from "./TopNavigationComponent";
-import PropertyService from "../services/PropertyService";
 import AppointmentListComponent from "./AppointmentListComponent";
 import AppointmentService from "../services/AppointmentService";
 
 export default class VisitingAppointment extends React.Component {
     state = {
-        appointments:  []
+        appointments: []
     };
 
     cancelAppointment = (zpid, userId) => {
@@ -17,11 +15,11 @@ export default class VisitingAppointment extends React.Component {
             .then(status => {
                 window.alert('Appointment cancelled');
                 this.setState(prevState => {
-                                  return({
-                                      appointments: prevState.appointments.filter(app =>
-                                      app.zpid !== zpid)
-                                  })
-                              })
+                    return ({
+                        appointments: prevState.appointments.filter(app =>
+                                                                        app.zpid !== zpid)
+                    })
+                })
                 //console.log("After setting state")
                 //console.log(this.state.appointments)
             })
@@ -53,7 +51,6 @@ export default class VisitingAppointment extends React.Component {
             })
         }
 
-
     }
 
     render() {
@@ -68,9 +65,19 @@ export default class VisitingAppointment extends React.Component {
                                             toggleContactRequested={this.props.toggleContactRequested}
                                             updateContact={this.props.updateContact}
                     />
-                    <header id="wbdv-about-heading">
-                        <h1>Your appointments</h1>
-                    </header>
+                    {this.state.appointments.length > 0 &&
+                     <header id="wbdv-about-heading">
+                         <h1>Your appointments</h1>
+                     </header>
+                    }
+                    {this.state.appointments.length === 0 &&
+                     <div className="no-result-div">
+                     <span>
+                         <i className="fa fa-exclamation-circle" aria-hidden="true"/>
+                         &nbsp; There are no requested appointments.
+                     </span>
+                     </div>
+                    }
                 </div>
 
 
