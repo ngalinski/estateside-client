@@ -5,6 +5,7 @@ import {BookAppointmentComponent} from "./BookAppointmentComponent";
 import DateUtil from "../util/DateUtil";
 import IndividualPropertyDetailComponent from "./IndividualPropertyDetailComponent";
 import PropertyService from "../services/PropertyService";
+import {UpdateListingComponent} from "./UpdateListingComponent";
 
 const customStyles = {
     content: {
@@ -137,12 +138,40 @@ export default class PropertyCardComponent extends React.Component {
                     {this.props.showOptions &&
                      <div className="card-footer">
                          {/*delete a property as a landlord (on his own property list page)*/}
-                         {this.props.parentState.isLoggedIn &&
-                          this.props.parentState.userProfile.role === 'landlord' &&
-                          window.location.href.indexOf("portal") > -1 && // check if the current page is the landlord's property list
-                          <i title="delete property"
-                             className="fa fa-trash-alt wbdv-property-card-icon float-right"
-                             onClick={() => this.props.deleteListing(this.props.property.zpid)}/>
+                         {
+                             this.props.parentState.isLoggedIn &&
+                             this.props.parentState.userProfile.role === 'landlord' &&
+                             window.location.href.indexOf("portal") > -1 && // check if the current page is the landlord's property list
+                             <i title="delete property"
+                                className="fa fa-trash-alt wbdv-property-card-icon float-right"
+                                onClick={() => this.props.deleteListing(this.props.property.zpid)}/>
+                         }
+
+                         {/*update a property as a landlord (on his own property list page)*/}
+                         {
+                             this.props.parentState.isLoggedIn &&
+                             this.props.parentState.userProfile.role === 'landlord' &&
+                             window.location.href.indexOf("portal") > -1 && // check if the current page is the landlord's property list
+                             <div>
+                                <i title="edit property"
+                                   className="fa fa-pencil-alt wbdv-property-card-icon float-right"
+                                   onClick={() => {this.toggleModal(); this.props.startEditingProperty(this.props.property);}}/>
+                                 <Modal isOpen={this.state.isActive}
+                                        onRequestClose={this.toggleModal}
+                                        style={customStyles}>
+                                     <div className="container">
+                                         <UpdateListingComponent property={this.props.property}
+                                                                 updateExistingProperty={this.props.updateExistingProperty}
+                                                                 finishEditingProperty={this.props.finishEditingProperty}
+                                                                 state={this.props.state}
+                                                                 toggleModal={this.toggleModal}/>
+                                         <button onClick={this.toggleModal}
+                                                 className="btn-danger btn btn-block">
+                                             Cancel
+                                         </button>
+                                     </div>
+                                 </Modal>
+                             </div>
                          }
 
                          {/*book appointment as a regular user*/}
