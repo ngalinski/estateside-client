@@ -5,6 +5,7 @@ import {BookAppointmentComponent} from "./BookAppointmentComponent";
 import DateUtil from "../util/DateUtil";
 import IndividualPropertyDetailComponent from "./IndividualPropertyDetailComponent";
 import PropertyService from "../services/PropertyService";
+import Link from "@material-ui/core/Link";
 
 const customStyles = {
     content: {
@@ -140,9 +141,14 @@ export default class PropertyCardComponent extends React.Component {
                          {this.props.parentState.isLoggedIn &&
                           this.props.parentState.userProfile.role === 'landlord' &&
                           window.location.href.indexOf("portal") > -1 && // check if the current page is the landlord's property list
-                          <i title="delete property"
-                             className="fa fa-trash-alt wbdv-property-card-icon float-right"
-                             onClick={() => this.props.deleteListing(this.props.property.zpid)}/>
+                          <span>
+                              <i title="delete property"
+                                 className="fa fa-trash-alt wbdv-property-card-icon float-right"
+                                 onClick={() => this.props.deleteListing(this.props.property.zpid)}/>
+                              <a title="view the appointments for property"
+                                 href={`/properties/${this.props.property.zpid}/appointments`}
+                                 className="wbdv-hyperlink float-left"> View all appointments </a>
+                          </span>
                          }
 
                          {/*book appointment as a regular user*/}
