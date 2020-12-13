@@ -7,7 +7,7 @@ import PaginationComponent from "./PaginationComponent";
 const PropertyGridComponent = ({
                                    parentState, state, login, logout, updateSelectedNavItem, toggleProfileUpdated,
                                    toggleContactRequested, updateContact, properties, hits,
-                                   handleNextClick, handlePrevClick, showOptions, deleteListing, showPagination = false
+                                   handleNextClick, handlePrevClick, showOptions, deleteListing, removeFav, showPagination = false
                                }) => {
 
     return (
@@ -26,6 +26,7 @@ const PropertyGridComponent = ({
                                                                   parentState={parentState}
                                                                   showOptions={showOptions}
                                                                   deleteListing={deleteListing}
+                                                                  removeFav={removeFav}
                                            />)
                     }
                 </div>

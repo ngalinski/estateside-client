@@ -37,6 +37,12 @@ export default class FavouriteProperty extends React.Component {
             });
     };
 
+    removeFav = (userId, zpid) => {
+        this.setState(prevState => ({
+                properties: prevState.properties.filter(fav => fav.zpid !== zpid && fav.userId !== userId)
+            }));
+    };
+
     componentDidMount() {
         const userId = this.props.match.params.userId;
         this.setState({userId: userId});
@@ -88,6 +94,7 @@ export default class FavouriteProperty extends React.Component {
                                         submitAppointment={this.submitAppointment}
                                         updateAppointmentDate={this.updateAppointmentDate}
                                         updateAppointmentMessage={this.updateAppointmentMessage}
+                                        removeFav={this.removeFav}
                                         showOptions={true}/>
                 }
 

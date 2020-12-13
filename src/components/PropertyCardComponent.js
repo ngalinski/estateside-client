@@ -49,10 +49,14 @@ export default class PropertyCardComponent extends React.Component {
         } else { //undo fav
             PropertyService.deleteFavProperty(this.props.parentState.userProfile.userId,
                                               this.props.property.zpid)
-                .then(r => this.setState({
-                                             isFavourite: false,
-                                             countFavourite: this.state.countFavourite - 1
-                                         }))
+                .then(r => {
+                    this.setState({
+                                      isFavourite: false,
+                                      countFavourite: this.state.countFavourite - 1
+                                  })
+                    this.props.removeFav(this.props.parentState.userProfile.userId,
+                                         this.props.property.zpid)
+                })
             //Re-render parent when marked un-favourite
             //https://stackoverflow.com/questions/53441584/how-to-re-render-parent-component-when-anything-changes-in-child-component/53441679
         }
@@ -179,7 +183,7 @@ export default class PropertyCardComponent extends React.Component {
                          {
                              this.props.parentState.isLoggedIn &&
                              this.props.parentState.userProfile.role !== 'landlord' &&
-                             <div>
+                             <div>`
                                  <i title="book appointments"
                                     className="fa fa-calendar-alt fa-lg wbdv-property-card-icon float-left"
                                     onClick={this.toggleModal}/>
@@ -200,7 +204,7 @@ export default class PropertyCardComponent extends React.Component {
                                      </div>
                                  </Modal>
 
-                             </div>
+                             `</div>
                          }
 
                          {/*see fav property info as a regular user*/}
