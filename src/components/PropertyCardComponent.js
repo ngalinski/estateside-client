@@ -145,12 +145,6 @@ export default class PropertyCardComponent extends React.Component {
                              onClick={() => this.props.deleteListing(this.props.property.zpid)}/>
                          }
 
-                         <span className="float-left">
-                              <label className="wbdv-like-count">
-                                  Interested: {this.state.countFavourite}
-                              </label>
-                         </span>
-
                          {/*book appointment as a regular user*/}
                          {
                              this.props.parentState.isLoggedIn &&
@@ -175,6 +169,7 @@ export default class PropertyCardComponent extends React.Component {
                                          </button>
                                      </div>
                                  </Modal>
+
                              </div>
                          }
 

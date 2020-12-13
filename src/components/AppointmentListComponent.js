@@ -70,7 +70,7 @@ const AppointmentListComponent = ({
             </div>
             <div>
                 <header>
-                    <h1>Appointment List</h1>
+                    <h1>Your appointments</h1>
                 </header>
                 <div className="container">
                     <table className="table">

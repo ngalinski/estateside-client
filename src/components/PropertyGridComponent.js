@@ -10,6 +10,7 @@ const PropertyGridComponent = ({
                                    handleNextClick, handlePrevClick, submitAppointment,
                                    updateAppointmentDate, updateAppointmentMessage, showOptions, deleteListing
                                }) => {
+
     return (
         <div className="wbdv-property">
             <div className="container">
