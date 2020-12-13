@@ -12,19 +12,6 @@ export const UpdateListingComponent = ({property, updateExistingProperty, finish
         <div>
             <p style={{color: "white"}}>Update details of the property</p>
 
-            {/*<div className="form-group row">*/}
-            {/*    <label htmlFor="address" className="col-sm-3 col-form-label"> Property Address </label>*/}
-            {/*    <div className="col-sm-9">*/}
-            {/*        <textarea maxLength="1000" rows="5"*/}
-            {/*               id="address" type="text" name="address" placeholder="Enter address"*/}
-            {/*               defaultValue={state.temporaryProperty.address}*/}
-            {/*               onChange={(event) => updateExistingProperty({*/}
-            {/*                                                               ...state.temporaryProperty,*/}
-            {/*                                                               address: event.target.value*/}
-            {/*                                                           })}/>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-
             <div className="form-group row">
                 <label htmlFor="street" className="col-sm-3 col-form-label"> Address Line 1 </label>
                 <div className="col-sm-9">
@@ -39,8 +26,7 @@ export const UpdateListingComponent = ({property, updateExistingProperty, finish
             </div>
             <div className="form-group row">
                 <label htmlFor="house" className="col-sm-3 col-form-label"> Address line 2 </label>
-                <div className="col-sm-9">
-                    <input className="textfield"
+                <div className="col-sm-9">con
                            id="house" type="text" name="house"
                            placeholder="Apartment/House #"
                            defaultValue={state.temporaryProperty.address.house}

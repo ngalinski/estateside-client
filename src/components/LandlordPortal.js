@@ -18,11 +18,11 @@ export default class LandlordPortal extends React.Component {
             userId: ''
         },
         temporaryProperty: {
-            // zpid: '',
-            // street: '', city: '', house: '', state: '', zip: '',
-            // date: '',
-            // zestimate: '',
-            // userId: ''
+            zpid: '',
+            street: '', city: '', house: '', state: '', zip: '',
+            date: '',
+            zestimate: '',
+            userId: ''
         }
     };
 
@@ -94,11 +94,6 @@ export default class LandlordPortal extends React.Component {
             .then(newProperty => {
                 PropertyService.findPropertyById(newProperty.zpid)
                     .then(property => {
-
-
-                        console.log("New property: " + newProperty[0]); //test
-
-
                               this.setState(prevState => ({
                                   properties: [...this.state.properties, property],
                                   hits: this.state.hits + 1
@@ -106,6 +101,25 @@ export default class LandlordPortal extends React.Component {
                               window.alert("Property added!");
                           }
                     );
+            })
+    };
+
+    setTemporaryPropertyObject = (zpid) => {
+        PropertyService.findPropertyById(zpid)
+            .then(response => {
+                this.setState(prevState => ({
+                    newProperty: {
+                        zpid: zpid,
+                        street: response.address.street,
+                        city: response.address.city,
+                        house: response.address.house,
+                        state: response.address.state,
+                        zip: response.address.zip,
+                        date: response.date,
+                        zestimate: response.zestimate,
+                        userId: this.props.state.userProfile.userId
+                    }
+                }))
             })
     };
 
@@ -121,7 +135,6 @@ export default class LandlordPortal extends React.Component {
     };
 
     startEditingProperty = (currentProperty) => {
-        // console.log(currentProperty)
         this.setState(prevState => ({
             temporaryProperty: {...currentProperty}
         }));
@@ -132,25 +145,21 @@ export default class LandlordPortal extends React.Component {
     }));
 
     finishEditingProperty = () => {
-        console.log(this.state.temporaryProperty)
-        //
-        // const fullAddress = this.generateFullAddress(this.state.temporaryProperty.address);
-        //
-        // let updatedPropertyAddress = {...this.temporaryProperty.address, full: fullAddress}
-        // this.setState(prevState => ({
-        //     temporaryProperty: {...prevState.temporaryProperty, address: updatedPropertyAddress}
-        // }))
+        this.state.temporaryProperty.address.full =
+            this.generateFullAddress(this.state.temporaryProperty.address);
+        PropertyService.updateProperty(this.state.temporaryProperty.zpid,
+                                       this.state.temporaryProperty)
+            .then(status => {
+                this.setState(prevState => ({
+                    properties:
+                        prevState.properties.map(p => p.zpid === prevState.temporaryProperty.zpid ?
+                                                      prevState.temporaryProperty : p)
+                }), () => {
+                })
 
-        // PropertyService.updateProperty(this.state.temporaryProperty.zpid, this.state.temporaryProperty)
-        //     .then(
-        //         this.setState(prevState => ({
-        //             properties: prevState.properties.map(p => p.zpid === prevState.temporaryProperty.zpid?
-        //                                                       prevState.temporaryProperty : p)
-        //         }))
-        //     )
+            });
         window.alert("Property updated!");
-    }
-
+    };
 
     handleNextClick = () => {
         PropertyService.findPropertiesForCity(this.state.location,
@@ -185,10 +194,18 @@ export default class LandlordPortal extends React.Component {
         let state = propertyAddress.state;
         let zip = propertyAddress.zip;
 
-        if (house && house.replace(/ /g, "")) {house += ", "}
-        if (street && street.replace(/ /g, "")) {street += ", "}
-        if (city && city.replace(/ /g, "")) {city += ", "}
-        if (state && state.replace(/ /g, "")) {state += " "}
+        if (house && house.replace(/ /g, "")) {
+            house += ", "
+        }
+        if (street && street.replace(/ /g, "")) {
+            street += ", "
+        }
+        if (city && city.replace(/ /g, "")) {
+            city += ", "
+        }
+        if (state && state.replace(/ /g, "")) {
+            state += " "
+        }
 
         const fullAddress = house + street + city + state + zip;
         return fullAddress;
@@ -225,7 +242,8 @@ export default class LandlordPortal extends React.Component {
                                         handleNextClick={this.handleNextClick}
                                         handlePrevClick={this.handlePrevClick}
                                         showOptions={true}
-                                        // showOptions={false}
+                     // showOptions={false}
+                                        setTemporaryPropertyObject={this.setTemporaryPropertyObject}
                                         deleteListing={this.deleteListing}
                                         startEditingProperty={this.startEditingProperty}
                                         updateExistingProperty={this.updateExistingProperty}

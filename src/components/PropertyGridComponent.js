@@ -9,7 +9,8 @@ const PropertyGridComponent = ({
                                    toggleContactRequested, updateContact, properties, hits,
                                    handleNextClick, handlePrevClick, submitAppointment,
                                    updateAppointmentDate, updateAppointmentMessage, showOptions, deleteListing,
-                                   startEditingProperty, updateExistingProperty, finishEditingProperty
+                                   startEditingProperty, updateExistingProperty, finishEditingProperty,
+                                   setTemporaryPropertyObject
                                }) => {
     return (
         <div className="wbdv-property">
@@ -31,6 +32,7 @@ const PropertyGridComponent = ({
                                                                   startEditingProperty={startEditingProperty}
                                                                   updateExistingProperty={updateExistingProperty}
                                                                   finishEditingProperty={finishEditingProperty}
+                                                                  setTemporaryPropertyObject={setTemporaryPropertyObject}
                                            />)
                     }
                 </div>

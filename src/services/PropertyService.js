@@ -62,7 +62,6 @@ const findFavouriteProperties = (userId) => {
     return (
         fetch(`${userUrl}/${userId}/favourites`)
             .then(response => {
-                console.log(response)
                 return response.json()
             })
     )
@@ -70,8 +69,6 @@ const findFavouriteProperties = (userId) => {
 
 // mark a property as favourite for a user
 const createFavProperty = (userId, zpid) => {
-    console.log(userId)
-    console.log(zpid)
     const favMapping = {"userId": userId, "zpid": zpid};
     return (
         fetch(`${propertyUrl}/addFav`, {
@@ -97,7 +94,6 @@ const isPropertyFavouritesForUser = (userId, zpid) => {
     return (
         fetch(`${propertyUrl}/${zpid}/favourites/${userId}`)
             .then(response => {
-                console.log(response)
                 return response.json()
             })
     )
@@ -107,7 +103,6 @@ const countInterestedUsers = (zpid) => {
     return (
         fetch(`${propertyUrl}/${zpid}/favourites/`)
             .then(response => {
-                //console.log(response)
                 return response.json()
             })
     )

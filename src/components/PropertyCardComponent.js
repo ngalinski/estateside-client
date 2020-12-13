@@ -66,7 +66,6 @@ export default class PropertyCardComponent extends React.Component {
         PropertyService.isPropertyFavouritesForUser(this.props.parentState.userProfile.userId,
                                                     this.props.property.zpid)
             .then(res => {
-                console.log(res.isFav)
                 if (res.isFav === true) {
                     this.setState({
                                       isFavourite: res
@@ -92,7 +91,8 @@ export default class PropertyCardComponent extends React.Component {
     render() {
         let randomNum = Math.random() * 100;
         const imageUrl = `https://source.unsplash.com/collection/1896718/300x200/?sig=${randomNum}`
-        // const imageUrl = "https://picsum.photos/300/200"; // use this if the other image url fails to load images
+        // const imageUrl = "https://picsum.photos/300/200"; // use this if the other image url
+        // fails to load images
         return (
             // creating a property card
             <div className="col-sm-6 col-md-4 col-lg-3 wbdv-property-card">
@@ -141,7 +141,10 @@ export default class PropertyCardComponent extends React.Component {
                          {
                              this.props.parentState.isLoggedIn &&
                              this.props.parentState.userProfile.role === 'landlord' &&
-                             window.location.href.indexOf("portal") > -1 && // check if the current page is the landlord's property list
+                             window.location.href.indexOf("portal") > -1 && // check if the current
+                                                                            // page is the
+                                                                            // landlord's property
+                                                                            // list
                              <i title="delete property"
                                 className="fa fa-trash-alt wbdv-property-card-icon float-right"
                                 onClick={() => this.props.deleteListing(this.props.property.zpid)}/>
@@ -151,11 +154,18 @@ export default class PropertyCardComponent extends React.Component {
                          {
                              this.props.parentState.isLoggedIn &&
                              this.props.parentState.userProfile.role === 'landlord' &&
-                             window.location.href.indexOf("portal") > -1 && // check if the current page is the landlord's property list
+                             window.location.href.indexOf("portal") > -1 && // check if the current
+                                                                            // page is the
+                                                                            // landlord's property
+                                                                            // list
                              <div>
-                                <i title="edit property"
-                                   className="fa fa-pencil-alt wbdv-property-card-icon float-right"
-                                   onClick={() => {this.toggleModal(); this.props.startEditingProperty(this.props.property);}}/>
+                                 <i title="edit property"
+                                    className="fa fa-pencil-alt wbdv-property-card-icon float-right"
+                                    onClick={() => {
+                                        this.props.setTemporaryPropertyObject(this.props.property.zpid);
+                                        this.toggleModal();
+                                        this.props.startEditingProperty(this.props.property);
+                                    }}/>
                                  <Modal isOpen={this.state.isActive}
                                         onRequestClose={this.toggleModal}
                                         style={customStyles}>
@@ -209,16 +219,16 @@ export default class PropertyCardComponent extends React.Component {
                               <button className="align-content-sm-around small rounded-circle">
                                   {this.state.countFavourite}
                               </button>
-                            {
-                                this.state.isFavourite &&
-                                <i className="fa fa-heart wbdv-fav-property-icon-active"
-                                   onClick={this.toggleFavourite}/>
-                            }
-                              {
-                                  !this.state.isFavourite &&
-                                <i className="fa fa-heart wbdv-fav-property-icon-inactive"
-                                   onClick={this.toggleFavourite}/>
-                              }
+                                 {
+                                     this.state.isFavourite &&
+                                     <i className="fa fa-heart wbdv-fav-property-icon-active"
+                                        onClick={this.toggleFavourite}/>
+                                 }
+                                 {
+                                     !this.state.isFavourite &&
+                                     <i className="fa fa-heart wbdv-fav-property-icon-inactive"
+                                        onClick={this.toggleFavourite}/>
+                                 }
                             </span>
                          }
 
