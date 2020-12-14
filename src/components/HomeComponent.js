@@ -13,7 +13,7 @@ const HomeComponent = ({
         <div className="home-page-components">
             {
                 state.isLoggedIn &&
-                <div className="float-right">
+                <div className="float-right wbdv-hello-user-msg">
                     <h6>Welcome, {state.userProfile.name}!</h6>
                 </div>
             }
