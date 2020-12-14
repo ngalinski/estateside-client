@@ -2,7 +2,7 @@
 
 
 Link to Google Doc description: https://docs.google.com/document/d/1JU1Yq7fm1br5M_xgsy7k-E0RzK2BF8B2g4hmnb7EU2g/edit?usp=sharing  
-Website: https://hidden-spire-12185.herokuapp.com/ 
+Application URL: https://estateside-zoheb.herokuapp.com/ 
 
 
 # Real Estate Web Application  
