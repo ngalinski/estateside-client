@@ -102,7 +102,7 @@ export default class AppointmentComponent extends React.Component {
                        style={customStyles}>
                     {this.state && this.state.user !== '' && this.state.user !== undefined && this.state.user.profilePic !== undefined &&
                      <div className="container">
-                             <div className="profilePicture">
+                             <div>
                                  <img src={this.state.user.profilePic}/>
                              </div>
                          </div>
