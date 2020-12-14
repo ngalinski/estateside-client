@@ -10,7 +10,7 @@ const PropertyGridComponent = ({
                                    handleNextClick, handlePrevClick, removeFav, showPagination = false
                                    , submitAppointment, updateAppointmentDate, updateAppointmentMessage, showOptions, deleteListing,
                                    startEditingProperty, updateExistingProperty, finishEditingProperty,
-                                   setTemporaryPropertyObject, showPagination = false
+                                   setTemporaryPropertyObject
                                }) => {
 
     return (
