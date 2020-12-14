@@ -177,7 +177,7 @@ export default class PropertyCardComponent extends React.Component {
                                 <div>
                                     {/*delete a property as a landlord (on his own property list page)*/}
                                     <i title="delete property"
-                                       className="fa fa-trash-alt wbdv-property-card-icon wbdv-property-card-icon-position float-right"
+                                       className="fa fa-trash-alt fa-lg wbdv-landlord-card-icon-trash float-right"
                                        onClick={() => this.props.deleteListing(
                                            this.props.property.zpid)}/>
                                 </div>
@@ -185,14 +185,14 @@ export default class PropertyCardComponent extends React.Component {
                                      {/*view a property appointment as a landlord (on his own property list page)*/}
                                      <a title="view the appointments for property"
                                         href={`/properties/${this.props.property.zpid}/appointments`}
-                                        className="wbdv-hyperlink wbdv-property-card-icon float-right">
-                                         <i className="fa fa-calendar-alt"/>
+                                        className="wbdv-hyperlink wbdv-landlord-card-icon float-right">
+                                         <i className="fa fa-calendar-alt fa-lg"/>
                                      </a>
                                  </div>
                                  <div>
                                      {/*update a property as a landlord (on his own property list page)*/}
                                      <i title="edit property"
-                                        className="fa fa-pencil-alt wbdv-property-card-icon wbdv-property-card-icon-position float-right"
+                                        className="fa fa-pencil-alt fa-lg wbdv-property-card-icon float-left"
                                         onClick={() => {
                                             this.props.setTemporaryPropertyObject(
                                                 this.props.property.zpid);
@@ -222,9 +222,10 @@ export default class PropertyCardComponent extends React.Component {
                          {
                              this.props.parentState.isLoggedIn &&
                              this.props.parentState.userProfile.role !== 'landlord' &&
-                             <div>`
-                                 <i title="book appointments"
+                             <span>
+                                 <a title="book appointments"
                                     className="fa fa-calendar-alt fa-lg wbdv-property-card-icon float-left"
+                                    style={{paddingLeft : "0px"}}
                                     onClick={this.toggleModal}/>
                                  <Modal isOpen={this.state.isActive}
                                         onRequestClose={this.toggleModal}
@@ -243,7 +244,7 @@ export default class PropertyCardComponent extends React.Component {
                                      </div>
                                  </Modal>
 
-                                 `</div>
+                                 `</span>
                          }
 
                          {/*see fav property info as a regular user*/}
@@ -257,7 +258,7 @@ export default class PropertyCardComponent extends React.Component {
                               </label>
                                  {
                                      this.state.isFavourite &&
-                                     <i className="fa fa-heart fa-lg wbdv-fav-property-icon-active"
+                                     <a className="fa fa-heart fa-lg wbdv-fav-property-icon-active"
                                         onClick={this.toggleFavourite}/>
                                  }
                                  {
@@ -276,7 +277,7 @@ export default class PropertyCardComponent extends React.Component {
                               </label>
                                  {
                                      this.state.isFavourite &&
-                                     <i className="fa fa-heart fa-lg wbdv-fav-property-icon-active"
+                                     <a className="fa fa-heart fa-lg wbdv-fav-property-icon-active"
                                         onClick={this.toggleFavourite}/>
                                  }
                                  {
