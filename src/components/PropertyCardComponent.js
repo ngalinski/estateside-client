@@ -58,8 +58,6 @@ export default class PropertyCardComponent extends React.Component {
                     this.props.removeFav(this.props.parentState.userProfile.userId,
                                          this.props.property.zpid)
                 })
-            //Re-render parent when marked un-favourite
-            //https://stackoverflow.com/questions/53441584/how-to-re-render-parent-component-when-anything-changes-in-child-component/53441679
         }
     };
 
@@ -247,12 +245,8 @@ export default class PropertyCardComponent extends React.Component {
                              this.props.parentState.userProfile.role !== 'landlord' &&
                              <span className="float-right">
 
-                              {/*<button className="align-content-sm-around small rounded-circle">*/}
-                              {/*    {this.state.countFavourite}*/}
-                              {/*</button>*/}
-
                               <label className="wbdv-like-count">
-                                  Interested: {this.state.countFavourite}
+                                  {this.state.countFavourite}
                               </label>
                                  {
                                 this.state.isFavourite &&
