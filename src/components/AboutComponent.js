@@ -32,14 +32,17 @@ const AboutComponent = ({state, login, logout, updateSelectedNavItem, toggleProf
                 by contacting the associated property advertiser.
             </p>
             <p>
-                We are using Zillow’s public APIs. Zillow has a variety of apartment options to buy, sell and rent. The
-                Web API endpoints return JSON metadata about the apartments located in a particular location based on
-                REST principles. We will use the web API to provide search details based on various filters.
+                The application is powered by data provided by Bridge Interactive's data, which
+                powers popular property rental/purchase platforms such as Zillow. Zillow has
+                a variety of apartment options to buy, sell and rent. The Web API endpoints return
+                JSON metadata about the apartments located in a particular location based on REST
+                principles. We use the REST API to provide search details based on the requested
+                location and also retrieve information about a specific property from the API.
             </p>
             <h3>Built using: </h3>
             <p> Database: MongoDB </p>
-            <p> Back End: Java/NodeJS </p>
-            <p> Front End: HTML, CSS, Bootstrap, Javascript, Angular 9, React </p>
+            <p> Back End: NodeJS, Express </p>
+            <p> Front End: React </p>
             <p> Host environment: Heroku</p>
             <p>
                 Built by Prajakta Dharme, Japher Su, Nicholas Galinski, Zoheb Nawaz
