@@ -21,9 +21,14 @@ Two user types that would use this would be those who are looking for a rental (
 # Proposed Solution  
 Our proposed solution offers a realty web platform for users to browse available realty properties for rent and for sale. Users can search targeted properties and look up the details of the properties of interest. Additionally, the platform allows landlords and agents to update realty information (operations include adding new listings, deleting & modifying existing listings).    
 # APIs used  
-We are using Zillow’s public APIs. Zillow has a variety of apartment options to buy, sell and rent. The Web API endpoints return JSON metadata about the apartments located in a particular location based on REST principles. We will use the web API to provide search details based on various filters.  
+The application is powered by data provided by Bridge Interactive's data, which powers popular 
+property rental/purchase platforms such as Zillow. 
+Zillow has a variety of apartment options to buy, sell and rent. The Web API endpoints return JSON metadata about the apartments located in a particular location based on REST principles. 
+We use the REST API to provide search details based on the requested location and also retrieve
+ information about a specific property from the API.
+ 
 # Architecture and Technology Stack  
 Database: MongoDB  
-Back End: Java/NodeJS  
-Front End: HTML, CSS, Bootstrap, Javascript, Angular 9, React  
+Back End: NodeJS, Express  
+Front End: React  
 Host environment: Heroku  
