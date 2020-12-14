@@ -4,6 +4,7 @@ import PropertyService from "../services/PropertyService";
 import UserService from "../services/UserService";
 import IndividualPropertyDetailComponent from "./IndividualPropertyDetailComponent";
 import Modal from "react-modal";
+import UserDetailComponent from "./UserDetailComponent";
 
 const customStyles = {
     content: {
@@ -101,11 +102,8 @@ export default class AppointmentComponent extends React.Component {
                        onRequestClose={this.toggleProfilePicModal}
                        style={customStyles}>
                     {this.state && this.state.user !== '' && this.state.user !== undefined && this.state.user.profilePic !== undefined &&
-                     <div className="container">
-                             <div>
-                                 <img src={this.state.user.profilePic}/>
-                             </div>
-                         </div>
+                     <UserDetailComponent
+                         user={this.state.user}/>
                     }
                 </Modal>
                 <td className="wbdv-appt-font-size">{this.props.appointment.appointmentDate.substring(0, 10)}</td>
