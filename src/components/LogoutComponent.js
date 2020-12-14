@@ -7,7 +7,6 @@ const LogoutComponent = ({state, login, logout, updateSelectedNavItem}) =>
         <Link to="/" onClick={() => {
             updateSelectedNavItem("Home");
             logout();
-            window.location.reload(false);
         }} className="icon solid fa-sign-out-alt"/>
     </Tooltip>
 

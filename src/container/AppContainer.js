@@ -74,7 +74,7 @@ export default class AppContainer extends React.Component {
     logout = () => {
         this.setState({
                           isLoggedIn: false,
-                          userProfile: null,
+                          userProfile: {},
                       });
         localStorage.removeItem("userProfile")
     };
@@ -241,15 +241,15 @@ export default class AppContainer extends React.Component {
                     <Route path={["/user/:userId/appointments", "/properties/:zpid/appointments"]}
                            exact render={(props) =>
                         <VisitingAppointment state={this.state}
-                                                    userId={this.state.userProfile.userId}
-                                                    login={this.login}
-                                                    logout={this.logout}
-                                                    updateSelectedNavItem={this.updateSelectedNavItem}
-                                                    toggleProfileUpdated={this.toggleProfileUpdated}
-                                                    toggleContactRequested={this.toggleContactRequested}
-                                                    updateContact={this.updateContact}
-                                                    updateSearchLocation={this.updateSearchLocation}
-                                                    {...props}
+                                             userId={this.state.userProfile.userId}
+                                             login={this.login}
+                                             logout={this.logout}
+                                             updateSelectedNavItem={this.updateSelectedNavItem}
+                                             toggleProfileUpdated={this.toggleProfileUpdated}
+                                             toggleContactRequested={this.toggleContactRequested}
+                                             updateContact={this.updateContact}
+                                             updateSearchLocation={this.updateSearchLocation}
+                                             {...props}
                         />
                     }>
                     </Route>
