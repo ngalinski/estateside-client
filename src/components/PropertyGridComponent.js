@@ -25,6 +25,7 @@ const PropertyGridComponent = ({
                     {
                         properties.map(property =>
                                            <PropertyCardComponent property={property}
+                                                                  login={login}
                                                                   state={state}
                                                                   parentState={parentState}
                                                                   showOptions={showOptions}

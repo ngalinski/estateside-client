@@ -7,6 +7,7 @@ import IndividualPropertyDetailComponent from "./IndividualPropertyDetailCompone
 import PropertyService from "../services/PropertyService";
 import {UpdateListingComponent} from "./UpdateListingComponent";
 import AppointmentService from "../services/AppointmentService";
+import LoginComponent from "./LoginComponent";
 
 const customStyles = {
     content: {
@@ -130,7 +131,8 @@ export default class PropertyCardComponent extends React.Component {
                         {(this.props.property.zestimate || (this.props.property.rental
                                                             && this.props.property.rental.zestimate))
                          &&
-                         <h2>${this.props.property.zestimate || this.props.property.rental.zestimate}</h2>
+                         <h2>${this.props.property.zestimate
+                               || this.props.property.rental.zestimate}</h2>
                         }
                         <h4 className="card-title">
                             <a
@@ -167,13 +169,17 @@ export default class PropertyCardComponent extends React.Component {
                          {
                              this.props.parentState.isLoggedIn &&
                              this.props.parentState.userProfile.role === 'landlord' &&
-                             window.location.href.indexOf("portal") > -1 && // check if the current page is the landlord's property list
+                             window.location.href.indexOf("portal") > -1 && // check if the current
+                             // page is the
+                             // landlord's property
+                             // list
                              <span>
                                 <div>
                                     {/*delete a property as a landlord (on his own property list page)*/}
                                     <i title="delete property"
                                        className="fa fa-trash-alt wbdv-property-card-icon wbdv-property-card-icon-position float-right"
-                                       onClick={() => this.props.deleteListing(this.props.property.zpid)}/>
+                                       onClick={() => this.props.deleteListing(
+                                           this.props.property.zpid)}/>
                                 </div>
                                  <div>
                                      {/*view a property appointment as a landlord (on his own property list page)*/}
@@ -188,7 +194,8 @@ export default class PropertyCardComponent extends React.Component {
                                      <i title="edit property"
                                         className="fa fa-pencil-alt wbdv-property-card-icon wbdv-property-card-icon-position float-right"
                                         onClick={() => {
-                                            this.props.setTemporaryPropertyObject(this.props.property.zpid);
+                                            this.props.setTemporaryPropertyObject(
+                                                this.props.property.zpid);
                                             this.toggleModal();
                                             this.props.startEditingProperty(this.props.property);
                                         }}/>
@@ -236,7 +243,7 @@ export default class PropertyCardComponent extends React.Component {
                                      </div>
                                  </Modal>
 
-                             `</div>
+                                 `</div>
                          }
 
                          {/*see fav property info as a regular user*/}
@@ -249,18 +256,42 @@ export default class PropertyCardComponent extends React.Component {
                                   {this.state.countFavourite}
                               </label>
                                  {
-                                this.state.isFavourite &&
-                                <i className="fa fa-heart fa-lg wbdv-fav-property-icon-active"
-                                   onClick={this.toggleFavourite}/>
+                                     this.state.isFavourite &&
+                                     <i className="fa fa-heart fa-lg wbdv-fav-property-icon-active"
+                                        onClick={this.toggleFavourite}/>
                                  }
                                  {
-                                  !this.state.isFavourite &&
-                                <i className="fa fa-heart fa-lg wbdv-fav-property-icon-inactive"
-                                   onClick={this.toggleFavourite}/>
+                                     !this.state.isFavourite &&
+                                     <i className="fa fa-heart fa-lg wbdv-fav-property-icon-inactive"
+                                        onClick={this.toggleFavourite}/>
                                  }
                             </span>
                          }
-                     </div>}
+                         {
+                             !this.props.parentState.isLoggedIn &&
+                             <span className="float-right">
+
+                              <label className="wbdv-like-count">
+                                  {this.state.countFavourite}
+                              </label>
+                                 {
+                                     this.state.isFavourite &&
+                                     <i className="fa fa-heart fa-lg wbdv-fav-property-icon-active"
+                                        onClick={this.toggleFavourite}/>
+                                 }
+                                 {
+                                     !this.state.isFavourite &&
+
+                                     <LoginComponent clientLogin={this.props.login}
+                                                     role="user"
+                                                     buttonText={<i
+                                                         className="fa fa-heart fa-lg wbdv-fav-property-icon-inactive"/>}
+                                                     updateSelectedNavItem={this.props.updateSelectedNavItem}/>
+                                 }
+                            </span>
+                         }
+                     </div>
+                    }
                 </div>
             </div>
         )
