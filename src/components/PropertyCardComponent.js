@@ -243,8 +243,7 @@ export default class PropertyCardComponent extends React.Component {
                                          </button>
                                      </div>
                                  </Modal>
-
-                                 `</span>
+                             </span>
                          }
 
                          {/*see fav property info as a regular user*/}
