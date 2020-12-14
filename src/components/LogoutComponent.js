@@ -5,8 +5,9 @@ import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 const LogoutComponent = ({state, login, logout, updateSelectedNavItem}) =>
     <Tooltip title="Logout">
         <Link to="/" onClick={() => {
-            updateSelectedNavItem("Home")
-            logout()
+            updateSelectedNavItem("Home");
+            logout();
+            window.location.reload(false);
         }} className="icon solid fa-sign-out-alt"/>
     </Tooltip>
 
