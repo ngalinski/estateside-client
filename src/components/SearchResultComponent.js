@@ -37,6 +37,9 @@ export default class SearchResultComponent extends React.Component {
             });
     };
 
+    removeFav = (userId, zpid) => {
+    };
+
     componentDidMount() {
         const location = this.props.match.params.location ? this.props.match.params.location
                                                           : "Boston";
@@ -84,6 +87,7 @@ export default class SearchResultComponent extends React.Component {
                                         hits={this.state.hits}
                                         handleNextClick={this.handleNextClick}
                                         handlePrevClick={this.handlePrevClick}
+                                        removeFav={this.removeFav}
                                         showOptions={true}
                                         showPagination={true}/>
                 }
