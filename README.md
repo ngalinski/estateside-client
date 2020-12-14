@@ -24,7 +24,7 @@ Our proposed solution offers a realty web platform for users to browse available
 The application is powered by data provided by Bridge Interactive's data, which powers popular 
 property rental/purchase platforms such as Zillow. 
 Zillow has a variety of apartment options to buy, sell and rent. The Web API endpoints return JSON metadata about the apartments located in a particular location based on REST principles. 
-We use the REST API to provide search details based on the requested location and also retrieve
+We use the REST API to provide search details basedP on the requested location and also retrieve
  information about a specific property from the API.
  
 # Architecture and Technology Stack  

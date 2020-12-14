@@ -45,7 +45,8 @@ const ProfileComponent = ({
                     <label htmlFor="email" className="col-sm-3 col-form-label"> Email </label>
                     <div className="col-sm-9">
                         <input className="textfield wbdv-field wbdv-email"
-                               id="email" type="email" name="email" placeholder="xyz@northeastern.edu"
+                               id="email" type="email" name="email"
+                               placeholder="xyz@northeastern.edu"
                                value={state && state.userProfile ? state.userProfile.email : ''}
                                readOnly/>
                     </div>
@@ -82,7 +83,7 @@ const ProfileComponent = ({
                                                      state.userProfile.city,
                                                      state.userProfile.state,
                                                      state.userProfile.zipcode)
-                               }} readOnly/>
+                               }}/>
                     </div>
                 </div>
 
@@ -151,7 +152,8 @@ const ProfileComponent = ({
                                 placeholder="State"
                                 value={state && state.userProfile ? state.userProfile.state : ''}
                                 onChange={(event) => {
-                                    updateUserProfile(state.userProfile.dob, state.userProfile.phone,
+                                    updateUserProfile(state.userProfile.dob,
+                                                      state.userProfile.phone,
                                                       state.userProfile.addrLine1,
                                                       state.userProfile.addrLine2,
                                                       state.userProfile.city,
@@ -225,15 +227,15 @@ const ProfileComponent = ({
             </div>
             <FooterComponent/>
         </div>
-)}
+    )
+}
 
 const phoneNumberIsValid = (phoneNumber) => {
     // if the phone number entered is a number AND it's 10-digit long
     if (!phoneNumber || !phoneNumber.replace(/ /g, "") ||
         (!isNaN(phoneNumber) && phoneNumber.trim().length === 10 && !phoneNumber.includes("."))) {
         return true;
-    }
-    else {
+    } else {
         alert("Please enter a valid ten-digit phone number");
         return false;
     }
@@ -244,8 +246,7 @@ const zipCodeIsValid = (zipCode) => {
     if (!zipCode || !zipCode.replace(/ /g, "") ||
         (!isNaN(zipCode) && zipCode.trim().length === 5 && !zipCode.includes("."))) {
         return true;
-    }
-    else {
+    } else {
         alert("Please enter a valid zip code");
         return false;
     }
